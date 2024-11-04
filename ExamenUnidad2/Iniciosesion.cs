@@ -1,9 +1,10 @@
-using Apriliados;
+
 using System.Data;
 using System.Data.SqlClient;
 using static System.ComponentModel.Design.ObjectSelectorEditor;
 using System.Windows.Forms;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using static ExamenUnidad2.global;
 
 namespace ExamenUnidad2
 {
@@ -25,13 +26,15 @@ namespace ExamenUnidad2
             if (VerificarInicioSesion(nombreUsuario, contrasena))
             {
                 MessageBox.Show("Inicio de sesión exitoso.");
-                AccesosEmpleado ae = new AccesosEmpleado();
+                Eacceso ae = new Eacceso();
                 ae.Show();
             }
             else
             {
                 MessageBox.Show("Nombre de usuario o contraseña incorrectos.");
             }
+            txtbxUsuario.Clear();
+            txtbxContra.Clear();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -43,22 +46,25 @@ namespace ExamenUnidad2
             connect conexion = new connect();
             string consulta = "SELECT EmployeeID FROM Employees WHERE FirstName like '" + txtbxUsuario.Text.Trim() + "%'";
 
-            DataSet ds = conexion.Ejecutar(consulta);
-            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            using (SqlDataReader reader = conexion.EjecutarDataReader(consulta))
             {
-                // Obtener el ID del empleado
-                int employeeId = (int)ds.Tables[0].Rows[0]["EmployeeID"];
+                if (reader != null && reader.Read())
+                {
+                    int employeeId = reader.GetInt32(0); // Obtiene el EmployeeID
+                    global.EmployeeID = employeeId;
 
-                // Crear la contraseña esperada (4 veces)
-                string contrasenaEsperada = employeeId.ToString() + employeeId.ToString() + employeeId.ToString() + employeeId.ToString();
 
+                    // Crear la contraseña esperada (4 veces el ID del empleado)
+                    string contrasenaEsperada = employeeId.ToString() + employeeId.ToString() + employeeId.ToString() + employeeId.ToString();
 
-                // Comparar la contraseña ingresada con la esperada
-                idinicio.Add(employeeId);
-                return contrasena == contrasenaEsperada;
+                    return contrasena == contrasenaEsperada;
+                }
             }
-            return false; // No se encontró el empleado
+
+            return false;
         }
+
+
 
 
 

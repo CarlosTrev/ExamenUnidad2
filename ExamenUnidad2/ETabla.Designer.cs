@@ -1,6 +1,6 @@
 ﻿namespace ExamenUnidad2
 {
-    partial class Empleadotabla
+    partial class ETabla
     {
         /// <summary>
         /// Required designer variable.
@@ -42,13 +42,13 @@
             dgvEmpleados.TabIndex = 0;
             dgvEmpleados.CellContentClick += dataGridView1_CellContentClick;
             // 
-            // Empleadotabla
+            // ETabla
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(621, 345);
+            ClientSize = new Size(635, 356);
             Controls.Add(dgvEmpleados);
-            Name = "Empleadotabla";
+            Name = "ETabla";
             Text = "Empleadotabla";
             Load += Empleadotabla_Load;
             ((System.ComponentModel.ISupportInitialize)dgvEmpleados).EndInit();

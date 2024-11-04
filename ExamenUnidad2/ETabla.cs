@@ -1,4 +1,4 @@
-﻿using Apriliados;
+﻿
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,14 +8,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static ExamenUnidad2.global;
+using static System.ComponentModel.Design.ObjectSelectorEditor;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ExamenUnidad2
 {
-    public partial class Empleadotabla : Form
+    public partial class ETabla : Form
     {
         DataSet ds;
-        public Empleadotabla()
+        public ETabla()
         {
             InitializeComponent();
         }
@@ -36,7 +38,7 @@ namespace ExamenUnidad2
 
         private void Empleadotabla_Load(object sender, EventArgs e)
         {
-            CargarDatosGrid("SELECT\r\n      [LastName]\r\n      ,[FirstName]\r\n      ,[Title]\r\n      ,[TitleOfCourtesy]\r\n      ,[City]\r\n      ,[Region]\r\n      ,[Country]\r\n      ,[HomePhone]\r\n      ,[Extension]\r\n      ,[Photo]\r\n      ,[Notes]\r\n  FROM Employees");
+            CargarDatosGrid("SELECT * FROM Employees where EmployeeID = " + global.EmployeeID);
         }
     }
 }

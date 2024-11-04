@@ -10,22 +10,28 @@ using System.Windows.Forms;
 
 namespace ExamenUnidad2
 {
-    public partial class AccesosEmpleado : Form
+    public partial class Eacceso : Form
     {
-        public AccesosEmpleado()
+        public Eacceso()
         {
             InitializeComponent();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Empleadotabla et = new Empleadotabla();
+            ETabla et = new ETabla();
             et.Show();
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Eclientes eclientes = new Eclientes();
+            eclientes.Show();
         }
     }
 }
