@@ -8,7 +8,7 @@ namespace ExamenUnidad2
     {
         string cadenaConexion = @"Data Source= MSI\SQLEXPRESS; Integrated Security=true; Initial Catalog=Northwind";
 
-        private SqlConnection Conexion()
+        public SqlConnection Conexion()
         {
             SqlConnection conexion = new SqlConnection(cadenaConexion);
             try

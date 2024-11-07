@@ -57,6 +57,7 @@
             dgvEclientes.Size = new Size(837, 401);
             dgvEclientes.TabIndex = 1;
             dgvEclientes.CellContentClick += dgvEclientes_CellContentClick;
+            dgvEclientes.CellContentDoubleClick += dgvEclientes_CellContentDoubleClick;
             // 
             // Editar
             // 

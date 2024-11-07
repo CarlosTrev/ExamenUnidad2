@@ -11,9 +11,7 @@ using System.Windows.Forms;
 
 namespace ExamenUnidad2
 {
-    public partial class EclientesEditar : Form
-    {
-        public event Action DatosActualizados;
+    public partial class EclientesEditar : Form{
         public EclientesEditar(DataTable data)
         {
             InitializeComponent();
@@ -63,9 +61,7 @@ namespace ExamenUnidad2
                     conexion.EjecutarComando(cmd);
                 }
             }
-
             MessageBox.Show("Cambios guardados exitosamente.");
-            DatosActualizados?.Invoke();
             this.Close();
         }
 
