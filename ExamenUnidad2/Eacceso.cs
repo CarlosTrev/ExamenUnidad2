@@ -33,5 +33,11 @@ namespace ExamenUnidad2
             Eclientes eclientes = new Eclientes();
             eclientes.Show();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            EPyV ePyV = new EPyV();
+            ePyV.Show();
+        }
     }
 }

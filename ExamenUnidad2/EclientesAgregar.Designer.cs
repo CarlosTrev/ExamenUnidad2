@@ -279,7 +279,7 @@
             // txtbxCP
             // 
             txtbxCP.Location = new Point(134, 237);
-            txtbxCP.Mask = "AAAAA";
+            txtbxCP.Mask = "00000";
             txtbxCP.Name = "txtbxCP";
             txtbxCP.Size = new Size(125, 27);
             txtbxCP.TabIndex = 9;

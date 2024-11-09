@@ -46,6 +46,7 @@
             cmbEclientes.Name = "cmbEclientes";
             cmbEclientes.Size = new Size(252, 28);
             cmbEclientes.TabIndex = 0;
+            cmbEclientes.SelectedIndexChanged += cmbEclientes_SelectedIndexChanged;
             // 
             // dgvEclientes
             // 
@@ -78,6 +79,7 @@
             // 
             // txtbxEclientes
             // 
+            txtbxEclientes.Enabled = false;
             txtbxEclientes.Location = new Point(280, 31);
             txtbxEclientes.Name = "txtbxEclientes";
             txtbxEclientes.Size = new Size(228, 27);

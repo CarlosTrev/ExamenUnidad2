@@ -30,7 +30,7 @@
         {
             button1 = new Button();
             button2 = new Button();
-            button3 = new Button();
+            btnPyV = new Button();
             button4 = new Button();
             button5 = new Button();
             SuspendLayout();
@@ -55,14 +55,15 @@
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
-            // button3
+            // btnPyV
             // 
-            button3.Location = new Point(583, 44);
-            button3.Name = "button3";
-            button3.Size = new Size(256, 228);
-            button3.TabIndex = 2;
-            button3.Text = "Pedidos y ventas";
-            button3.UseVisualStyleBackColor = true;
+            btnPyV.Location = new Point(583, 44);
+            btnPyV.Name = "btnPyV";
+            btnPyV.Size = new Size(256, 228);
+            btnPyV.TabIndex = 2;
+            btnPyV.Text = "Pedidos y ventas";
+            btnPyV.UseVisualStyleBackColor = true;
+            btnPyV.Click += button3_Click;
             // 
             // button4
             // 
@@ -90,7 +91,7 @@
             ClientSize = new Size(876, 527);
             Controls.Add(button5);
             Controls.Add(button4);
-            Controls.Add(button3);
+            Controls.Add(btnPyV);
             Controls.Add(button2);
             Controls.Add(button1);
             Name = "Eacceso";
@@ -102,7 +103,7 @@
 
         private Button button1;
         private Button button2;
-        private Button button3;
+        private Button btnPyV;
         private Button button4;
         private Button button5;
     }

@@ -56,20 +56,20 @@ namespace ExamenUnidad2
             {
                 connect conexion = new connect();
 
-                
+
                 string query = "SELECT * FROM Customers";
 
-                
+
                 DataSet ds = conexion.Ejecutar(query);
 
-                
+
                 if (ds != null && ds.Tables.Count > 0)
                 {
 
                     cmbEclientes.ResetText();
                     txtbxEclientes.Clear();
                     dgvEclientes.DataSource = ds.Tables[0];
-                    dgvEclientes.Refresh(); 
+                    dgvEclientes.Refresh();
                 }
                 else
                 {
@@ -146,7 +146,7 @@ namespace ExamenUnidad2
 
                         transaction.Commit();
                         MessageBox.Show("Cliente y registros asociados eliminados exitosamente.");
-                        ActualizarDatos(); 
+                        ActualizarDatos();
                     }
                     catch (Exception ex)
                     {
@@ -208,6 +208,11 @@ namespace ExamenUnidad2
                 ActualizarDatos();
 
             }
+        }
+
+        private void cmbEclientes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtbxEclientes.Enabled = true;
         }
     }
 }

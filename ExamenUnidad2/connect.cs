@@ -78,6 +78,25 @@ namespace ExamenUnidad2
                 }
             }
         }
+        public SqlDataReader EjecutarConsulta(SqlCommand cmd)
+        {
+            SqlConnection conexion = Conexion();
+            if (conexion == null) return null;
+
+            cmd.Connection = conexion;
+            try
+            {
+                SqlDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                return reader;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                conexion.Close();
+                return null;
+            }
+        }
+
 
     }
 }
