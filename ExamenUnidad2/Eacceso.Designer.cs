@@ -37,9 +37,10 @@
             // 
             // button1
             // 
-            button1.Location = new Point(25, 44);
+            button1.Location = new Point(22, 33);
+            button1.Margin = new Padding(3, 2, 3, 2);
             button1.Name = "button1";
-            button1.Size = new Size(256, 228);
+            button1.Size = new Size(224, 171);
             button1.TabIndex = 0;
             button1.Text = "Datos de empleados";
             button1.UseVisualStyleBackColor = true;
@@ -47,9 +48,10 @@
             // 
             // button2
             // 
-            button2.Location = new Point(302, 44);
+            button2.Location = new Point(264, 33);
+            button2.Margin = new Padding(3, 2, 3, 2);
             button2.Name = "button2";
-            button2.Size = new Size(256, 228);
+            button2.Size = new Size(224, 171);
             button2.TabIndex = 1;
             button2.Text = "Clientes";
             button2.UseVisualStyleBackColor = true;
@@ -57,9 +59,10 @@
             // 
             // btnPyV
             // 
-            btnPyV.Location = new Point(583, 44);
+            btnPyV.Location = new Point(510, 33);
+            btnPyV.Margin = new Padding(3, 2, 3, 2);
             btnPyV.Name = "btnPyV";
-            btnPyV.Size = new Size(256, 228);
+            btnPyV.Size = new Size(224, 171);
             btnPyV.TabIndex = 2;
             btnPyV.Text = "Pedidos y ventas";
             btnPyV.UseVisualStyleBackColor = true;
@@ -67,18 +70,21 @@
             // 
             // button4
             // 
-            button4.Location = new Point(166, 278);
+            button4.Location = new Point(145, 208);
+            button4.Margin = new Padding(3, 2, 3, 2);
             button4.Name = "button4";
-            button4.Size = new Size(256, 228);
+            button4.Size = new Size(224, 171);
             button4.TabIndex = 3;
             button4.Text = "Productos";
             button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
             // 
             // button5
             // 
-            button5.Location = new Point(441, 278);
+            button5.Location = new Point(386, 208);
+            button5.Margin = new Padding(3, 2, 3, 2);
             button5.Name = "button5";
-            button5.Size = new Size(256, 228);
+            button5.Size = new Size(224, 171);
             button5.TabIndex = 4;
             button5.Text = "Proveedores";
             button5.UseVisualStyleBackColor = true;
@@ -86,14 +92,15 @@
             // 
             // Eacceso
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(876, 527);
+            ClientSize = new Size(766, 395);
             Controls.Add(button5);
             Controls.Add(button4);
             Controls.Add(btnPyV);
             Controls.Add(button2);
             Controls.Add(button1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "Eacceso";
             Text = "AccesosEmpleado";
             ResumeLayout(false);
