@@ -216,7 +216,60 @@ namespace ExamenUnidad2
         }
 
         private void btnAgregarOrden_Click(object sender, EventArgs e)
-        { }
+        {
+            try
+            {
+                connect conexion = new connect();
+
+                string customerID = txtCustomerID.Text;
+                int employeeID = global.EmployeeID;
+                DateTime orderDate = dtpOrderDate.Value;
+                DateTime requiredDate = dtpRD.Value;
+                object shippedDate = chbxSD.Checked ? (object)DBNull.Value : dtpSD.Value;
+                int shipVia = (rbShipVia1.Checked) ? 1 : (rbShipVia2.Checked) ? 2 : 3;
+                decimal freight = decimal.Parse(txtFreight2.Text);
+            
+                string query = "INSERT INTO Orders (CustomerID, EmployeeID, OrderDate, RequiredDate, ShippedDate, ShipVia, Freight, ShipName, ShipAddress, ShipCity, ShipRegion, ShipPostalCode, ShipCountry) " +
+                               "VALUES (@CustomerID, @EmployeeID, @OrderDate, @RequiredDate, @ShippedDate, @ShipVia, @Freight, @ShipName, @ShipAddress, @ShipCity, @ShipRegion, @ShipPostalCode, @ShipCountry)";
+
+                using (SqlCommand cmd = new SqlCommand(query))
+                {
+                    cmd.Parameters.AddWithValue("@CustomerID", customerID);
+                    cmd.Parameters.AddWithValue("@EmployeeID", employeeID);
+                    cmd.Parameters.AddWithValue("@OrderDate", orderDate);
+                    cmd.Parameters.AddWithValue("@RequiredDate", requiredDate);
+                    cmd.Parameters.AddWithValue("@ShippedDate", shippedDate);
+                    cmd.Parameters.AddWithValue("@ShipVia", shipVia);
+                    cmd.Parameters.AddWithValue("@Freight", freight);
+                    cmd.Parameters.AddWithValue("@ShipName", txtbxShipName.Text);
+                    cmd.Parameters.AddWithValue("@ShipAddress", txtbxShipAddress.Text);
+                    cmd.Parameters.AddWithValue("@ShipCity", txtbxShipCity.Text);
+                    cmd.Parameters.AddWithValue("@ShipRegion", chbxSR.Checked ? (object)DBNull.Value : txtbxShipRegion.Text);
+                    cmd.Parameters.AddWithValue("@ShipPostalCode", CHBXcp.Checked ? (object)DBNull.Value : txtboxShipCP.Text);
+                    cmd.Parameters.AddWithValue("@ShipCountry", txtbxShipCountry.Text);
+
+                    
+                    bool resultado = conexion.EjecutarComando(cmd);
+                    if (resultado)
+                    {
+                        MessageBox.Show("Orden agregada exitosamente.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al agregar la orden.");
+                    }
+                }
+            }
+            catch (FormatException ex)
+            {
+                MessageBox.Show("Error: Por favor asegúrese de que todos los valores sean válidos. " + ex.Message, "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error al procesar la información: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
 
 
 
@@ -322,27 +375,33 @@ namespace ExamenUnidad2
                 connect conexion = new connect();
                 int orderId = int.Parse(txtbxOrderID.Text);
                 int productId = int.Parse(txtProductID.Text);
-                string unitPriceString = txtUnitPrice.Text;
-                unitPriceString = unitPriceString.Replace("$", "").Replace(",", "").Trim();
-                decimal unitPrice = decimal.Parse(unitPriceString);
+
+                decimal originalUnitPrice = decimal.Parse(txtUnitPrice.Text.Replace("$", "").Trim());
+
                 int quantity = int.Parse(txtQuantity.Text);
-                decimal discount = decimal.Parse(txtDiscount.Text);
-                
-                decimal priceWithDiscount = unitPrice * (1 - discount);
 
-                // Insertar el detalle de la orden con el UnitPrice ajustado por el descuento
-                string queryInsert = "INSERT INTO [Order Details] (OrderID, ProductID, UnitPrice, Quantity, Discount) " +
-                                     "VALUES (@OrderID, @ProductID, @UnitPrice, @Quantity, @Discount)";
+                decimal discount = decimal.Parse(txtDiscount.Text) / 100;
+                decimal discountPercentage = decimal.Parse(txtDiscount.Text) / 100;
 
-                using (SqlCommand cmdInsert = new SqlCommand(queryInsert))
+                if (discount < 0 || discount > 1)
                 {
-                    cmdInsert.Parameters.AddWithValue("@OrderID", orderId);
-                    cmdInsert.Parameters.AddWithValue("@ProductID", productId);
-                    cmdInsert.Parameters.AddWithValue("@UnitPrice", priceWithDiscount); // Usar el precio con descuento
-                    cmdInsert.Parameters.AddWithValue("@Quantity", quantity);
-                    cmdInsert.Parameters.AddWithValue("@Discount", discount);
+                    MessageBox.Show("Por favor, ingrese un descuento válido entre 0 y 100.", "Descuento no válido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                decimal discountedUnitPrice = originalUnitPrice * (1 - discountPercentage);
 
-                    bool resultado = conexion.EjecutarComando(cmdInsert);
+                string query = "INSERT INTO [Order Details] (OrderID, ProductID, UnitPrice, Quantity, Discount) " +
+                               "VALUES (@OrderID, @ProductID, @UnitPrice, @Quantity, @Discount)";
+
+                using (SqlCommand cmd = new SqlCommand(query))
+                {
+                    cmd.Parameters.AddWithValue("@OrderID", orderId);
+                    cmd.Parameters.AddWithValue("@ProductID", productId);
+                    cmd.Parameters.AddWithValue("@UnitPrice", discountedUnitPrice);
+                    cmd.Parameters.AddWithValue("@Quantity", quantity);
+                    cmd.Parameters.AddWithValue("@Discount", discount);
+
+                    bool resultado = conexion.EjecutarComando(cmd);
 
                     if (resultado)
                     {
@@ -363,6 +422,8 @@ namespace ExamenUnidad2
                 MessageBox.Show("Ocurrió un error al procesar la información: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
 
 
         private void txtProductID_TextChanged(object sender, EventArgs e)
