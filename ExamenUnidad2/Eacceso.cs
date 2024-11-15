@@ -25,7 +25,8 @@ namespace ExamenUnidad2
 
         private void button5_Click(object sender, EventArgs e)
         {
-
+            Eproveedores ep = new Eproveedores();
+            ep.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -42,7 +43,8 @@ namespace ExamenUnidad2
 
         private void button4_Click(object sender, EventArgs e)
         {
-
+            Eproductos eproductos = new Eproductos();
+            eproductos.Show();
         }
     }
 }
