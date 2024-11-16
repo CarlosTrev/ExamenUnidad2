@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
             txtbNC = new TextBox();
             label2 = new Label();
             txtbNCon = new TextBox();
@@ -47,7 +46,6 @@
             label10 = new Label();
             txtbxFax = new TextBox();
             label11 = new Label();
-            mtxtbCID = new MaskedTextBox();
             cmbbxTitulo = new ComboBox();
             chbxRegion = new CheckBox();
             chboxCP = new CheckBox();
@@ -55,15 +53,6 @@
             btnAgregarC = new Button();
             txtbxCP = new MaskedTextBox();
             SuspendLayout();
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(12, 9);
-            label1.Name = "label1";
-            label1.Size = new Size(87, 20);
-            label1.TabIndex = 0;
-            label1.Text = "CustomerID";
             // 
             // txtbNC
             // 
@@ -215,14 +204,6 @@
             label11.TabIndex = 20;
             label11.Text = "Fax";
             // 
-            // mtxtbCID
-            // 
-            mtxtbCID.Location = new Point(134, 8);
-            mtxtbCID.Mask = "AAAAA";
-            mtxtbCID.Name = "mtxtbCID";
-            mtxtbCID.Size = new Size(125, 27);
-            mtxtbCID.TabIndex = 1;
-            // 
             // cmbbxTitulo
             // 
             cmbbxTitulo.FormattingEnabled = true;
@@ -295,7 +276,6 @@
             Controls.Add(chboxCP);
             Controls.Add(chbxRegion);
             Controls.Add(cmbbxTitulo);
-            Controls.Add(mtxtbCID);
             Controls.Add(txtbxFax);
             Controls.Add(label11);
             Controls.Add(txtbxTelefono);
@@ -314,7 +294,6 @@
             Controls.Add(label3);
             Controls.Add(txtbNC);
             Controls.Add(label2);
-            Controls.Add(label1);
             Name = "EclientesAgregar";
             Text = "EclientesAgregar";
             Load += EclientesAgregar_Load;
@@ -323,8 +302,6 @@
         }
 
         #endregion
-
-        private Label label1;
         private TextBox txtbNC;
         private Label label2;
         private TextBox txtbNCon;
@@ -344,7 +321,6 @@
         private Label label10;
         private TextBox txtbxFax;
         private Label label11;
-        private MaskedTextBox mtxtbCID;
         private ComboBox cmbbxTitulo;
         private CheckBox chbxRegion;
         private CheckBox chboxCP;
