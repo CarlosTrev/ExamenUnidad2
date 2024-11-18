@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EproveedoresEditar));
             txtBoxCph = new TextBox();
             txtBoxCHP = new TextBox();
             txtBoxCFa = new TextBox();
@@ -79,6 +80,8 @@
             // label12
             // 
             label12.AutoSize = true;
+            label12.BackColor = SystemColors.ActiveCaptionText;
+            label12.ForeColor = Color.White;
             label12.Location = new Point(378, 175);
             label12.Name = "label12";
             label12.Size = new Size(69, 15);
@@ -88,6 +91,8 @@
             // label13
             // 
             label13.AutoSize = true;
+            label13.BackColor = SystemColors.ActiveCaptionText;
+            label13.ForeColor = Color.White;
             label13.Location = new Point(378, 142);
             label13.Name = "label13";
             label13.Size = new Size(28, 15);
@@ -96,7 +101,7 @@
             // 
             // butAgregar
             // 
-            butAgregar.Location = new Point(212, 289);
+            butAgregar.Location = new Point(229, 296);
             butAgregar.Name = "butAgregar";
             butAgregar.Size = new Size(177, 23);
             butAgregar.TabIndex = 44;
@@ -163,6 +168,8 @@
             // label11
             // 
             label11.AutoSize = true;
+            label11.BackColor = SystemColors.ActiveCaptionText;
+            label11.ForeColor = Color.White;
             label11.Location = new Point(378, 99);
             label11.Name = "label11";
             label11.Size = new Size(44, 15);
@@ -172,6 +179,8 @@
             // label10
             // 
             label10.AutoSize = true;
+            label10.BackColor = SystemColors.ActiveCaptionText;
+            label10.ForeColor = Color.White;
             label10.Location = new Point(378, 61);
             label10.Name = "label10";
             label10.Size = new Size(53, 15);
@@ -181,6 +190,8 @@
             // label9
             // 
             label9.AutoSize = true;
+            label9.BackColor = SystemColors.ActiveCaptionText;
+            label9.ForeColor = Color.White;
             label9.Location = new Point(378, 28);
             label9.Name = "label9";
             label9.Size = new Size(70, 15);
@@ -190,6 +201,8 @@
             // label8
             // 
             label8.AutoSize = true;
+            label8.BackColor = Color.Black;
+            label8.ForeColor = Color.White;
             label8.Location = new Point(33, 253);
             label8.Name = "label8";
             label8.Size = new Size(47, 15);
@@ -199,6 +212,8 @@
             // label7
             // 
             label7.AutoSize = true;
+            label7.BackColor = Color.Black;
+            label7.ForeColor = Color.White;
             label7.Location = new Point(33, 216);
             label7.Name = "label7";
             label7.Size = new Size(31, 15);
@@ -208,6 +223,8 @@
             // label6
             // 
             label6.AutoSize = true;
+            label6.BackColor = Color.Black;
+            label6.ForeColor = Color.White;
             label6.Location = new Point(33, 178);
             label6.Name = "label6";
             label6.Size = new Size(52, 15);
@@ -217,6 +234,8 @@
             // label5
             // 
             label5.AutoSize = true;
+            label5.BackColor = Color.Black;
+            label5.ForeColor = Color.White;
             label5.Location = new Point(33, 143);
             label5.Name = "label5";
             label5.Size = new Size(74, 15);
@@ -226,6 +245,8 @@
             // label4
             // 
             label4.AutoSize = true;
+            label4.BackColor = Color.Black;
+            label4.ForeColor = Color.White;
             label4.Location = new Point(33, 105);
             label4.Name = "label4";
             label4.Size = new Size(84, 15);
@@ -235,6 +256,8 @@
             // label3
             // 
             label3.AutoSize = true;
+            label3.BackColor = Color.Black;
+            label3.ForeColor = Color.White;
             label3.Location = new Point(33, 67);
             label3.Name = "label3";
             label3.Size = new Size(94, 15);
@@ -251,6 +274,8 @@
             // label1
             // 
             label1.AutoSize = true;
+            label1.BackColor = Color.Black;
+            label1.ForeColor = Color.White;
             label1.Location = new Point(33, 28);
             label1.Name = "label1";
             label1.Size = new Size(64, 15);
@@ -262,6 +287,8 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = Properties.Resources._1nSECPf__1_;
+            BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(614, 359);
             Controls.Add(txtBoxCSupID);
             Controls.Add(label1);
@@ -288,6 +315,7 @@
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "EproveedoresEditar";
             Text = "EproveedoresEditar";
             ResumeLayout(false);

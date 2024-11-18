@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EproductoEditar));
             butEditar = new Button();
             cBoxDis = new ComboBox();
             txtBoxPReo = new TextBox();
@@ -53,7 +54,7 @@
             // 
             // butEditar
             // 
-            butEditar.Location = new Point(278, 310);
+            butEditar.Location = new Point(232, 336);
             butEditar.Name = "butEditar";
             butEditar.Size = new Size(177, 23);
             butEditar.TabIndex = 39;
@@ -129,6 +130,8 @@
             // label11
             // 
             label11.AutoSize = true;
+            label11.BackColor = Color.Black;
+            label11.ForeColor = Color.White;
             label11.Location = new Point(372, 101);
             label11.Name = "label11";
             label11.Size = new Size(87, 15);
@@ -138,6 +141,8 @@
             // label10
             // 
             label10.AutoSize = true;
+            label10.BackColor = Color.Black;
+            label10.ForeColor = Color.White;
             label10.Location = new Point(372, 63);
             label10.Name = "label10";
             label10.Size = new Size(78, 15);
@@ -147,6 +152,8 @@
             // label9
             // 
             label9.AutoSize = true;
+            label9.BackColor = Color.Black;
+            label9.ForeColor = Color.White;
             label9.Location = new Point(372, 30);
             label9.Name = "label9";
             label9.Size = new Size(83, 15);
@@ -156,6 +163,8 @@
             // label8
             // 
             label8.AutoSize = true;
+            label8.BackColor = Color.Black;
+            label8.ForeColor = Color.White;
             label8.Location = new Point(29, 263);
             label8.Name = "label8";
             label8.Size = new Size(71, 15);
@@ -165,6 +174,8 @@
             // label7
             // 
             label7.AutoSize = true;
+            label7.BackColor = Color.Black;
+            label7.ForeColor = Color.White;
             label7.Location = new Point(29, 226);
             label7.Name = "label7";
             label7.Size = new Size(58, 15);
@@ -174,6 +185,8 @@
             // label6
             // 
             label6.AutoSize = true;
+            label6.BackColor = Color.Black;
+            label6.ForeColor = Color.White;
             label6.Location = new Point(29, 188);
             label6.Name = "label6";
             label6.Size = new Size(95, 15);
@@ -183,6 +196,8 @@
             // label5
             // 
             label5.AutoSize = true;
+            label5.BackColor = Color.Black;
+            label5.ForeColor = Color.White;
             label5.Location = new Point(29, 153);
             label5.Name = "label5";
             label5.Size = new Size(69, 15);
@@ -192,6 +207,8 @@
             // label4
             // 
             label4.AutoSize = true;
+            label4.BackColor = Color.Black;
+            label4.ForeColor = Color.White;
             label4.Location = new Point(29, 115);
             label4.Name = "label4";
             label4.Size = new Size(64, 15);
@@ -201,6 +218,8 @@
             // label3
             // 
             label3.AutoSize = true;
+            label3.BackColor = Color.Black;
+            label3.ForeColor = Color.White;
             label3.Location = new Point(29, 77);
             label3.Name = "label3";
             label3.Size = new Size(84, 15);
@@ -218,6 +237,8 @@
             // label1
             // 
             label1.AutoSize = true;
+            label1.BackColor = Color.Black;
+            label1.ForeColor = Color.White;
             label1.Location = new Point(29, 33);
             label1.Name = "label1";
             label1.Size = new Size(63, 15);
@@ -228,7 +249,9 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            BackgroundImage = Properties.Resources._3ab5bJ1;
+            BackgroundImageLayout = ImageLayout.Stretch;
+            ClientSize = new Size(651, 383);
             Controls.Add(txtPrID);
             Controls.Add(label1);
             Controls.Add(butEditar);
@@ -250,6 +273,7 @@
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "EproductoEditar";
             Text = "EproductoEditar";
             Load += EproductoEditar_Load;

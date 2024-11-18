@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Eproveedores));
             tbControlProvee = new TabControl();
             tabPage1 = new TabPage();
             btnEditar = new Button();
@@ -78,23 +79,25 @@
             // 
             // tabPage1
             // 
+            tabPage1.BackColor = Color.Black;
             tabPage1.Controls.Add(btnEditar);
             tabPage1.Controls.Add(btnBorrar);
             tabPage1.Controls.Add(txtBoxProvee);
             tabPage1.Controls.Add(cboxProvee);
             tabPage1.Controls.Add(label1);
             tabPage1.Controls.Add(dgCProvee);
+            tabPage1.ForeColor = Color.Black;
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
             tabPage1.Size = new Size(754, 358);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Consultar proveedor";
-            tabPage1.UseVisualStyleBackColor = true;
             // 
             // btnEditar
             // 
-            btnEditar.Location = new Point(542, 329);
+            btnEditar.ForeColor = Color.Black;
+            btnEditar.Location = new Point(6, 329);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(191, 23);
             btnEditar.TabIndex = 5;
@@ -104,12 +107,14 @@
             // 
             // btnBorrar
             // 
-            btnBorrar.Location = new Point(8, 329);
+            btnBorrar.BackColor = Color.Red;
+            btnBorrar.ForeColor = Color.Black;
+            btnBorrar.Location = new Point(518, 332);
             btnBorrar.Name = "btnBorrar";
             btnBorrar.Size = new Size(230, 23);
             btnBorrar.TabIndex = 4;
             btnBorrar.Text = "Borrar producto";
-            btnBorrar.UseVisualStyleBackColor = true;
+            btnBorrar.UseVisualStyleBackColor = false;
             btnBorrar.Click += btnBorrar_Click;
             // 
             // txtBoxProvee
@@ -134,6 +139,7 @@
             // label1
             // 
             label1.AutoSize = true;
+            label1.ForeColor = Color.White;
             label1.Location = new Point(20, 15);
             label1.Name = "label1";
             label1.Size = new Size(66, 15);
@@ -152,6 +158,7 @@
             // 
             // tabPage2
             // 
+            tabPage2.BackColor = Color.Black;
             tabPage2.Controls.Add(txtBoxCph);
             tabPage2.Controls.Add(txtBoxCHP);
             tabPage2.Controls.Add(txtBoxCFa);
@@ -175,13 +182,13 @@
             tabPage2.Controls.Add(label5);
             tabPage2.Controls.Add(label4);
             tabPage2.Controls.Add(label3);
+            tabPage2.ForeColor = Color.White;
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
             tabPage2.Size = new Size(754, 358);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Agregar proveedor";
-            tabPage2.UseVisualStyleBackColor = true;
             // 
             // txtBoxCph
             // 
@@ -224,6 +231,7 @@
             // 
             // butAgregar
             // 
+            butAgregar.ForeColor = Color.Black;
             butAgregar.Location = new Point(278, 300);
             butAgregar.Name = "butAgregar";
             butAgregar.Size = new Size(177, 23);
@@ -373,8 +381,11 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.Red;
             ClientSize = new Size(783, 409);
             Controls.Add(tbControlProvee);
+            ForeColor = Color.Black;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Eproveedores";
             Text = "Eproveedores";
             Load += Eproveedores_Load;

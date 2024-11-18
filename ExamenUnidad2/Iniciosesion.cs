@@ -11,7 +11,7 @@ namespace ExamenUnidad2
     public partial class InicioSesion : Form
     {
         public List<int> idinicio = new List<int>();
-        DataSet ds; 
+        DataSet ds;
         public InicioSesion()
         {
             InitializeComponent();
@@ -64,9 +64,9 @@ namespace ExamenUnidad2
             return false;
         }
 
+        private void label1_Click(object sender, EventArgs e)
+        {
 
-
-
-
+        }
     }
 }

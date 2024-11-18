@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Eproductos));
             tbControlP = new TabControl();
             tabPage1 = new TabPage();
             btnEditar = new Button();
@@ -74,23 +75,25 @@
             // 
             // tabPage1
             // 
+            tabPage1.BackColor = Color.Black;
             tabPage1.Controls.Add(btnEditar);
             tabPage1.Controls.Add(btnBorrar);
             tabPage1.Controls.Add(txtBoxPr);
             tabPage1.Controls.Add(cboxPr);
             tabPage1.Controls.Add(label1);
             tabPage1.Controls.Add(dgCPr);
+            tabPage1.ForeColor = Color.Black;
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
             tabPage1.Size = new Size(754, 358);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Consultar producto";
-            tabPage1.UseVisualStyleBackColor = true;
             // 
             // btnEditar
             // 
-            btnEditar.Location = new Point(542, 329);
+            btnEditar.ForeColor = Color.Black;
+            btnEditar.Location = new Point(3, 329);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(191, 23);
             btnEditar.TabIndex = 5;
@@ -100,12 +103,14 @@
             // 
             // btnBorrar
             // 
-            btnBorrar.Location = new Point(8, 329);
+            btnBorrar.BackColor = Color.Red;
+            btnBorrar.ForeColor = Color.Black;
+            btnBorrar.Location = new Point(518, 329);
             btnBorrar.Name = "btnBorrar";
             btnBorrar.Size = new Size(230, 23);
             btnBorrar.TabIndex = 4;
             btnBorrar.Text = "Borrar producto";
-            btnBorrar.UseVisualStyleBackColor = true;
+            btnBorrar.UseVisualStyleBackColor = false;
             btnBorrar.Click += btnBorrar_Click;
             // 
             // txtBoxPr
@@ -130,6 +135,7 @@
             // label1
             // 
             label1.AutoSize = true;
+            label1.ForeColor = Color.White;
             label1.Location = new Point(17, 12);
             label1.Name = "label1";
             label1.Size = new Size(66, 15);
@@ -139,6 +145,7 @@
             // 
             // dgCPr
             // 
+            dgCPr.BackgroundColor = Color.Black;
             dgCPr.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgCPr.Location = new Point(6, 39);
             dgCPr.Name = "dgCPr";
@@ -149,6 +156,7 @@
             // 
             // tabPage2
             // 
+            tabPage2.BackColor = Color.Black;
             tabPage2.Controls.Add(butAgregar);
             tabPage2.Controls.Add(cBoxDis);
             tabPage2.Controls.Add(txtBoxPReo);
@@ -168,22 +176,24 @@
             tabPage2.Controls.Add(label5);
             tabPage2.Controls.Add(label4);
             tabPage2.Controls.Add(label3);
+            tabPage2.ForeColor = Color.White;
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
             tabPage2.Size = new Size(754, 358);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Agregar producto";
-            tabPage2.UseVisualStyleBackColor = true;
             // 
             // butAgregar
             // 
+            butAgregar.BackColor = Color.White;
+            butAgregar.ForeColor = Color.Black;
             butAgregar.Location = new Point(278, 300);
             butAgregar.Name = "butAgregar";
             butAgregar.Size = new Size(177, 23);
             butAgregar.TabIndex = 20;
             butAgregar.Text = "Agregar Producto";
-            butAgregar.UseVisualStyleBackColor = true;
+            butAgregar.UseVisualStyleBackColor = false;
             butAgregar.Click += butAgregar_Click;
             // 
             // cBoxDis
@@ -337,8 +347,11 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.Red;
+            BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(786, 403);
             Controls.Add(tbControlP);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Eproductos";
             Text = "Eproductos";
             Load += Eproductos_Load;

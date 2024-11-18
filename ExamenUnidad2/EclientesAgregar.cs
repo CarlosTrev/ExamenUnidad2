@@ -93,7 +93,7 @@ namespace ExamenUnidad2
 
                 string query = "INSERT INTO Customers (CustomerID, CompanyName, ContactName, ContactTitle, Address, City, Country, Phone";
 
-                
+
                 if (chbxRegion.Checked || !string.IsNullOrEmpty(txtbxRegion.Text)) query += ", Region";
                 if (chboxCP.Checked || !string.IsNullOrEmpty(txtbxCP.Text)) query += ", PostalCode";
                 if (chbxFax.Checked || !string.IsNullOrEmpty(txtbxFax.Text)) query += ", Fax";
@@ -107,10 +107,10 @@ namespace ExamenUnidad2
                 using (SqlCommand cmd = new SqlCommand(query))
                 {
 
-                    cmd.Parameters.AddWithValue("@CustomerID", mtxtbCID.Text); 
+                    cmd.Parameters.AddWithValue("@CustomerID", mtxtbCID.Text);
                     cmd.Parameters.AddWithValue("@CompanyName", txtbNC.Text);
                     cmd.Parameters.AddWithValue("@ContactName", txtbNCon.Text);
-                    cmd.Parameters.AddWithValue("@ContactTitle", cmbbxTitulo.SelectedItem.ToString()); 
+                    cmd.Parameters.AddWithValue("@ContactTitle", cmbbxTitulo.SelectedItem.ToString());
                     cmd.Parameters.AddWithValue("@Address", txtbxDireccion.Text);
                     cmd.Parameters.AddWithValue("@City", txtbxCiudad.Text);
                     cmd.Parameters.AddWithValue("@Country", txtbxPais.Text);
@@ -139,5 +139,9 @@ namespace ExamenUnidad2
 
         }
 
+        private void mtxtbCID_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
     }
 }

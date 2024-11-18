@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EclientesEditar));
             dgvClientesEditar = new DataGridView();
             btnEditar = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvClientesEditar).BeginInit();
@@ -36,29 +37,36 @@
             // dgvClientesEditar
             // 
             dgvClientesEditar.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvClientesEditar.Location = new Point(12, 12);
+            dgvClientesEditar.Location = new Point(10, 9);
+            dgvClientesEditar.Margin = new Padding(3, 2, 3, 2);
             dgvClientesEditar.Name = "dgvClientesEditar";
             dgvClientesEditar.RowHeadersWidth = 51;
-            dgvClientesEditar.Size = new Size(860, 157);
+            dgvClientesEditar.Size = new Size(752, 118);
             dgvClientesEditar.TabIndex = 0;
             // 
             // btnEditar
             // 
-            btnEditar.Location = new Point(355, 200);
+            btnEditar.BackColor = Color.Black;
+            btnEditar.ForeColor = Color.White;
+            btnEditar.Location = new Point(311, 150);
+            btnEditar.Margin = new Padding(3, 2, 3, 2);
             btnEditar.Name = "btnEditar";
-            btnEditar.Size = new Size(191, 32);
+            btnEditar.Size = new Size(167, 24);
             btnEditar.TabIndex = 1;
             btnEditar.Text = "Aplicar cambios";
-            btnEditar.UseVisualStyleBackColor = true;
+            btnEditar.UseVisualStyleBackColor = false;
             btnEditar.Click += btnEditar_Click;
             // 
             // EclientesEditar
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(877, 258);
+            BackColor = Color.Red;
+            ClientSize = new Size(767, 194);
             Controls.Add(btnEditar);
             Controls.Add(dgvClientesEditar);
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(3, 2, 3, 2);
             Name = "EclientesEditar";
             Text = "EclientesEditar";
             Load += EclientesEditar_Load;

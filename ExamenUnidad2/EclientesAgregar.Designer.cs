@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EclientesAgregar));
             label1 = new Label();
             txtbNC = new TextBox();
             label2 = new Label();
@@ -59,7 +60,9 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(10, 7);
+            label1.BackColor = SystemColors.ActiveCaptionText;
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(10, 9);
             label1.Name = "label1";
             label1.Size = new Size(70, 15);
             label1.TabIndex = 0;
@@ -67,7 +70,7 @@
             // 
             // txtbNC
             // 
-            txtbNC.Location = new Point(117, 30);
+            txtbNC.Location = new Point(215, 30);
             txtbNC.Margin = new Padding(3, 2, 3, 2);
             txtbNC.Name = "txtbNC";
             txtbNC.Size = new Size(110, 23);
@@ -76,6 +79,8 @@
             // label2
             // 
             label2.AutoSize = true;
+            label2.BackColor = SystemColors.ActiveCaptionText;
+            label2.ForeColor = Color.White;
             label2.Location = new Point(10, 32);
             label2.Name = "label2";
             label2.Size = new Size(94, 15);
@@ -85,7 +90,7 @@
             // 
             // txtbNCon
             // 
-            txtbNCon.Location = new Point(117, 55);
+            txtbNCon.Location = new Point(215, 55);
             txtbNCon.Margin = new Padding(3, 2, 3, 2);
             txtbNCon.Name = "txtbNCon";
             txtbNCon.Size = new Size(110, 23);
@@ -94,6 +99,8 @@
             // label3
             // 
             label3.AutoSize = true;
+            label3.BackColor = SystemColors.ActiveCaptionText;
+            label3.ForeColor = Color.White;
             label3.Location = new Point(10, 56);
             label3.Name = "label3";
             label3.Size = new Size(82, 15);
@@ -103,6 +110,8 @@
             // label4
             // 
             label4.AutoSize = true;
+            label4.BackColor = SystemColors.ActiveCaptionText;
+            label4.ForeColor = Color.White;
             label4.Location = new Point(10, 80);
             label4.Name = "label4";
             label4.Size = new Size(72, 15);
@@ -111,7 +120,7 @@
             // 
             // txtbxDireccion
             // 
-            txtbxDireccion.Location = new Point(117, 103);
+            txtbxDireccion.Location = new Point(215, 103);
             txtbxDireccion.Margin = new Padding(3, 2, 3, 2);
             txtbxDireccion.Name = "txtbxDireccion";
             txtbxDireccion.Size = new Size(110, 23);
@@ -120,6 +129,8 @@
             // label5
             // 
             label5.AutoSize = true;
+            label5.BackColor = SystemColors.ActiveCaptionText;
+            label5.ForeColor = Color.White;
             label5.Location = new Point(10, 101);
             label5.Name = "label5";
             label5.Size = new Size(49, 15);
@@ -129,7 +140,7 @@
             // 
             // txtbxCiudad
             // 
-            txtbxCiudad.Location = new Point(117, 128);
+            txtbxCiudad.Location = new Point(215, 128);
             txtbxCiudad.Margin = new Padding(3, 2, 3, 2);
             txtbxCiudad.Name = "txtbxCiudad";
             txtbxCiudad.Size = new Size(110, 23);
@@ -138,6 +149,8 @@
             // label6
             // 
             label6.AutoSize = true;
+            label6.BackColor = SystemColors.ActiveCaptionText;
+            label6.ForeColor = Color.White;
             label6.Location = new Point(10, 128);
             label6.Name = "label6";
             label6.Size = new Size(28, 15);
@@ -146,7 +159,7 @@
             // 
             // txtbxRegion
             // 
-            txtbxRegion.Location = new Point(117, 153);
+            txtbxRegion.Location = new Point(215, 153);
             txtbxRegion.Margin = new Padding(3, 2, 3, 2);
             txtbxRegion.Name = "txtbxRegion";
             txtbxRegion.Size = new Size(110, 23);
@@ -156,6 +169,8 @@
             // label7
             // 
             label7.AutoSize = true;
+            label7.BackColor = SystemColors.ActiveCaptionText;
+            label7.ForeColor = Color.White;
             label7.Location = new Point(10, 151);
             label7.Name = "label7";
             label7.Size = new Size(44, 15);
@@ -165,6 +180,8 @@
             // label8
             // 
             label8.AutoSize = true;
+            label8.BackColor = SystemColors.ActiveCaptionText;
+            label8.ForeColor = Color.White;
             label8.Location = new Point(10, 178);
             label8.Name = "label8";
             label8.Size = new Size(68, 15);
@@ -173,7 +190,7 @@
             // 
             // txtbxPais
             // 
-            txtbxPais.Location = new Point(117, 202);
+            txtbxPais.Location = new Point(215, 202);
             txtbxPais.Margin = new Padding(3, 2, 3, 2);
             txtbxPais.Name = "txtbxPais";
             txtbxPais.Size = new Size(110, 23);
@@ -182,7 +199,9 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(10, 200);
+            label9.BackColor = SystemColors.ActiveCaptionText;
+            label9.ForeColor = Color.White;
+            label9.Location = new Point(10, 205);
             label9.Name = "label9";
             label9.Size = new Size(50, 15);
             label9.TabIndex = 16;
@@ -190,7 +209,7 @@
             // 
             // txtbxTelefono
             // 
-            txtbxTelefono.Location = new Point(117, 227);
+            txtbxTelefono.Location = new Point(215, 227);
             txtbxTelefono.Margin = new Padding(3, 2, 3, 2);
             txtbxTelefono.Name = "txtbxTelefono";
             txtbxTelefono.Size = new Size(110, 23);
@@ -200,7 +219,9 @@
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(16, 227);
+            label10.BackColor = SystemColors.ActiveCaptionText;
+            label10.ForeColor = Color.White;
+            label10.Location = new Point(10, 230);
             label10.Name = "label10";
             label10.Size = new Size(41, 15);
             label10.TabIndex = 18;
@@ -208,7 +229,7 @@
             // 
             // txtbxFax
             // 
-            txtbxFax.Location = new Point(117, 252);
+            txtbxFax.Location = new Point(215, 252);
             txtbxFax.Margin = new Padding(3, 2, 3, 2);
             txtbxFax.Name = "txtbxFax";
             txtbxFax.Size = new Size(110, 23);
@@ -217,7 +238,9 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(16, 255);
+            label11.BackColor = SystemColors.ActiveCaptionText;
+            label11.ForeColor = Color.White;
+            label11.Location = new Point(10, 260);
             label11.Name = "label11";
             label11.Size = new Size(25, 15);
             label11.TabIndex = 20;
@@ -225,18 +248,19 @@
             // 
             // mtxtbCID
             // 
-            mtxtbCID.Location = new Point(117, 6);
+            mtxtbCID.Location = new Point(215, 6);
             mtxtbCID.Margin = new Padding(3, 2, 3, 2);
             mtxtbCID.Mask = "AAAAA";
             mtxtbCID.Name = "mtxtbCID";
             mtxtbCID.Size = new Size(110, 23);
             mtxtbCID.TabIndex = 1;
+            mtxtbCID.MaskInputRejected += mtxtbCID_MaskInputRejected;
             // 
             // cmbbxTitulo
             // 
             cmbbxTitulo.FormattingEnabled = true;
             cmbbxTitulo.Items.AddRange(new object[] { "Accounting Manager", "Assistant Sales Agent", "Assistant Sales Representative", "Marketing Assistant", "Marketing Manager", "Order Administrator", "Owner", "Owner/Marketing Assistant", "Sales Agent", "Sales Associate", "Sales Manager", "Sales Representative" });
-            cmbbxTitulo.Location = new Point(117, 78);
+            cmbbxTitulo.Location = new Point(215, 78);
             cmbbxTitulo.Margin = new Padding(3, 2, 3, 2);
             cmbbxTitulo.Name = "cmbbxTitulo";
             cmbbxTitulo.Size = new Size(110, 23);
@@ -246,7 +270,7 @@
             // chbxRegion
             // 
             chbxRegion.AutoSize = true;
-            chbxRegion.Location = new Point(232, 155);
+            chbxRegion.Location = new Point(330, 155);
             chbxRegion.Margin = new Padding(3, 2, 3, 2);
             chbxRegion.Name = "chbxRegion";
             chbxRegion.Size = new Size(52, 19);
@@ -258,7 +282,7 @@
             // chboxCP
             // 
             chboxCP.AutoSize = true;
-            chboxCP.Location = new Point(232, 178);
+            chboxCP.Location = new Point(330, 178);
             chboxCP.Margin = new Padding(3, 2, 3, 2);
             chboxCP.Name = "chboxCP";
             chboxCP.Size = new Size(52, 19);
@@ -270,7 +294,7 @@
             // chbxFax
             // 
             chbxFax.AutoSize = true;
-            chbxFax.Location = new Point(232, 254);
+            chbxFax.Location = new Point(330, 254);
             chbxFax.Margin = new Padding(3, 2, 3, 2);
             chbxFax.Name = "chbxFax";
             chbxFax.Size = new Size(52, 19);
@@ -281,18 +305,20 @@
             // 
             // btnAgregarC
             // 
-            btnAgregarC.Location = new Point(75, 284);
+            btnAgregarC.BackColor = SystemColors.ActiveCaptionText;
+            btnAgregarC.ForeColor = SystemColors.Control;
+            btnAgregarC.Location = new Point(145, 293);
             btnAgregarC.Margin = new Padding(3, 2, 3, 2);
             btnAgregarC.Name = "btnAgregarC";
             btnAgregarC.Size = new Size(117, 22);
             btnAgregarC.TabIndex = 15;
             btnAgregarC.Text = "Agregar cliente";
-            btnAgregarC.UseVisualStyleBackColor = true;
+            btnAgregarC.UseVisualStyleBackColor = false;
             btnAgregarC.Click += btnAgregarC_Click;
             // 
             // txtbxCP
             // 
-            txtbxCP.Location = new Point(117, 178);
+            txtbxCP.Location = new Point(215, 178);
             txtbxCP.Margin = new Padding(3, 2, 3, 2);
             txtbxCP.Mask = "00000";
             txtbxCP.Name = "txtbxCP";
@@ -303,7 +329,9 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(318, 326);
+            BackgroundImage = Properties.Resources.PPcQBeR;
+            BackgroundImageLayout = ImageLayout.Stretch;
+            ClientSize = new Size(399, 326);
             Controls.Add(txtbxCP);
             Controls.Add(btnAgregarC);
             Controls.Add(chbxFax);
@@ -330,6 +358,7 @@
             Controls.Add(txtbNC);
             Controls.Add(label2);
             Controls.Add(label1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(3, 2, 3, 2);
             Name = "EclientesAgregar";
             Text = "EclientesAgregar";

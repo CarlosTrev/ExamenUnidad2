@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EPyV));
             dgvPyV = new DataGridView();
             ColumnaBuscar = new DataGridViewImageColumn();
             label1 = new Label();
@@ -116,6 +117,7 @@
             // label1
             // 
             label1.AutoSize = true;
+            label1.ForeColor = SystemColors.ButtonHighlight;
             label1.Location = new Point(0, 7);
             label1.Name = "label1";
             label1.Size = new Size(69, 15);
@@ -145,13 +147,14 @@
             // 
             // btnEliminarOrden
             // 
+            btnEliminarOrden.BackColor = Color.Red;
             btnEliminarOrden.Location = new Point(5, 378);
             btnEliminarOrden.Margin = new Padding(3, 2, 3, 2);
             btnEliminarOrden.Name = "btnEliminarOrden";
             btnEliminarOrden.Size = new Size(177, 25);
             btnEliminarOrden.TabIndex = 4;
             btnEliminarOrden.Text = "Eliminar orden";
-            btnEliminarOrden.UseVisualStyleBackColor = true;
+            btnEliminarOrden.UseVisualStyleBackColor = false;
             btnEliminarOrden.Click += btnEliminarOrden_Click;
             // 
             // tbcntrl
@@ -170,6 +173,7 @@
             // 
             // tabPage1
             // 
+            tabPage1.BackColor = Color.Black;
             tabPage1.Controls.Add(label1);
             tabPage1.Controls.Add(btnEliminarOrden);
             tabPage1.Controls.Add(dgvPyV);
@@ -182,10 +186,10 @@
             tabPage1.Size = new Size(920, 418);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Consultar orden";
-            tabPage1.UseVisualStyleBackColor = true;
             // 
             // tabPage2
             // 
+            tabPage2.BackColor = Color.Black;
             tabPage2.Controls.Add(txtFreight2);
             tabPage2.Controls.Add(dtpSD);
             tabPage2.Controls.Add(dtpRD);
@@ -216,6 +220,7 @@
             tabPage2.Controls.Add(label4);
             tabPage2.Controls.Add(label3);
             tabPage2.Controls.Add(label2);
+            tabPage2.ForeColor = Color.White;
             tabPage2.Location = new Point(4, 24);
             tabPage2.Margin = new Padding(3, 2, 3, 2);
             tabPage2.Name = "tabPage2";
@@ -223,7 +228,6 @@
             tabPage2.Size = new Size(920, 418);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Agregar orden";
-            tabPage2.UseVisualStyleBackColor = true;
             // 
             // txtFreight2
             // 
@@ -291,6 +295,7 @@
             // 
             // btnAgregarOrden
             // 
+            btnAgregarOrden.ForeColor = Color.Black;
             btnAgregarOrden.Location = new Point(66, 331);
             btnAgregarOrden.Margin = new Padding(3, 2, 3, 2);
             btnAgregarOrden.Name = "btnAgregarOrden";
@@ -513,6 +518,7 @@
             // 
             // tabPage3
             // 
+            tabPage3.BackColor = Color.Black;
             tabPage3.Controls.Add(txtDiscount);
             tabPage3.Controls.Add(txtQuantity);
             tabPage3.Controls.Add(txtUnitPrice);
@@ -528,13 +534,13 @@
             tabPage3.Controls.Add(lblResulConsulta);
             tabPage3.Controls.Add(btnBuscarOrden);
             tabPage3.Controls.Add(label14);
+            tabPage3.ForeColor = Color.White;
             tabPage3.Location = new Point(4, 24);
             tabPage3.Margin = new Padding(3, 2, 3, 2);
             tabPage3.Name = "tabPage3";
             tabPage3.Size = new Size(920, 418);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Agregar productos";
-            tabPage3.UseVisualStyleBackColor = true;
             // 
             // txtDiscount
             // 
@@ -573,6 +579,7 @@
             // btnAgregarProductos
             // 
             btnAgregarProductos.Enabled = false;
+            btnAgregarProductos.ForeColor = Color.Black;
             btnAgregarProductos.Location = new Point(236, 342);
             btnAgregarProductos.Margin = new Padding(3, 2, 3, 2);
             btnAgregarProductos.Name = "btnAgregarProductos";
@@ -657,6 +664,7 @@
             // 
             // btnBuscarOrden
             // 
+            btnBuscarOrden.ForeColor = Color.Black;
             btnBuscarOrden.Location = new Point(191, 14);
             btnBuscarOrden.Margin = new Padding(3, 2, 3, 2);
             btnBuscarOrden.Name = "btnBuscarOrden";
@@ -679,8 +687,10 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.Red;
             ClientSize = new Size(947, 437);
             Controls.Add(tbcntrl);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(3, 2, 3, 2);
             Name = "EPyV";
             Text = "Productos y ventas";
