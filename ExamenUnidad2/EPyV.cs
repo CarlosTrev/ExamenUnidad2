@@ -395,6 +395,8 @@ namespace ExamenUnidad2
 
                 int quantity = int.Parse(txtQuantity.Text);
                 decimal discount = decimal.Parse(txtDiscount.Text);
+                decimal unitPrice = decimal.Parse(txtUnitPrice.Text.Replace("$", "").Trim());
+                decimal discountPercentage = decimal.Parse(txtDiscount.Text);
 
                 //decimal priceWithDiscount = unitPrice * (1 - discount);
 

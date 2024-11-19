@@ -6,7 +6,7 @@ namespace ExamenUnidad2
 {
     public class connect
     {
-        string cadenaConexion = @"Data Source= LAPTOP-8Q7LA0IP\SQLEXPRESS; Integrated Security=true; Initial Catalog=Northwind";
+        string cadenaConexion = @"Data Source= MSI\SQLEXPRESS; Integrated Security=true; Initial Catalog=Northwind";
 
         public SqlConnection Conexion()
         {
