@@ -84,6 +84,15 @@ namespace ExamenUnidad2
                 // Configuración para administradores
                 this.Text = "Vista Admin - PyV";
             }
+            //Categorias
+            connect conexion = new connect();
+            string consulta = "SELECT * FROM Categories";
+            DataSet ds = conexion.Ejecutar(consulta);
+
+            if (ds != null)
+            {
+                dgvCategorias.DataSource = ds.Tables[0];
+            }
         }
 
         private void dgvPyV_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -243,7 +252,7 @@ namespace ExamenUnidad2
                 object shippedDate = chbxSD.Checked ? (object)DBNull.Value : dtpSD.Value;
                 int shipVia = (rbShipVia1.Checked) ? 1 : (rbShipVia2.Checked) ? 2 : 3;
                 decimal freight = decimal.Parse(txtFreight2.Text);
-            
+
                 string query = "INSERT INTO Orders (CustomerID, EmployeeID, OrderDate, RequiredDate, ShippedDate, ShipVia, Freight, ShipName, ShipAddress, ShipCity, ShipRegion, ShipPostalCode, ShipCountry) " +
                                "VALUES (@CustomerID, @EmployeeID, @OrderDate, @RequiredDate, @ShippedDate, @ShipVia, @Freight, @ShipName, @ShipAddress, @ShipCity, @ShipRegion, @ShipPostalCode, @ShipCountry)";
 
@@ -263,7 +272,7 @@ namespace ExamenUnidad2
                     cmd.Parameters.AddWithValue("@ShipPostalCode", CHBXcp.Checked ? (object)DBNull.Value : txtboxShipCP.Text);
                     cmd.Parameters.AddWithValue("@ShipCountry", txtbxShipCountry.Text);
 
-                    
+
                     bool resultado = conexion.EjecutarComando(cmd);
                     if (resultado)
                     {
@@ -382,7 +391,17 @@ namespace ExamenUnidad2
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
+        private void ActualizarDatosOrderdetails()
+        {
+            connect conexion = new connect();
+            string consulta = "SELECT * FROM [Order Details]";
+            DataSet ds = conexion.Ejecutar(consulta);
 
+            if (ds != null)
+            {
+                dgvBuscarOrden.DataSource = ds.Tables[0];
+            }
+        }
         private void btnAgregarProductos_Click(object sender, EventArgs e)
         {
             try
@@ -398,14 +417,14 @@ namespace ExamenUnidad2
                 decimal unitPrice = decimal.Parse(txtUnitPrice.Text.Replace("$", "").Trim());
                 decimal discountPercentage = decimal.Parse(txtDiscount.Text);
 
-                //decimal priceWithDiscount = unitPrice * (1 - discount);
+                decimal priceWithDiscount = unitPrice * (1 - discount);
 
                 if (discount < 0 || discount > 1)
                 {
                     MessageBox.Show("Por favor, ingrese un descuento válido entre 0 y 100.", "Descuento no válido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-                //decimal discountedUnitPrice = originalUnitPrice * (1 - discountPercentage);
+                decimal discountedUnitPrice = originalUnitPrice * (1 - discountPercentage);
 
                 string query = "INSERT INTO [Order Details] (OrderID, ProductID, UnitPrice, Quantity, Discount) " +
                                "VALUES (@OrderID, @ProductID, @UnitPrice, @Quantity, @Discount)";
@@ -414,7 +433,7 @@ namespace ExamenUnidad2
                 {
                     cmd.Parameters.AddWithValue("@OrderID", orderId);
                     cmd.Parameters.AddWithValue("@ProductID", productId);
-                    //cmd.Parameters.AddWithValue("@UnitPrice", discountedUnitPrice);
+                    cmd.Parameters.AddWithValue("@UnitPrice", discountedUnitPrice);
                     cmd.Parameters.AddWithValue("@Quantity", quantity);
                     cmd.Parameters.AddWithValue("@Discount", discount);
 
@@ -423,6 +442,8 @@ namespace ExamenUnidad2
                     if (resultado)
                     {
                         MessageBox.Show("Detalle de la orden agregado exitosamente.");
+                        ActualizarDatosOrderdetails();
+
                     }
                     else
                     {
@@ -493,6 +514,21 @@ namespace ExamenUnidad2
         }
 
         private void dgvPyV_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dgvCategorias_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void tabPage2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabPage4_Click(object sender, EventArgs e)
         {
 
         }
