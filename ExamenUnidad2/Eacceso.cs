@@ -46,5 +46,11 @@ namespace ExamenUnidad2
             Eproductos eproductos = new Eproductos();
             eproductos.Show();
         }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            AcercaDe acercaDe = new AcercaDe();
+            acercaDe.Show();
+        }
     }
 }
