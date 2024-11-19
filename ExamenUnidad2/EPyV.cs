@@ -69,6 +69,21 @@ namespace ExamenUnidad2
         private void EPyV_Load(object sender, EventArgs e)
         {
             ActualizarDatosPyV();
+
+            if (global.EmployeeID != 0)
+            {
+                // Configuración para empleados
+                btnEliminarOrden.Visible = false;
+                btnAgregarOrden.Visible = false;
+                btnAgregarProductos.Visible = false;
+                dgvPyV.ReadOnly = true; // Solo lectura para el DataGridView
+                this.Text = "Vista Empleado - PyV";
+            }
+            else
+            {
+                // Configuración para administradores
+                this.Text = "Vista Admin - PyV";
+            }
         }
 
         private void dgvPyV_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -381,14 +396,14 @@ namespace ExamenUnidad2
                 int quantity = int.Parse(txtQuantity.Text);
                 decimal discount = decimal.Parse(txtDiscount.Text);
 
-                decimal priceWithDiscount = unitPrice * (1 - discount);
+                //decimal priceWithDiscount = unitPrice * (1 - discount);
 
                 if (discount < 0 || discount > 1)
                 {
                     MessageBox.Show("Por favor, ingrese un descuento válido entre 0 y 100.", "Descuento no válido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-                decimal discountedUnitPrice = originalUnitPrice * (1 - discountPercentage);
+                //decimal discountedUnitPrice = originalUnitPrice * (1 - discountPercentage);
 
                 string query = "INSERT INTO [Order Details] (OrderID, ProductID, UnitPrice, Quantity, Discount) " +
                                "VALUES (@OrderID, @ProductID, @UnitPrice, @Quantity, @Discount)";
@@ -397,7 +412,7 @@ namespace ExamenUnidad2
                 {
                     cmd.Parameters.AddWithValue("@OrderID", orderId);
                     cmd.Parameters.AddWithValue("@ProductID", productId);
-                    cmd.Parameters.AddWithValue("@UnitPrice", discountedUnitPrice);
+                    //cmd.Parameters.AddWithValue("@UnitPrice", discountedUnitPrice);
                     cmd.Parameters.AddWithValue("@Quantity", quantity);
                     cmd.Parameters.AddWithValue("@Discount", discount);
 

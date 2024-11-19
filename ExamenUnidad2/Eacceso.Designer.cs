@@ -35,6 +35,7 @@
             button4 = new Button();
             button5 = new Button();
             pictureBox1 = new PictureBox();
+            button3 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -115,6 +116,17 @@
             pictureBox1.TabIndex = 5;
             pictureBox1.TabStop = false;
             // 
+            // button3
+            // 
+            button3.BackColor = SystemColors.ActiveCaptionText;
+            button3.ForeColor = Color.Red;
+            button3.Location = new Point(643, 357);
+            button3.Name = "button3";
+            button3.Size = new Size(88, 27);
+            button3.TabIndex = 6;
+            button3.Text = "Acerca de";
+            button3.UseVisualStyleBackColor = false;
+            // 
             // Eacceso
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -122,6 +134,7 @@
             BackgroundImage = Properties.Resources.Captura_de_pantalla_2024_11_17_225931;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(743, 396);
+            Controls.Add(button3);
             Controls.Add(pictureBox1);
             Controls.Add(button5);
             Controls.Add(button4);
@@ -145,5 +158,6 @@
         private Button button4;
         private Button button5;
         private PictureBox pictureBox1;
+        private Button button3;
     }
 }

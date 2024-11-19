@@ -99,6 +99,7 @@
             dgvPyV.Location = new Point(0, 34);
             dgvPyV.Margin = new Padding(3, 2, 3, 2);
             dgvPyV.Name = "dgvPyV";
+            dgvPyV.ReadOnly = true;
             dgvPyV.RowHeadersWidth = 51;
             dgvPyV.Size = new Size(908, 340);
             dgvPyV.TabIndex = 0;
@@ -112,6 +113,7 @@
             ColumnaBuscar.Image = Properties.Resources.buscar;
             ColumnaBuscar.MinimumWidth = 6;
             ColumnaBuscar.Name = "ColumnaBuscar";
+            ColumnaBuscar.ReadOnly = true;
             ColumnaBuscar.Width = 150;
             // 
             // label1

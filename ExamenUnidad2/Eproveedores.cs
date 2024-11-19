@@ -65,6 +65,22 @@ namespace ExamenUnidad2
         private void Eproveedores_Load(object sender, EventArgs e)
         {
             ActualizarDatosPyV();
+
+            this.Text = global.EmployeeID == 0 ? "Vista Admin - Proveedores" : "Vista Empleado - Proveedores";
+
+            if (global.EmployeeID != 0)
+            {
+                dgCProvee.ReadOnly = true;
+            }
+
+            if (global.EmployeeID != 0)
+            {
+                // Ocultar o deshabilitar botones para empleados
+                butAgregar.Visible = false; // Oculta el botón de agregar
+                btnBorrar.Visible = false;  // Oculta el botón de borrar
+                btnEditar.Visible = false;  // Oculta el botón de editar
+
+            }
         }
 
         private void cboxProvee_SelectedIndexChanged(object sender, EventArgs e)

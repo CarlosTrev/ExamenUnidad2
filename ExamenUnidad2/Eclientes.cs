@@ -33,7 +33,33 @@ namespace ExamenUnidad2
         {
             CargarDatosGrid("SELECT * FROM Customers");
 
+            if (global.EmployeeID != 0)
+            {
+                // Configuración para empleados
+                btnAgregar.Visible = false;
+                btnEliminar.Visible = false;
+                dgvEclientes.ReadOnly = true; // Solo lectura para el DataGridView
+                this.Text = "Vista Empleado - Clientes";
+
+                // Ocultar columna específica para empleados
+                if (dgvEclientes.Columns.Contains("Editar"))
+                {
+                    dgvEclientes.Columns["Editar"].Visible = false;
+                }
+            }
+            else
+            {
+                // Configuración para administradores
+                this.Text = "Vista Admin - Clientes";
+
+                // Asegurarse de que la columna "Editar" esté visible para administradores
+                if (dgvEclientes.Columns.Contains("Editar"))
+                {
+                    dgvEclientes.Columns["Editar"].Visible = true;
+                }
+            }
         }
+        
 
         private void txtbxEclientes_TextChanged(object sender, EventArgs e)
         {

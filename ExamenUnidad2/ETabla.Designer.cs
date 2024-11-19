@@ -31,18 +31,19 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ETabla));
             dgvEmpleados = new DataGridView();
             lbleditar = new Label();
+            Editar = new DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)dgvEmpleados).BeginInit();
             SuspendLayout();
             // 
             // dgvEmpleados
             // 
+            dgvEmpleados.BackgroundColor = SystemColors.ActiveCaptionText;
             dgvEmpleados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-
-            dgvEmpleados.Location = new Point(12, 50);
-
+            dgvEmpleados.Columns.AddRange(new DataGridViewColumn[] { Editar });
+            dgvEmpleados.Location = new Point(12, 27);
             dgvEmpleados.Name = "dgvEmpleados";
             dgvEmpleados.RowHeadersWidth = 51;
-            dgvEmpleados.Size = new Size(522, 241);
+            dgvEmpleados.Size = new Size(667, 241);
             dgvEmpleados.TabIndex = 0;
             dgvEmpleados.CellContentClick += dataGridView1_CellContentClick;
             // 
@@ -51,17 +52,24 @@
             lbleditar.AutoSize = true;
             lbleditar.Location = new Point(12, 9);
             lbleditar.Name = "lbleditar";
-            lbleditar.Size = new Size(0, 20);
+            lbleditar.Size = new Size(0, 15);
             lbleditar.TabIndex = 1;
+            // 
+            // Editar
+            // 
+            Editar.HeaderText = "Editar";
+            Editar.Image = Properties.Resources._353430_checkbox_edit_pen_pencil_107516;
+            Editar.Name = "Editar";
             // 
             // ETabla
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(691, 398);
+            BackColor = Color.Red;
+            ClientSize = new Size(691, 291);
             Controls.Add(lbleditar);
-        
             Controls.Add(dgvEmpleados);
+            ForeColor = SystemColors.ActiveCaptionText;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(3, 2, 3, 2);
             Name = "ETabla";
@@ -76,5 +84,6 @@
 
         private DataGridView dgvEmpleados;
         private Label lbleditar;
+        private DataGridViewImageColumn Editar;
     }
 }

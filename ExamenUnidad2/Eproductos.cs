@@ -70,6 +70,21 @@ namespace ExamenUnidad2
         private void Eproductos_Load(object sender, EventArgs e)
         {
             ActualizarDatosPyV();
+
+            if (global.EmployeeID != 0)
+            {
+                // Configuración para empleados
+                butAgregar.Visible = false;
+                btnBorrar.Visible = false;
+                btnEditar.Visible = false;
+                dgCPr.ReadOnly = true; // Solo lectura para el DataGridView
+                this.Text = "Vista Empleado - Productos";
+            }
+            else
+            {
+                // Configuración para administradores
+                this.Text = "Vista Admin - Productos";
+            }
         }
 
         private void cboxPr_SelectedIndexChanged(object sender, EventArgs e)
