@@ -87,12 +87,14 @@ namespace ExamenUnidad2
                 string nombreCompleto = txtbNC.Text.Trim().ToUpper();
                 string customerId = nombreCompleto.Split(' ')[0].Substring(0, 3) + nombreCompleto.Split(' ')[1].Substring(0, 2);
 
+
                 string query = "INSERT INTO Customers (CustomerID, CompanyName, ContactName, ContactTitle, Address, City, Country, Phone, Region, PostalCode, Fax) " +
                                "VALUES (@CustomerID, @CompanyName, @ContactName, @ContactTitle, @Address, @City, @Country, @Phone, @Region, @PostalCode, @Fax)";
 
                 using (SqlCommand cmd = new SqlCommand(query))
                 {
                     cmd.Parameters.AddWithValue("@CustomerID", customerId);
+
                     cmd.Parameters.AddWithValue("@CompanyName", txtbNC.Text);
                     cmd.Parameters.AddWithValue("@ContactName", txtbNCon.Text);
                     cmd.Parameters.AddWithValue("@ContactTitle", cmbbxTitulo.SelectedItem.ToString());

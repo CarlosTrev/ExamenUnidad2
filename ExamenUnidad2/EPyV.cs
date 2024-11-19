@@ -379,9 +379,9 @@ namespace ExamenUnidad2
                 decimal originalUnitPrice = decimal.Parse(txtUnitPrice.Text.Replace("$", "").Trim());
 
                 int quantity = int.Parse(txtQuantity.Text);
+                decimal discount = decimal.Parse(txtDiscount.Text);
 
-                decimal discount = decimal.Parse(txtDiscount.Text) / 100;
-                decimal discountPercentage = decimal.Parse(txtDiscount.Text) / 100;
+                decimal priceWithDiscount = unitPrice * (1 - discount);
 
                 if (discount < 0 || discount > 1)
                 {
@@ -428,50 +428,55 @@ namespace ExamenUnidad2
 
         private void txtProductID_TextChanged(object sender, EventArgs e)
         {
-                if (!string.IsNullOrEmpty(txtProductID.Text))
+            if (!string.IsNullOrEmpty(txtProductID.Text))
+            {
+                try
                 {
-                    try
-                    {
                     connect conexion = new connect();
-                        int productId = int.Parse(txtProductID.Text); 
+                    int productId = int.Parse(txtProductID.Text);
 
-                        string query = "SELECT UnitPrice FROM Products WHERE ProductID = @ProductID";
+                    string query = "SELECT UnitPrice FROM Products WHERE ProductID = @ProductID";
 
-                        using (SqlCommand cmd = new SqlCommand(query))
+                    using (SqlCommand cmd = new SqlCommand(query))
+                    {
+                        cmd.Parameters.AddWithValue("@ProductID", productId);
+
+                        using (SqlDataReader reader = conexion.EjecutarConsulta(cmd))
                         {
-                            cmd.Parameters.AddWithValue("@ProductID", productId);
-
-                            using (SqlDataReader reader = conexion.EjecutarConsulta(cmd))
+                            // Verificar si se obtuvo el resultado
+                            if (reader != null && reader.Read())
                             {
-                                // Verificar si se obtuvo el resultado
-                                if (reader != null && reader.Read())
-                                {
-                                    decimal unitPrice = reader.GetDecimal(reader.GetOrdinal("UnitPrice"));
-                                    txtUnitPrice.Text = unitPrice.ToString("C"); 
-                                }
-                                else
-                                {
-                                    txtUnitPrice.Clear();
-                                    MessageBox.Show("Producto no encontrado.");
-                                }
+                                decimal unitPrice = reader.GetDecimal(reader.GetOrdinal("UnitPrice"));
+                                txtUnitPrice.Text = unitPrice.ToString("C");
+                            }
+                            else
+                            {
+                                txtUnitPrice.Clear();
+                                MessageBox.Show("Producto no encontrado.");
                             }
                         }
                     }
-                    catch (FormatException)
-                    {
-                        txtUnitPrice.Clear();
-                        MessageBox.Show("Por favor, ingrese un ProductID válido.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error al obtener el precio: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
                 }
-                else
+                catch (FormatException)
                 {
                     txtUnitPrice.Clear();
+                    MessageBox.Show("Por favor, ingrese un ProductID válido.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al obtener el precio: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                txtUnitPrice.Clear();
+            }
+
+
+        }
+
+        private void dgvPyV_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
     }
