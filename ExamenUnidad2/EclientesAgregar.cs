@@ -83,31 +83,18 @@ namespace ExamenUnidad2
         {
             try
             {
-                if (cmbbxTitulo.SelectedItem == null)
-                {
-                    MessageBox.Show("Debe seleccionar un título de contacto para el cliente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
                 connect conexion = new connect();
+                string nombreCompleto = txtbNC.Text.Trim().ToUpper();
+                string customerId = nombreCompleto.Split(' ')[0].Substring(0, 3) + nombreCompleto.Split(' ')[1].Substring(0, 2);
 
-                string query = "INSERT INTO Customers (CustomerID, CompanyName, ContactName, ContactTitle, Address, City, Country, Phone";
 
-
-                if (chbxRegion.Checked || !string.IsNullOrEmpty(txtbxRegion.Text)) query += ", Region";
-                if (chboxCP.Checked || !string.IsNullOrEmpty(txtbxCP.Text)) query += ", PostalCode";
-                if (chbxFax.Checked || !string.IsNullOrEmpty(txtbxFax.Text)) query += ", Fax";
-                query += ") VALUES (@CustomerID, @CompanyName, @ContactName, @ContactTitle, @Address, @City, @Country, @Phone";
-
-                if (chbxRegion.Checked || !string.IsNullOrEmpty(txtbxRegion.Text)) query += ", @Region";
-                if (chboxCP.Checked || !string.IsNullOrEmpty(txtbxCP.Text)) query += ", @PostalCode";
-                if (chbxFax.Checked || !string.IsNullOrEmpty(txtbxFax.Text)) query += ", @Fax";
-                query += ")";
+                string query = "INSERT INTO Customers (CustomerID, CompanyName, ContactName, ContactTitle, Address, City, Country, Phone, Region, PostalCode, Fax) " +
+                               "VALUES (@CustomerID, @CompanyName, @ContactName, @ContactTitle, @Address, @City, @Country, @Phone, @Region, @PostalCode, @Fax)";
 
                 using (SqlCommand cmd = new SqlCommand(query))
                 {
+                    cmd.Parameters.AddWithValue("@CustomerID", customerId);
 
-                    cmd.Parameters.AddWithValue("@CustomerID", mtxtbCID.Text);
                     cmd.Parameters.AddWithValue("@CompanyName", txtbNC.Text);
                     cmd.Parameters.AddWithValue("@ContactName", txtbNCon.Text);
                     cmd.Parameters.AddWithValue("@ContactTitle", cmbbxTitulo.SelectedItem.ToString());
@@ -116,15 +103,15 @@ namespace ExamenUnidad2
                     cmd.Parameters.AddWithValue("@Country", txtbxPais.Text);
                     cmd.Parameters.AddWithValue("@Phone", txtbxTelefono.Text);
 
+                    cmd.Parameters.AddWithValue("@Region", string.IsNullOrEmpty(txtbxRegion.Text) ? (object)DBNull.Value : txtbxRegion.Text);
+                    cmd.Parameters.AddWithValue("@PostalCode", string.IsNullOrEmpty(txtbxCP.Text) ? (object)DBNull.Value : txtbxCP.Text);
+                    cmd.Parameters.AddWithValue("@Fax", string.IsNullOrEmpty(txtbxFax.Text) ? (object)DBNull.Value : txtbxFax.Text);
 
-                    cmd.Parameters.AddWithValue("@Region", chbxRegion.Checked || string.IsNullOrEmpty(txtbxRegion.Text) ? (object)DBNull.Value : txtbxRegion.Text);
-                    cmd.Parameters.AddWithValue("@PostalCode", chboxCP.Checked || string.IsNullOrEmpty(txtbxCP.Text) ? (object)DBNull.Value : txtbxCP.Text);
-                    cmd.Parameters.AddWithValue("@Fax", chbxFax.Checked || string.IsNullOrEmpty(txtbxFax.Text) ? (object)DBNull.Value : txtbxFax.Text);
+                    bool resultado = conexion.EjecutarComando(cmd);
 
-                    if (conexion.EjecutarComando(cmd))
+                    if (resultado)
                     {
                         MessageBox.Show("Cliente agregado exitosamente.");
-                        this.Close();
                     }
                     else
                     {
@@ -134,14 +121,14 @@ namespace ExamenUnidad2
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ocurrió un error: " + ex.Message);
+                MessageBox.Show("Ocurrió un error al procesar la información: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
-
-        private void mtxtbCID_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        private string GenerarCustomerID(string nombre, string otroNombre)
         {
-
+            string customerID = (nombre.Length >= 3 ? nombre.Substring(0, 3) : nombre) +
+                                (otroNombre.Length >= 2 ? otroNombre.Substring(0, 2) : otroNombre);
+            return customerID.ToUpper();
         }
     }
 }

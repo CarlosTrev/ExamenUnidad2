@@ -30,26 +30,37 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ETabla));
             dgvEmpleados = new DataGridView();
+            lbleditar = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvEmpleados).BeginInit();
             SuspendLayout();
             // 
             // dgvEmpleados
             // 
             dgvEmpleados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvEmpleados.Location = new Point(10, 9);
-            dgvEmpleados.Margin = new Padding(3, 2, 3, 2);
+
+            dgvEmpleados.Location = new Point(12, 50);
+
             dgvEmpleados.Name = "dgvEmpleados";
             dgvEmpleados.RowHeadersWidth = 51;
             dgvEmpleados.Size = new Size(522, 241);
             dgvEmpleados.TabIndex = 0;
             dgvEmpleados.CellContentClick += dataGridView1_CellContentClick;
             // 
+            // lbleditar
+            // 
+            lbleditar.AutoSize = true;
+            lbleditar.Location = new Point(12, 9);
+            lbleditar.Name = "lbleditar";
+            lbleditar.Size = new Size(0, 20);
+            lbleditar.TabIndex = 1;
+            // 
             // ETabla
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.Red;
-            ClientSize = new Size(556, 267);
+            ClientSize = new Size(691, 398);
+            Controls.Add(lbleditar);
+        
             Controls.Add(dgvEmpleados);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(3, 2, 3, 2);
@@ -58,10 +69,12 @@
             Load += Empleadotabla_Load;
             ((System.ComponentModel.ISupportInitialize)dgvEmpleados).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private DataGridView dgvEmpleados;
+        private Label lbleditar;
     }
 }

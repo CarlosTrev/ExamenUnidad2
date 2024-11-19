@@ -43,6 +43,11 @@ namespace ExamenUnidad2
         }
         private bool VerificarInicioSesion(string nombreUsuario, string contrasena)
         {
+            if (string.Equals(nombreUsuario, "Admin", StringComparison.OrdinalIgnoreCase) && contrasena == "0000")
+            {
+                global.EmployeeID = 0;
+                return true;  // Inicia sesión como administrador
+            }
             connect conexion = new connect();
             string consulta = "SELECT EmployeeID FROM Employees WHERE FirstName like '" + txtbxUsuario.Text.Trim() + "%'";
 

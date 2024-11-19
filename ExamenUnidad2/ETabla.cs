@@ -38,7 +38,24 @@ namespace ExamenUnidad2
 
         private void Empleadotabla_Load(object sender, EventArgs e)
         {
-            CargarDatosGrid("SELECT * FROM Employees where EmployeeID = " + global.EmployeeID);
+            if (global.EmployeeID == 0)
+            {
+                CargarDatosGrid("SELECT * FROM Employees");
+                HacerEditable(true);
+                lbleditar.Text = "Pulse dos veces en la celda para editar";
+            }
+            else
+            {
+                CargarDatosGrid("SELECT * FROM Employees WHERE EmployeeID = " + global.EmployeeID);
+                HacerEditable(false);
+            }
+        }
+        private void HacerEditable(bool editable)
+        {
+            foreach (DataGridViewColumn columna in dgvEmpleados.Columns)
+            {
+                columna.ReadOnly = !editable;
+            }
         }
     }
 }

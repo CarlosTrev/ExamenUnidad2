@@ -239,7 +239,7 @@
             // 
             // dtpSD
             // 
-            dtpSD.CustomFormat = "";
+            dtpSD.CustomFormat = "yyyy/mm/dd";
             dtpSD.Format = DateTimePickerFormat.Custom;
             dtpSD.Location = new Point(108, 82);
             dtpSD.Margin = new Padding(3, 2, 3, 2);
@@ -249,7 +249,7 @@
             // 
             // dtpRD
             // 
-            dtpRD.CustomFormat = "";
+            dtpRD.CustomFormat = "yyyy/mm/dd";
             dtpRD.Format = DateTimePickerFormat.Custom;
             dtpRD.Location = new Point(108, 57);
             dtpRD.Margin = new Padding(3, 2, 3, 2);
@@ -392,7 +392,7 @@
             // 
             // dtpOrderDate
             // 
-            dtpOrderDate.CustomFormat = "";
+            dtpOrderDate.CustomFormat = "yyyy/mm/dd";
             dtpOrderDate.Format = DateTimePickerFormat.Custom;
             dtpOrderDate.Location = new Point(109, 32);
             dtpOrderDate.Margin = new Padding(3, 2, 3, 2);
