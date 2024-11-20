@@ -113,5 +113,11 @@ namespace ExamenUnidad2
                 columna.ReadOnly = !editable;
             }
         }
+
+        private void btnTerritorios_Click(object sender, EventArgs e)
+        {
+            ETerritorios eTerritorios = new ETerritorios();
+            eTerritorios.Show();
+        }
     }
 }

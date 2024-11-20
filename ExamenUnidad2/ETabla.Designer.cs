@@ -30,8 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ETabla));
             dgvEmpleados = new DataGridView();
-            lbleditar = new Label();
             Editar = new DataGridViewImageColumn();
+            lbleditar = new Label();
+            btnTerritorios = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvEmpleados).BeginInit();
             SuspendLayout();
             // 
@@ -40,38 +41,51 @@
             dgvEmpleados.BackgroundColor = SystemColors.ActiveCaptionText;
             dgvEmpleados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvEmpleados.Columns.AddRange(new DataGridViewColumn[] { Editar });
-            dgvEmpleados.Location = new Point(12, 27);
+            dgvEmpleados.Location = new Point(14, 36);
+            dgvEmpleados.Margin = new Padding(3, 4, 3, 4);
             dgvEmpleados.Name = "dgvEmpleados";
             dgvEmpleados.RowHeadersWidth = 51;
-            dgvEmpleados.Size = new Size(667, 241);
+            dgvEmpleados.Size = new Size(762, 321);
             dgvEmpleados.TabIndex = 0;
             dgvEmpleados.CellContentClick += dataGridView1_CellContentClick;
-            // 
-            // lbleditar
-            // 
-            lbleditar.AutoSize = true;
-            lbleditar.Location = new Point(12, 9);
-            lbleditar.Name = "lbleditar";
-            lbleditar.Size = new Size(0, 15);
-            lbleditar.TabIndex = 1;
             // 
             // Editar
             // 
             Editar.HeaderText = "Editar";
             Editar.Image = Properties.Resources._353430_checkbox_edit_pen_pencil_107516;
+            Editar.MinimumWidth = 6;
             Editar.Name = "Editar";
+            Editar.Width = 125;
+            // 
+            // lbleditar
+            // 
+            lbleditar.AutoSize = true;
+            lbleditar.Location = new Point(14, 12);
+            lbleditar.Name = "lbleditar";
+            lbleditar.Size = new Size(0, 20);
+            lbleditar.TabIndex = 1;
+            // 
+            // btnTerritorios
+            // 
+            btnTerritorios.Location = new Point(330, 364);
+            btnTerritorios.Name = "btnTerritorios";
+            btnTerritorios.Size = new Size(94, 29);
+            btnTerritorios.TabIndex = 2;
+            btnTerritorios.Text = "Territorios";
+            btnTerritorios.UseVisualStyleBackColor = true;
+            btnTerritorios.Click += btnTerritorios_Click;
             // 
             // ETabla
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Red;
-            ClientSize = new Size(691, 291);
+            ClientSize = new Size(790, 422);
+            Controls.Add(btnTerritorios);
             Controls.Add(lbleditar);
             Controls.Add(dgvEmpleados);
             ForeColor = SystemColors.ActiveCaptionText;
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Margin = new Padding(3, 2, 3, 2);
             Name = "ETabla";
             Text = "Empleadotabla";
             Load += Empleadotabla_Load;
@@ -85,5 +99,6 @@
         private DataGridView dgvEmpleados;
         private Label lbleditar;
         private DataGridViewImageColumn Editar;
+        private Button btnTerritorios;
     }
 }
