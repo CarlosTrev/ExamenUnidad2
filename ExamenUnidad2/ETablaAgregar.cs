@@ -43,30 +43,27 @@ namespace ExamenUnidad2
         {
                 try
                 {
-                    // Conexión a la base de datos
+
                     connect conexion = new connect();
 
-                    // Obtener el último EmployeeID y sumarle 1 para el nuevo ID
                     string consultaID = "SELECT MAX(EmployeeID) FROM Employees";
-                    int nuevoEmployeeID = 1; // Valor predeterminado si no hay empleados
+                    int nuevoEmployeeID = 1; 
                     using (SqlDataReader reader = conexion.EjecutarDataReader(consultaID))
                     {
                         if (reader != null && reader.Read())
                         {
-                            nuevoEmployeeID =  reader.GetInt32(0) + 1; // Si no hay valores previos, comienza desde 1
+                            nuevoEmployeeID =  reader.GetInt32(0) + 1;
                         }
                     }
-
-                // Construir la consulta de inserción
                 nuevoEmployeeID = int.Parse(textBox1.Text);
                     string query = "INSERT INTO Employees " +
                                    "(EmployeeID, FirstName, LastName, Title, TitleOfCourtesy, BirthDate, HireDate, Address, City, Region, PostalCode, Country, HomePhone, Extension, Photo, Notes, ReportsTo, PhotoPath) " +
                                    "VALUES (@EmployeeID, @FirstName, @LastName, @Title, @TitleOfCourtesy, @BirthDate, @HireDate, @Address, @City, @Region, @PostalCode, @Country, @HomePhone, @Extension, @Photo, @Notes, @ReportsTo, @PhotoPath)";
 
-                    // Comando SQL
+                    
                     using (SqlCommand cmd = new SqlCommand(query))
                     {
-                        // Asignar parámetros
+                        
                         cmd.Parameters.AddWithValue("@EmployeeID", nuevoEmployeeID);
                         cmd.Parameters.AddWithValue("@FirstName", txtFN.Text.Trim());
                         cmd.Parameters.AddWithValue("@LastName", txtLN.Text.Trim());
@@ -81,12 +78,12 @@ namespace ExamenUnidad2
                         cmd.Parameters.AddWithValue("@Country", string.IsNullOrEmpty(txtCountry.Text) ? DBNull.Value : (object)txtCountry.Text.Trim());
                         cmd.Parameters.AddWithValue("@HomePhone", string.IsNullOrEmpty(txtHomePhone.Text) ? DBNull.Value : (object)txtHomePhone.Text.Trim());
                         cmd.Parameters.AddWithValue("@Extension", string.IsNullOrEmpty(txtExtension.Text) ? DBNull.Value : (object)txtExtension.Text.Trim());
-                        cmd.Parameters.AddWithValue("@Photo", DBNull.Value); // Photo puede ser nulo
+                        cmd.Parameters.AddWithValue("@Photo", DBNull.Value); 
                     cmd.Parameters.AddWithValue("@Notes", string.IsNullOrEmpty(txtNotes.Text) ? DBNull.Value : (object)txtNotes.Text.Trim());
                     cmd.Parameters.AddWithValue("@ReportsTo", string.IsNullOrEmpty(cmbRT.SelectedItem?.ToString()) ? (object)DBNull.Value : (int?)Convert.ToInt32(cmbRT.SelectedItem.ToString())); // Cambiado a int?
-                    cmd.Parameters.AddWithValue("@PhotoPath", DBNull.Value); // PhotoPath también puede ser nulo
+                    cmd.Parameters.AddWithValue("@PhotoPath", DBNull.Value); 
+                        
 
-                        // Ejecutar la consulta
                         bool resultado = conexion.EjecutarComando(cmd);
 
                         if (resultado)
