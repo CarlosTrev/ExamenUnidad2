@@ -33,6 +33,8 @@
             Editar = new DataGridViewImageColumn();
             lbleditar = new Label();
             btnTerritorios = new Button();
+            btnEliminarEmpleado = new Button();
+            btnAgregarEmpleado = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvEmpleados).BeginInit();
             SuspendLayout();
             // 
@@ -75,12 +77,34 @@
             btnTerritorios.UseVisualStyleBackColor = true;
             btnTerritorios.Click += btnTerritorios_Click;
             // 
+            // btnEliminarEmpleado
+            // 
+            btnEliminarEmpleado.Location = new Point(31, 364);
+            btnEliminarEmpleado.Name = "btnEliminarEmpleado";
+            btnEliminarEmpleado.Size = new Size(191, 29);
+            btnEliminarEmpleado.TabIndex = 3;
+            btnEliminarEmpleado.Text = "Eliminar empleado";
+            btnEliminarEmpleado.UseVisualStyleBackColor = true;
+            btnEliminarEmpleado.Click += btnEliminarEmpleado_Click;
+            // 
+            // btnAgregarEmpleado
+            // 
+            btnAgregarEmpleado.Location = new Point(615, 364);
+            btnAgregarEmpleado.Name = "btnAgregarEmpleado";
+            btnAgregarEmpleado.Size = new Size(161, 29);
+            btnAgregarEmpleado.TabIndex = 4;
+            btnAgregarEmpleado.Text = "Agregar empleado";
+            btnAgregarEmpleado.UseVisualStyleBackColor = true;
+            btnAgregarEmpleado.Click += btnAgregarEmpleado_Click;
+            // 
             // ETabla
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Red;
             ClientSize = new Size(790, 422);
+            Controls.Add(btnAgregarEmpleado);
+            Controls.Add(btnEliminarEmpleado);
             Controls.Add(btnTerritorios);
             Controls.Add(lbleditar);
             Controls.Add(dgvEmpleados);
@@ -100,5 +124,7 @@
         private Label lbleditar;
         private DataGridViewImageColumn Editar;
         private Button btnTerritorios;
+        private Button btnEliminarEmpleado;
+        private Button btnAgregarEmpleado;
     }
 }

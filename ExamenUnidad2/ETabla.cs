@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -104,6 +105,11 @@ namespace ExamenUnidad2
                 {
                     dgvEmpleados.Columns["Editar"].Visible = false;
                 }
+                btnAgregarEmpleado.Enabled = false;
+                btnAgregarEmpleado.Visible = false;
+                btnEliminarEmpleado.Enabled = false;
+                btnEliminarEmpleado.Visible = false;
+
             }
         }
         private void HacerEditable(bool editable)
@@ -118,6 +124,75 @@ namespace ExamenUnidad2
         {
             ETerritorios eTerritorios = new ETerritorios();
             eTerritorios.Show();
+        }
+
+        private void btnEliminarEmpleado_Click(object sender, EventArgs e)
+        {
+            if (dgvEmpleados.SelectedCells.Count > 0)
+            {
+                int selectedRowIndex = dgvEmpleados.SelectedCells[0].RowIndex;
+                DataGridViewRow selectedRow = dgvEmpleados.Rows[selectedRowIndex];
+                int employeeId = Convert.ToInt32(selectedRow.Cells["EmployeeID"].Value);
+
+                DialogResult resultado = MessageBox.Show(
+                    "Este empleado y todos sus territorios asociados serán eliminados, y sus órdenes tendrán 'NULL' en el campo de EmployeeID. ¿Estás seguro de que deseas continuar?",
+                    "Confirmar Eliminación",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning);
+
+                if (resultado == DialogResult.Yes)
+                {
+                    try
+                    {
+                        connect conexion = new connect();
+
+                        string consultaActualizarOrders = "UPDATE Orders SET EmployeeID = NULL WHERE EmployeeID = @EmployeeID";
+                        using (SqlCommand cmdActualizarOrders = new SqlCommand(consultaActualizarOrders))
+                        {
+                            cmdActualizarOrders.Parameters.AddWithValue("@EmployeeID", employeeId);
+                            conexion.EjecutarComando(cmdActualizarOrders);
+                        }
+
+                        string consultaEliminarTerritorios = "DELETE FROM EmployeeTerritories WHERE EmployeeID = @EmployeeID";
+                        using (SqlCommand cmdTerritorios = new SqlCommand(consultaEliminarTerritorios))
+                        {
+                            cmdTerritorios.Parameters.AddWithValue("@EmployeeID", employeeId);
+                            conexion.EjecutarComando(cmdTerritorios);
+                        }
+
+                        string consultaEliminarEmpleado = "DELETE FROM Employees WHERE EmployeeID = @EmployeeID";
+                        using (SqlCommand cmdEmpleado = new SqlCommand(consultaEliminarEmpleado))
+                        {
+                            cmdEmpleado.Parameters.AddWithValue("@EmployeeID", employeeId);
+                            bool exito = conexion.EjecutarComando(cmdEmpleado);
+
+                            if (exito)
+                            {
+                                MessageBox.Show("Empleado, sus territorios y referencias en órdenes fueron eliminados exitosamente.");
+                                CargarDatosGrid("SELECT * FROM Employees");
+                            }
+                            else
+                            {
+                                MessageBox.Show("Error al eliminar el empleado.");
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Ocurrió un error al eliminar el empleado y sus territorios: " + ex.Message);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor selecciona una fila para eliminar al empleado, sus territorios y referencias en órdenes.");
+            }
+        }
+
+        private void btnAgregarEmpleado_Click(object sender, EventArgs e)
+        {
+            ETablaAgregar eTablaAgregar = new ETablaAgregar();
+            eTablaAgregar.Show();
         }
     }
 }
