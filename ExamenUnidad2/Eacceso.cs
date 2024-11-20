@@ -52,5 +52,17 @@ namespace ExamenUnidad2
             AcercaDe acercaDe = new AcercaDe();
             acercaDe.Show();
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            ETerritorios territorios = new ETerritorios();
+            territorios.Show();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            Eshippers eshippers = new Eshippers();
+            eshippers.Show();
+        }
     }
 }

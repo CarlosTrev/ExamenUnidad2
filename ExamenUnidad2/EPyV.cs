@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ExamenUnidad2
 {
@@ -76,6 +77,9 @@ namespace ExamenUnidad2
                 btnEliminarOrden.Visible = false;
                 btnAgregarOrden.Visible = false;
                 btnAgregarProductos.Visible = false;
+                btnAgregarCate.Visible = false;
+                btnCateBorrar.Visible = false;
+                btnCateEditar.Visible = false;
                 dgvPyV.ReadOnly = true; // Solo lectura para el DataGridView
                 this.Text = "Vista Empleado - PyV";
             }
@@ -531,6 +535,143 @@ namespace ExamenUnidad2
         private void tabPage4_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnAgregarCate_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Validación de los campos, opcional pero recomendado
+                if (string.IsNullOrWhiteSpace(txtCateNam.Text) || string.IsNullOrWhiteSpace(txtCateDes.Text))
+                {
+                    MessageBox.Show("Por favor, complete todos los campos obligatorios.");
+                    return;
+                }
+
+                connect conexion = new connect();
+
+                // Construcción de la consulta SQL de inserción
+                string query = @"
+    INSERT INTO Categories (CategoryName, Description) 
+    VALUES (@CategoryName, @Description)";
+
+                using (SqlCommand cmd = new SqlCommand(query))
+                {
+                    // Asignación de parámetros
+                    cmd.Parameters.AddWithValue("@CategoryName", txtCateNam.Text);
+                    cmd.Parameters.AddWithValue("@Description", txtCateDes.Text);
+
+                    // Ejecución del comando
+                    if (conexion.EjecutarComando(cmd))
+                    {
+                        MessageBox.Show("Categoría agregada exitosamente.");
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al agregar la categoría.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error: " + ex.Message);
+            }
+        }
+
+        private void btnCateBorrar_Click(object sender, EventArgs e)
+        {
+            if (dgvCategorias.CurrentRow == null)
+            {
+                MessageBox.Show("Selecciona una categoría para eliminar.");
+                return;
+            }
+
+            // Obtener el ID de la categoría seleccionada
+            string categoryId = dgvCategorias.CurrentRow.Cells["CategoryID"].Value.ToString();
+
+            // Confirmación del usuario
+            DialogResult confirmResult = MessageBox.Show(
+                "Eliminar esta categoría también puede afectar otros registros relacionados. ¿Está seguro de que desea continuar?",
+                "Confirmación de eliminación",
+                MessageBoxButtons.OKCancel,
+                MessageBoxIcon.Warning);
+
+            if (confirmResult == DialogResult.Cancel)
+            {
+                return;
+            }
+
+            connect conexion = new connect();
+
+            using (SqlConnection connection = conexion.Conexion())
+            {
+                if (connection == null) return;
+
+                SqlTransaction transaction = connection.BeginTransaction();
+
+                try
+                {
+                    // Eliminar los productos relacionados con la categoría, si aplica
+                    using (SqlCommand deleteProductsCmd = new SqlCommand(
+                        "DELETE FROM Products WHERE CategoryID = @CategoryID",
+                        connection, transaction))
+                    {
+                        deleteProductsCmd.Parameters.AddWithValue("@CategoryID", categoryId);
+                        deleteProductsCmd.ExecuteNonQuery();
+                    }
+
+                    // Eliminar la categoría
+                    using (SqlCommand deleteCategoryCmd = new SqlCommand(
+                        "DELETE FROM Categories WHERE CategoryID = @CategoryID",
+                        connection, transaction))
+                    {
+                        deleteCategoryCmd.Parameters.AddWithValue("@CategoryID", categoryId);
+                        deleteCategoryCmd.ExecuteNonQuery();
+                    }
+
+                    // Confirmar transacción
+                    transaction.Commit();
+                    MessageBox.Show("Categoría y registros asociados eliminados exitosamente.");
+                    this.Close();
+                }
+                catch (Exception ex)
+                {
+                    // Revertir la transacción en caso de error
+                    transaction.Rollback();
+                    MessageBox.Show($"Error al eliminar la categoría: {ex.Message}");
+                }
+            }
+        }
+
+        private void btnCateEditar_Click(object sender, EventArgs e)
+        {
+            if (dgvCategorias.SelectedRows.Count > 0) // Verifica si hay una fila seleccionada
+            {
+                // Crear un DataTable para almacenar la fila seleccionada
+                DataTable selectedData = new DataTable();
+                selectedData.Columns.Add("CategoryID", typeof(int));
+                selectedData.Columns.Add("CategoryName", typeof(string));
+                selectedData.Columns.Add("Description", typeof(string));
+
+                // Obtener los datos de la fila seleccionada
+                DataGridViewRow selectedRow = dgvCategorias.SelectedRows[0];
+                DataRow row = selectedData.NewRow();
+                row["CategoryID"] = Convert.ToInt32(selectedRow.Cells["CategoryID"].Value);
+                row["CategoryName"] = selectedRow.Cells["CategoryName"].Value.ToString();
+                row["Description"] = selectedRow.Cells["Description"].Value?.ToString() ?? string.Empty;
+
+                selectedData.Rows.Add(row);
+
+                // Abre la ventana de edición y pasa los datos
+                EcategoriasEditar editarForm = new EcategoriasEditar(selectedData);
+                editarForm.ShowDialog();
+
+            }
+            else
+            {
+                MessageBox.Show("Por favor, selecciona una categoría para editar.");
+            }
         }
     }
 }
