@@ -36,6 +36,8 @@
             button5 = new Button();
             pictureBox1 = new PictureBox();
             button3 = new Button();
+            button6 = new Button();
+            button7 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -45,7 +47,7 @@
             button1.FlatStyle = FlatStyle.Popup;
             button1.ForeColor = Color.Transparent;
             button1.Image = Properties.Resources.Captura_de_pantalla_2024_11_17_235548;
-            button1.Location = new Point(219, 48);
+            button1.Location = new Point(219, 25);
             button1.Margin = new Padding(3, 2, 3, 2);
             button1.Name = "button1";
             button1.Size = new Size(294, 44);
@@ -58,7 +60,7 @@
             button2.BackColor = Color.Transparent;
             button2.FlatStyle = FlatStyle.Popup;
             button2.Image = Properties.Resources.Captura_de_pantalla_2024_11_17_235719;
-            button2.Location = new Point(254, 96);
+            button2.Location = new Point(254, 73);
             button2.Margin = new Padding(3, 2, 3, 2);
             button2.Name = "button2";
             button2.Size = new Size(224, 63);
@@ -71,7 +73,7 @@
             btnPyV.BackColor = Color.Transparent;
             btnPyV.FlatStyle = FlatStyle.Popup;
             btnPyV.Image = Properties.Resources.Captura_de_pantalla_2024_11_18_001007;
-            btnPyV.Location = new Point(216, 299);
+            btnPyV.Location = new Point(216, 276);
             btnPyV.Margin = new Padding(3, 2, 3, 2);
             btnPyV.Name = "btnPyV";
             btnPyV.Size = new Size(297, 63);
@@ -84,7 +86,7 @@
             button4.BackColor = Color.Transparent;
             button4.FlatStyle = FlatStyle.Popup;
             button4.Image = Properties.Resources.Captura_de_pantalla_2024_11_18_000655;
-            button4.Location = new Point(254, 163);
+            button4.Location = new Point(254, 140);
             button4.Margin = new Padding(3, 2, 3, 2);
             button4.Name = "button4";
             button4.Size = new Size(224, 64);
@@ -97,7 +99,7 @@
             button5.BackColor = Color.Transparent;
             button5.FlatStyle = FlatStyle.Popup;
             button5.Image = Properties.Resources.Captura_de_pantalla_2024_11_18_000836;
-            button5.Location = new Point(254, 231);
+            button5.Location = new Point(254, 208);
             button5.Margin = new Padding(3, 2, 3, 2);
             button5.Name = "button5";
             button5.Size = new Size(224, 64);
@@ -120,7 +122,7 @@
             // 
             button3.BackColor = SystemColors.ActiveCaptionText;
             button3.ForeColor = Color.Red;
-            button3.Location = new Point(643, 357);
+            button3.Location = new Point(643, 441);
             button3.Name = "button3";
             button3.Size = new Size(88, 27);
             button3.TabIndex = 6;
@@ -128,13 +130,41 @@
             button3.UseVisualStyleBackColor = false;
             button3.Click += button3_Click_1;
             // 
+            // button6
+            // 
+            button6.BackColor = Color.Transparent;
+            button6.FlatStyle = FlatStyle.Popup;
+            button6.Location = new Point(-5, 339);
+            button6.Margin = new Padding(3, 2, 3, 2);
+            button6.Name = "button6";
+            button6.Size = new Size(297, 63);
+            button6.TabIndex = 7;
+            button6.Text = "Territorios";
+            button6.UseVisualStyleBackColor = false;
+            button6.Click += button6_Click;
+            // 
+            // button7
+            // 
+            button7.BackColor = Color.Transparent;
+            button7.FlatStyle = FlatStyle.Popup;
+            button7.Location = new Point(12, 406);
+            button7.Margin = new Padding(3, 2, 3, 2);
+            button7.Name = "button7";
+            button7.Size = new Size(297, 63);
+            button7.TabIndex = 8;
+            button7.Text = "Shippers";
+            button7.UseVisualStyleBackColor = false;
+            button7.Click += button7_Click;
+            // 
             // Eacceso
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.Captura_de_pantalla_2024_11_17_225931;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(743, 396);
+            ClientSize = new Size(743, 479);
+            Controls.Add(button7);
+            Controls.Add(button6);
             Controls.Add(button3);
             Controls.Add(pictureBox1);
             Controls.Add(button5);
@@ -160,5 +190,7 @@
         private Button button5;
         private PictureBox pictureBox1;
         private Button button3;
+        private Button button6;
+        private Button button7;
     }
 }
