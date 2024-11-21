@@ -48,13 +48,16 @@ namespace ExamenUnidad2
                 connect conexion = new connect();
 
                 // Consulta con solo campos obligatorios
-                string query = "INSERT INTO Employees ([LastName], [FirstName]) VALUES (@LastName, @FirstName)";
+                string query = "INSERT INTO Employees ([LastName], [FirstName], [Title]) " +
+                    "VALUES (@LastName, @FirstName, @Title)";
 
                 using (SqlCommand cmd = new SqlCommand(query))
                 {
                     // Proveer valores a los campos obligatorios
-                    cmd.Parameters.AddWithValue("@LastName", "Perez"); // Obligatorio
+                    cmd.Parameters.AddWithValue("@LastName", "Charlie"); // Obligatorio
                     cmd.Parameters.AddWithValue("@FirstName", "Juan"); // Obligatorio
+
+                    cmd.Parameters.AddWithValue("@Title", "Smash Bros");
 
                     // Ejecutar comando
                     bool resultado = conexion.EjecutarComando(cmd);
