@@ -50,5 +50,10 @@ namespace ExamenUnidad2
             MessageBox.Show("Categorías actualizadas exitosamente.");
             this.Close(); // Cerrar la ventana después de guardar
         }
+
+        private void EcategoriasEditar_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

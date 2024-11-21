@@ -107,5 +107,30 @@ namespace ExamenUnidad2
                 MessageBox.Show("Por favor selecciona una celda para eliminar el Shipper.");
             }
         }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0) // Verifica si hay una fila seleccionada
+            {
+                // Crear un DataTable para almacenar la fila seleccionada
+                DataTable selectedData = new DataTable();
+                selectedData.Columns.Add("ShipperID", typeof(int));
+                selectedData.Columns.Add("CompanyName", typeof(string));
+                selectedData.Columns.Add("Phone", typeof(string));
+
+                // Obtener los datos de la fila seleccionada
+                DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
+                DataRow row = selectedData.NewRow();
+                row["ShipperID"] = Convert.ToInt32(selectedRow.Cells["ShipperID"].Value);
+                row["CompanyName"] = selectedRow.Cells["CompanyName"].Value.ToString();
+                row["Phone"] = selectedRow.Cells["Phone"].Value?.ToString() ?? string.Empty;
+
+                selectedData.Rows.Add(row);
+
+                // Abre la ventana de edición y pasa los datos
+                EeditarShip editarForm = new EeditarShip(selectedData);
+                editarForm.ShowDialog();
+            }
+        }
     }
 }

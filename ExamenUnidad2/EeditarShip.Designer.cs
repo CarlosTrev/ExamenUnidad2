@@ -1,6 +1,6 @@
 ﻿namespace ExamenUnidad2
 {
-    partial class EcategoriasEditar
+    partial class EeditarShip
     {
         /// <summary>
         /// Required designer variable.
@@ -29,38 +29,38 @@
         private void InitializeComponent()
         {
             dataGridView1 = new DataGridView();
-            btnCateEditar = new Button();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(37, 12);
+            dataGridView1.Location = new Point(12, 25);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(721, 118);
+            dataGridView1.Size = new Size(776, 150);
             dataGridView1.TabIndex = 0;
             // 
-            // btnCateEditar
+            // button1
             // 
-            btnCateEditar.Location = new Point(347, 158);
-            btnCateEditar.Name = "btnCateEditar";
-            btnCateEditar.Size = new Size(114, 22);
-            btnCateEditar.TabIndex = 1;
-            btnCateEditar.Text = "Aplicar cambios";
-            btnCateEditar.UseVisualStyleBackColor = true;
-            btnCateEditar.Click += btnCateEditar_Click;
+            button1.Location = new Point(336, 196);
+            button1.Name = "button1";
+            button1.Size = new Size(125, 22);
+            button1.TabIndex = 1;
+            button1.Text = "Aplicar cambios";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
-            // EcategoriasEditar
+            // EeditarShip
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 208);
-            Controls.Add(btnCateEditar);
+            ClientSize = new Size(800, 244);
+            Controls.Add(button1);
             Controls.Add(dataGridView1);
-            Name = "EcategoriasEditar";
-            Text = "EcategoriasEditar";
-            Load += EcategoriasEditar_Load;
+            Name = "EeditarShip";
+            Text = "EeditarShip";
+            Load += EeditarShip_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
@@ -68,6 +68,6 @@
         #endregion
 
         private DataGridView dataGridView1;
-        private Button btnCateEditar;
+        private Button button1;
     }
 }

@@ -35,6 +35,7 @@
             textBox2 = new TextBox();
             button1 = new Button();
             button2 = new Button();
+            btnEditar = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -100,11 +101,22 @@
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
+            // btnEditar
+            // 
+            btnEditar.Location = new Point(452, 344);
+            btnEditar.Name = "btnEditar";
+            btnEditar.Size = new Size(131, 23);
+            btnEditar.TabIndex = 7;
+            btnEditar.Text = "Editar shipper";
+            btnEditar.UseVisualStyleBackColor = true;
+            btnEditar.Click += btnEditar_Click;
+            // 
             // Eshippers
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 379);
+            Controls.Add(btnEditar);
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(textBox2);
@@ -129,5 +141,6 @@
         private TextBox textBox2;
         private Button button1;
         private Button button2;
+        private Button btnEditar;
     }
 }

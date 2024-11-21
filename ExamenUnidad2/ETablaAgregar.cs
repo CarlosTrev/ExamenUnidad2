@@ -43,64 +43,40 @@ namespace ExamenUnidad2
 
         private void button1_Click(object sender, EventArgs e)
         {
-                try
+            try
+            {
+                connect conexion = new connect();
+
+                // Consulta con solo campos obligatorios
+                string query = "INSERT INTO Employees ([LastName], [FirstName]) VALUES (@LastName, @FirstName)";
+
+                using (SqlCommand cmd = new SqlCommand(query))
                 {
+                    // Proveer valores a los campos obligatorios
+                    cmd.Parameters.AddWithValue("@LastName", "Perez"); // Obligatorio
+                    cmd.Parameters.AddWithValue("@FirstName", "Juan"); // Obligatorio
 
-                    connect conexion = new connect();
+                    // Ejecutar comando
+                    bool resultado = conexion.EjecutarComando(cmd);
 
-                    string query = "INSERT INTO Employees ([LastName], [FirstName], [Title], [TitleOfCourtesy],[BirthDate], " +
-                    "[HireDate], [Address], [City], [Region],[PostalCode], [Country], [HomePhone]," +
-                    "[Extension],[Photo], [Notes], [ReportsTo], [PhotoPath]) +" +
-                    /////////////////////
-                    "VALUES (@LastName, @FirstName, @Title, @TitleOfCourtesy, @BirthDate," +
-                    "@HireDate, @Address, @City, @Region, @PostalCode, @Country, @HomePhone," +
-                    "@Extension, @Photo, @Notes, @ReportsTo, @PhotoPath)";
-
-                    
-                    using (SqlCommand cmd = new SqlCommand(query))
+                    if (resultado)
                     {
-                    cmd.Parameters.AddWithValue("@LastName", "One");
-                    cmd.Parameters.AddWithValue("@FirstName", "Charlie");
-                    cmd.Parameters.AddWithValue("@Title", DBNull.Value);
-                    cmd.Parameters.AddWithValue("@TitleOfCourtesy", (DBNull.Value));
-                        cmd.Parameters.AddWithValue("@BirthDate", DBNull.Value);
-                        cmd.Parameters.AddWithValue("@HireDate", DBNull.Value);
-                        cmd.Parameters.AddWithValue("@Address", DBNull.Value);
-                        cmd.Parameters.AddWithValue("@City", DBNull.Value);
-                        cmd.Parameters.AddWithValue("@Region", DBNull.Value);
-                        cmd.Parameters.AddWithValue("@PostalCode", DBNull.Value);
-                        cmd.Parameters.AddWithValue("@Country", DBNull.Value);
-                        cmd.Parameters.AddWithValue("@HomePhone", DBNull.Value);
-                        cmd.Parameters.AddWithValue("@Extension", DBNull.Value);
-                        cmd.Parameters.AddWithValue("@Photo", DBNull.Value); 
-                    cmd.Parameters.AddWithValue("@Notes", DBNull.Value);
-                    cmd.Parameters.AddWithValue("@ReportsTo", DBNull.Value);
-                    cmd.Parameters.AddWithValue("@PhotoPath", DBNull.Value); 
-                        
-
-                        bool resultado = conexion.EjecutarComando   (cmd);
-
-                        if (resultado)
-                        {
-                            MessageBox.Show("Empleado agregado exitosamente.");
-                        }
-                        else
-                        {
-                            MessageBox.Show("Error al agregar el empleado.");
-                        }
+                        MessageBox.Show("Empleado agregado exitosamente.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al agregar el empleado.");
                     }
                 }
-                catch (SqlException sqlEx)
-                {
-                    MessageBox.Show("Error en la base de datos: " + sqlEx.Message);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error general: " + ex.Message);
-                }
-            
-
+            }
+            catch (SqlException sqlEx)
+            {
+                MessageBox.Show("Error en la base de datos: " + sqlEx.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error general: " + ex.Message);
+            }
         }
-
     }
 }
