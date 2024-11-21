@@ -69,6 +69,7 @@
             label3 = new Label();
             label2 = new Label();
             tabPage3 = new TabPage();
+            lblproducto = new Label();
             txtDiscount = new TextBox();
             txtQuantity = new TextBox();
             txtUnitPrice = new TextBox();
@@ -107,12 +108,11 @@
             // 
             dgvPyV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvPyV.Columns.AddRange(new DataGridViewColumn[] { ColumnaBuscar });
-            dgvPyV.Location = new Point(0, 34);
-            dgvPyV.Margin = new Padding(3, 2, 3, 2);
+            dgvPyV.Location = new Point(0, 45);
             dgvPyV.Name = "dgvPyV";
             dgvPyV.ReadOnly = true;
             dgvPyV.RowHeadersWidth = 51;
-            dgvPyV.Size = new Size(908, 340);
+            dgvPyV.Size = new Size(1038, 453);
             dgvPyV.TabIndex = 0;
             dgvPyV.CellContentClick += dgvPyV_CellContentClick;
             dgvPyV.CellContentDoubleClick += dgvPyV_CellContentDoubleClick;
@@ -131,40 +131,37 @@
             // 
             label1.AutoSize = true;
             label1.ForeColor = SystemColors.ButtonHighlight;
-            label1.Location = new Point(0, 7);
+            label1.Location = new Point(0, 9);
             label1.Name = "label1";
-            label1.Size = new Size(69, 15);
+            label1.Size = new Size(86, 20);
             label1.TabIndex = 1;
             label1.Text = "Buscar por: ";
             // 
             // cmbbxPyV
             // 
             cmbbxPyV.FormattingEnabled = true;
-            cmbbxPyV.Items.AddRange(new object[] { "Order ID", "Customer ID", "Employee ID", "Order Date", "Required Date", "Shipped Date", "Ship Via", "Freight", "Ship Name", "Ship Address", "Ship City", "Ship Region", "Ship Postal Code", "Ship Country" });
-            cmbbxPyV.Location = new Point(80, 4);
-            cmbbxPyV.Margin = new Padding(3, 2, 3, 2);
+            cmbbxPyV.Items.AddRange(new object[] { "Order ID", "Customer ID", "EmployeeName", "Order Date", "Required Date", "Shipped Date", "Ship Via", "Freight", "Ship Name", "Ship Address", "Ship City", "Ship Region", "Ship Postal Code", "Ship Country" });
+            cmbbxPyV.Location = new Point(91, 5);
             cmbbxPyV.Name = "cmbbxPyV";
-            cmbbxPyV.Size = new Size(153, 23);
+            cmbbxPyV.Size = new Size(174, 28);
             cmbbxPyV.TabIndex = 2;
             cmbbxPyV.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
             // txtbxPyV
             // 
             txtbxPyV.Enabled = false;
-            txtbxPyV.Location = new Point(256, 4);
-            txtbxPyV.Margin = new Padding(3, 2, 3, 2);
+            txtbxPyV.Location = new Point(293, 5);
             txtbxPyV.Name = "txtbxPyV";
-            txtbxPyV.Size = new Size(217, 23);
+            txtbxPyV.Size = new Size(247, 27);
             txtbxPyV.TabIndex = 3;
             txtbxPyV.TextChanged += txtbxPyV_TextChanged;
             // 
             // btnEliminarOrden
             // 
             btnEliminarOrden.BackColor = Color.Red;
-            btnEliminarOrden.Location = new Point(5, 378);
-            btnEliminarOrden.Margin = new Padding(3, 2, 3, 2);
+            btnEliminarOrden.Location = new Point(6, 504);
             btnEliminarOrden.Name = "btnEliminarOrden";
-            btnEliminarOrden.Size = new Size(177, 25);
+            btnEliminarOrden.Size = new Size(202, 33);
             btnEliminarOrden.TabIndex = 4;
             btnEliminarOrden.Text = "Eliminar orden";
             btnEliminarOrden.UseVisualStyleBackColor = false;
@@ -176,11 +173,10 @@
             tbcntrl.Controls.Add(tabPage2);
             tbcntrl.Controls.Add(tabPage3);
             tbcntrl.Controls.Add(tabPage4);
-            tbcntrl.Location = new Point(8, 2);
-            tbcntrl.Margin = new Padding(3, 2, 3, 2);
+            tbcntrl.Location = new Point(9, 3);
             tbcntrl.Name = "tbcntrl";
             tbcntrl.SelectedIndex = 0;
-            tbcntrl.Size = new Size(928, 446);
+            tbcntrl.Size = new Size(1061, 595);
             tbcntrl.TabIndex = 5;
             tbcntrl.SelectedIndexChanged += tbcntrl_SelectedIndexChanged;
             tbcntrl.TabIndexChanged += tbcntrl_TabIndexChanged;
@@ -193,11 +189,10 @@
             tabPage1.Controls.Add(dgvPyV);
             tabPage1.Controls.Add(txtbxPyV);
             tabPage1.Controls.Add(cmbbxPyV);
-            tabPage1.Location = new Point(4, 24);
-            tabPage1.Margin = new Padding(3, 2, 3, 2);
+            tabPage1.Location = new Point(4, 29);
             tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(3, 2, 3, 2);
-            tabPage1.Size = new Size(920, 418);
+            tabPage1.Padding = new Padding(3);
+            tabPage1.Size = new Size(1053, 562);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Consultar orden";
             // 
@@ -235,50 +230,45 @@
             tabPage2.Controls.Add(label3);
             tabPage2.Controls.Add(label2);
             tabPage2.ForeColor = Color.White;
-            tabPage2.Location = new Point(4, 24);
-            tabPage2.Margin = new Padding(3, 2, 3, 2);
+            tabPage2.Location = new Point(4, 29);
             tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3, 2, 3, 2);
-            tabPage2.Size = new Size(920, 418);
+            tabPage2.Padding = new Padding(3);
+            tabPage2.Size = new Size(1053, 562);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Agregar orden";
             tabPage2.Click += tabPage2_Click;
             // 
             // txtFreight2
             // 
-            txtFreight2.Location = new Point(108, 136);
-            txtFreight2.Margin = new Padding(3, 2, 3, 2);
+            txtFreight2.Location = new Point(123, 181);
             txtFreight2.Name = "txtFreight2";
-            txtFreight2.Size = new Size(110, 23);
+            txtFreight2.Size = new Size(125, 27);
             txtFreight2.TabIndex = 33;
             // 
             // dtpSD
             // 
             dtpSD.CustomFormat = "yyyy/MM/dd";
             dtpSD.Format = DateTimePickerFormat.Custom;
-            dtpSD.Location = new Point(108, 82);
-            dtpSD.Margin = new Padding(3, 2, 3, 2);
+            dtpSD.Location = new Point(123, 109);
             dtpSD.Name = "dtpSD";
-            dtpSD.Size = new Size(258, 23);
+            dtpSD.Size = new Size(294, 27);
             dtpSD.TabIndex = 32;
             // 
             // dtpRD
             // 
             dtpRD.CustomFormat = "yyyy/MM/dd";
             dtpRD.Format = DateTimePickerFormat.Custom;
-            dtpRD.Location = new Point(108, 57);
-            dtpRD.Margin = new Padding(3, 2, 3, 2);
+            dtpRD.Location = new Point(123, 76);
             dtpRD.Name = "dtpRD";
-            dtpRD.Size = new Size(258, 23);
+            dtpRD.Size = new Size(294, 27);
             dtpRD.TabIndex = 31;
             // 
             // CHBXcp
             // 
             CHBXcp.AutoSize = true;
-            CHBXcp.Location = new Point(231, 265);
-            CHBXcp.Margin = new Padding(3, 2, 3, 2);
+            CHBXcp.Location = new Point(264, 353);
             CHBXcp.Name = "CHBXcp";
-            CHBXcp.Size = new Size(55, 19);
+            CHBXcp.Size = new Size(66, 24);
             CHBXcp.TabIndex = 30;
             CHBXcp.Text = "NULL";
             CHBXcp.UseVisualStyleBackColor = true;
@@ -287,10 +277,9 @@
             // chbxSR
             // 
             chbxSR.AutoSize = true;
-            chbxSR.Location = new Point(231, 235);
-            chbxSR.Margin = new Padding(3, 2, 3, 2);
+            chbxSR.Location = new Point(264, 313);
             chbxSR.Name = "chbxSR";
-            chbxSR.Size = new Size(55, 19);
+            chbxSR.Size = new Size(66, 24);
             chbxSR.TabIndex = 29;
             chbxSR.Text = "NULL";
             chbxSR.UseVisualStyleBackColor = true;
@@ -299,10 +288,9 @@
             // chbxSD
             // 
             chbxSD.AutoSize = true;
-            chbxSD.Location = new Point(372, 83);
-            chbxSD.Margin = new Padding(3, 2, 3, 2);
+            chbxSD.Location = new Point(425, 111);
             chbxSD.Name = "chbxSD";
-            chbxSD.Size = new Size(55, 19);
+            chbxSD.Size = new Size(66, 24);
             chbxSD.TabIndex = 28;
             chbxSD.Text = "NULL";
             chbxSD.UseVisualStyleBackColor = true;
@@ -311,10 +299,9 @@
             // btnAgregarOrden
             // 
             btnAgregarOrden.ForeColor = Color.Black;
-            btnAgregarOrden.Location = new Point(66, 331);
-            btnAgregarOrden.Margin = new Padding(3, 2, 3, 2);
+            btnAgregarOrden.Location = new Point(75, 441);
             btnAgregarOrden.Name = "btnAgregarOrden";
-            btnAgregarOrden.Size = new Size(185, 22);
+            btnAgregarOrden.Size = new Size(211, 29);
             btnAgregarOrden.TabIndex = 27;
             btnAgregarOrden.Text = "Agregar orden";
             btnAgregarOrden.UseVisualStyleBackColor = true;
@@ -322,60 +309,53 @@
             // 
             // txtboxShipCP
             // 
-            txtboxShipCP.Location = new Point(109, 262);
-            txtboxShipCP.Margin = new Padding(3, 2, 3, 2);
+            txtboxShipCP.Location = new Point(125, 349);
             txtboxShipCP.Mask = "00000";
             txtboxShipCP.Name = "txtboxShipCP";
-            txtboxShipCP.Size = new Size(110, 23);
+            txtboxShipCP.Size = new Size(125, 27);
             txtboxShipCP.TabIndex = 26;
             // 
             // txtbxShipCountry
             // 
-            txtbxShipCountry.Location = new Point(109, 287);
-            txtbxShipCountry.Margin = new Padding(3, 2, 3, 2);
+            txtbxShipCountry.Location = new Point(125, 383);
             txtbxShipCountry.Name = "txtbxShipCountry";
-            txtbxShipCountry.Size = new Size(110, 23);
+            txtbxShipCountry.Size = new Size(125, 27);
             txtbxShipCountry.TabIndex = 25;
             // 
             // txtbxShipRegion
             // 
-            txtbxShipRegion.Location = new Point(109, 232);
-            txtbxShipRegion.Margin = new Padding(3, 2, 3, 2);
+            txtbxShipRegion.Location = new Point(125, 309);
             txtbxShipRegion.Name = "txtbxShipRegion";
-            txtbxShipRegion.Size = new Size(110, 23);
+            txtbxShipRegion.Size = new Size(125, 27);
             txtbxShipRegion.TabIndex = 23;
             // 
             // txtbxShipCity
             // 
-            txtbxShipCity.Location = new Point(109, 208);
-            txtbxShipCity.Margin = new Padding(3, 2, 3, 2);
+            txtbxShipCity.Location = new Point(125, 277);
             txtbxShipCity.Name = "txtbxShipCity";
-            txtbxShipCity.Size = new Size(110, 23);
+            txtbxShipCity.Size = new Size(125, 27);
             txtbxShipCity.TabIndex = 22;
             // 
             // txtbxShipAddress
             // 
-            txtbxShipAddress.Location = new Point(109, 184);
-            txtbxShipAddress.Margin = new Padding(3, 2, 3, 2);
+            txtbxShipAddress.Location = new Point(125, 245);
             txtbxShipAddress.Name = "txtbxShipAddress";
-            txtbxShipAddress.Size = new Size(110, 23);
+            txtbxShipAddress.Size = new Size(125, 27);
             txtbxShipAddress.TabIndex = 21;
             // 
             // txtbxShipName
             // 
-            txtbxShipName.Location = new Point(109, 160);
-            txtbxShipName.Margin = new Padding(3, 2, 3, 2);
+            txtbxShipName.Location = new Point(125, 213);
             txtbxShipName.Name = "txtbxShipName";
-            txtbxShipName.Size = new Size(110, 23);
+            txtbxShipName.Size = new Size(125, 27);
             txtbxShipName.TabIndex = 20;
             // 
             // rbShipVia3
             // 
             rbShipVia3.AutoSize = true;
-            rbShipVia3.Location = new Point(325, 113);
-            rbShipVia3.Margin = new Padding(3, 2, 3, 2);
+            rbShipVia3.Location = new Point(371, 151);
             rbShipVia3.Name = "rbShipVia3";
-            rbShipVia3.Size = new Size(31, 19);
+            rbShipVia3.Size = new Size(38, 24);
             rbShipVia3.TabIndex = 18;
             rbShipVia3.TabStop = true;
             rbShipVia3.Text = "3";
@@ -384,10 +364,9 @@
             // rbShipVia2
             // 
             rbShipVia2.AutoSize = true;
-            rbShipVia2.Location = new Point(217, 113);
-            rbShipVia2.Margin = new Padding(3, 2, 3, 2);
+            rbShipVia2.Location = new Point(248, 151);
             rbShipVia2.Name = "rbShipVia2";
-            rbShipVia2.Size = new Size(31, 19);
+            rbShipVia2.Size = new Size(38, 24);
             rbShipVia2.TabIndex = 17;
             rbShipVia2.TabStop = true;
             rbShipVia2.Text = "2";
@@ -396,10 +375,9 @@
             // rbShipVia1
             // 
             rbShipVia1.AutoSize = true;
-            rbShipVia1.Location = new Point(109, 113);
-            rbShipVia1.Margin = new Padding(3, 2, 3, 2);
+            rbShipVia1.Location = new Point(125, 151);
             rbShipVia1.Name = "rbShipVia1";
-            rbShipVia1.Size = new Size(31, 19);
+            rbShipVia1.Size = new Size(38, 24);
             rbShipVia1.TabIndex = 16;
             rbShipVia1.TabStop = true;
             rbShipVia1.Text = "1";
@@ -409,131 +387,130 @@
             // 
             dtpOrderDate.CustomFormat = "yyyy/MM/dd";
             dtpOrderDate.Format = DateTimePickerFormat.Custom;
-            dtpOrderDate.Location = new Point(109, 32);
-            dtpOrderDate.Margin = new Padding(3, 2, 3, 2);
+            dtpOrderDate.Location = new Point(125, 43);
             dtpOrderDate.Name = "dtpOrderDate";
-            dtpOrderDate.Size = new Size(258, 23);
+            dtpOrderDate.Size = new Size(294, 27);
             dtpOrderDate.TabIndex = 13;
             // 
             // txtCustomerID
             // 
-            txtCustomerID.Location = new Point(109, 8);
-            txtCustomerID.Margin = new Padding(3, 2, 3, 2);
+            txtCustomerID.Location = new Point(125, 11);
             txtCustomerID.Name = "txtCustomerID";
-            txtCustomerID.Size = new Size(110, 23);
+            txtCustomerID.Size = new Size(125, 27);
             txtCustomerID.TabIndex = 12;
             // 
             // label13
             // 
             label13.AutoSize = true;
-            label13.Location = new Point(5, 287);
+            label13.Location = new Point(6, 383);
             label13.Name = "label13";
-            label13.Size = new Size(74, 15);
+            label13.Size = new Size(91, 20);
             label13.TabIndex = 11;
             label13.Text = "Ship country";
             // 
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(5, 262);
+            label12.Location = new Point(6, 349);
             label12.Name = "label12";
-            label12.Size = new Size(94, 15);
+            label12.Size = new Size(120, 20);
             label12.TabIndex = 10;
             label12.Text = "Ship postal code";
             // 
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(5, 234);
+            label11.Location = new Point(6, 312);
             label11.Name = "label11";
-            label11.Size = new Size(67, 15);
+            label11.Size = new Size(85, 20);
             label11.TabIndex = 9;
             label11.Text = "Ship region";
             // 
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(5, 210);
+            label10.Location = new Point(6, 280);
             label10.Name = "label10";
-            label10.Size = new Size(52, 15);
+            label10.Size = new Size(65, 20);
             label10.TabIndex = 8;
             label10.Text = "Ship city";
             // 
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(5, 187);
+            label9.Location = new Point(6, 249);
             label9.Name = "label9";
-            label9.Size = new Size(73, 15);
+            label9.Size = new Size(93, 20);
             label9.TabIndex = 7;
             label9.Text = "Ship address";
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(5, 160);
+            label8.Location = new Point(6, 213);
             label8.Name = "label8";
-            label8.Size = new Size(63, 15);
+            label8.Size = new Size(79, 20);
             label8.TabIndex = 6;
             label8.Text = "Ship name";
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(5, 134);
+            label7.Location = new Point(6, 179);
             label7.Name = "label7";
-            label7.Size = new Size(44, 15);
+            label7.Size = new Size(55, 20);
             label7.TabIndex = 5;
             label7.Text = "Freight";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(5, 110);
+            label6.Location = new Point(6, 147);
             label6.Name = "label6";
-            label6.Size = new Size(48, 15);
+            label6.Size = new Size(61, 20);
             label6.TabIndex = 4;
             label6.Text = "Ship via";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(5, 81);
+            label5.Location = new Point(6, 108);
             label5.Name = "label5";
-            label5.Size = new Size(76, 15);
+            label5.Size = new Size(98, 20);
             label5.TabIndex = 3;
             label5.Text = "Shipped date";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(5, 59);
+            label4.Location = new Point(6, 79);
             label4.Name = "label4";
-            label4.Size = new Size(86, 15);
+            label4.Size = new Size(111, 20);
             label4.TabIndex = 2;
             label4.Text = "Requiered date";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(5, 34);
+            label3.Location = new Point(6, 45);
             label3.Name = "label3";
-            label3.Size = new Size(63, 15);
+            label3.Size = new Size(81, 20);
             label3.TabIndex = 1;
             label3.Text = "Order date";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(5, 10);
+            label2.Location = new Point(6, 13);
             label2.Name = "label2";
-            label2.Size = new Size(73, 15);
+            label2.Size = new Size(91, 20);
             label2.TabIndex = 0;
             label2.Text = "Customer ID";
             // 
             // tabPage3
             // 
             tabPage3.BackColor = Color.Black;
+            tabPage3.Controls.Add(lblproducto);
             tabPage3.Controls.Add(txtDiscount);
             tabPage3.Controls.Add(txtQuantity);
             tabPage3.Controls.Add(txtUnitPrice);
@@ -550,44 +527,49 @@
             tabPage3.Controls.Add(btnBuscarOrden);
             tabPage3.Controls.Add(label14);
             tabPage3.ForeColor = Color.Black;
-            tabPage3.Location = new Point(4, 24);
-            tabPage3.Margin = new Padding(3, 2, 3, 2);
+            tabPage3.Location = new Point(4, 29);
             tabPage3.Name = "tabPage3";
-            tabPage3.Size = new Size(920, 418);
+            tabPage3.Size = new Size(1053, 562);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Agregar productos";
             // 
+            // lblproducto
+            // 
+            lblproducto.AutoSize = true;
+            lblproducto.ForeColor = Color.White;
+            lblproducto.Location = new Point(273, 412);
+            lblproducto.Name = "lblproducto";
+            lblproducto.Size = new Size(154, 20);
+            lblproducto.TabIndex = 20;
+            lblproducto.Text = "Nombre del producto";
+            // 
             // txtDiscount
             // 
-            txtDiscount.Location = new Point(84, 380);
-            txtDiscount.Margin = new Padding(3, 2, 3, 2);
+            txtDiscount.Location = new Point(96, 507);
             txtDiscount.Name = "txtDiscount";
-            txtDiscount.Size = new Size(110, 23);
+            txtDiscount.Size = new Size(125, 27);
             txtDiscount.TabIndex = 19;
             // 
             // txtQuantity
             // 
-            txtQuantity.Location = new Point(84, 355);
-            txtQuantity.Margin = new Padding(3, 2, 3, 2);
+            txtQuantity.Location = new Point(96, 473);
             txtQuantity.Name = "txtQuantity";
-            txtQuantity.Size = new Size(110, 23);
+            txtQuantity.Size = new Size(125, 27);
             txtQuantity.TabIndex = 18;
             // 
             // txtUnitPrice
             // 
             txtUnitPrice.Enabled = false;
-            txtUnitPrice.Location = new Point(84, 333);
-            txtUnitPrice.Margin = new Padding(3, 2, 3, 2);
+            txtUnitPrice.Location = new Point(96, 444);
             txtUnitPrice.Name = "txtUnitPrice";
-            txtUnitPrice.Size = new Size(110, 23);
+            txtUnitPrice.Size = new Size(125, 27);
             txtUnitPrice.TabIndex = 17;
             // 
             // txtProductID
             // 
-            txtProductID.Location = new Point(84, 308);
-            txtProductID.Margin = new Padding(3, 2, 3, 2);
+            txtProductID.Location = new Point(96, 411);
             txtProductID.Name = "txtProductID";
-            txtProductID.Size = new Size(110, 23);
+            txtProductID.Size = new Size(125, 27);
             txtProductID.TabIndex = 16;
             txtProductID.TextChanged += txtProductID_TextChanged;
             // 
@@ -595,10 +577,9 @@
             // 
             btnAgregarProductos.Enabled = false;
             btnAgregarProductos.ForeColor = Color.Black;
-            btnAgregarProductos.Location = new Point(236, 342);
-            btnAgregarProductos.Margin = new Padding(3, 2, 3, 2);
+            btnAgregarProductos.Location = new Point(270, 456);
             btnAgregarProductos.Name = "btnAgregarProductos";
-            btnAgregarProductos.Size = new Size(170, 22);
+            btnAgregarProductos.Size = new Size(194, 29);
             btnAgregarProductos.TabIndex = 15;
             btnAgregarProductos.Text = "Agregar productos";
             btnAgregarProductos.UseVisualStyleBackColor = true;
@@ -608,9 +589,9 @@
             // 
             label19.AutoSize = true;
             label19.ForeColor = Color.White;
-            label19.Location = new Point(10, 380);
+            label19.Location = new Point(11, 507);
             label19.Name = "label19";
-            label19.Size = new Size(54, 15);
+            label19.Size = new Size(67, 20);
             label19.TabIndex = 10;
             label19.Text = "Discount";
             // 
@@ -618,9 +599,9 @@
             // 
             label18.AutoSize = true;
             label18.ForeColor = Color.White;
-            label18.Location = new Point(10, 356);
+            label18.Location = new Point(11, 475);
             label18.Name = "label18";
-            label18.Size = new Size(53, 15);
+            label18.Size = new Size(65, 20);
             label18.TabIndex = 9;
             label18.Text = "Quantity";
             // 
@@ -628,9 +609,9 @@
             // 
             label17.AutoSize = true;
             label17.ForeColor = Color.White;
-            label17.Location = new Point(10, 332);
+            label17.Location = new Point(11, 443);
             label17.Name = "label17";
-            label17.Size = new Size(58, 15);
+            label17.Size = new Size(72, 20);
             label17.TabIndex = 8;
             label17.Text = "Unit Price";
             // 
@@ -638,56 +619,53 @@
             // 
             label16.AutoSize = true;
             label16.ForeColor = Color.White;
-            label16.Location = new Point(10, 308);
+            label16.Location = new Point(11, 411);
             label16.Name = "label16";
-            label16.Size = new Size(63, 15);
+            label16.Size = new Size(79, 20);
             label16.TabIndex = 7;
             label16.Text = "Product ID";
             // 
             // label15
             // 
             label15.AutoSize = true;
-            label15.Location = new Point(10, 267);
+            label15.Location = new Point(11, 356);
             label15.Name = "label15";
-            label15.Size = new Size(106, 15);
+            label15.Size = new Size(134, 20);
             label15.TabIndex = 6;
             label15.Text = "Agregar productos";
             // 
             // txtbxOrderID
             // 
-            txtbxOrderID.Location = new Point(76, 14);
-            txtbxOrderID.Margin = new Padding(3, 2, 3, 2);
+            txtbxOrderID.Location = new Point(87, 19);
             txtbxOrderID.Mask = "999999";
             txtbxOrderID.Name = "txtbxOrderID";
-            txtbxOrderID.Size = new Size(110, 23);
+            txtbxOrderID.Size = new Size(125, 27);
             txtbxOrderID.TabIndex = 5;
             txtbxOrderID.ValidatingType = typeof(int);
             // 
             // dgvBuscarOrden
             // 
             dgvBuscarOrden.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvBuscarOrden.Location = new Point(10, 51);
-            dgvBuscarOrden.Margin = new Padding(3, 2, 3, 2);
+            dgvBuscarOrden.Location = new Point(11, 68);
             dgvBuscarOrden.Name = "dgvBuscarOrden";
             dgvBuscarOrden.RowHeadersWidth = 51;
-            dgvBuscarOrden.Size = new Size(518, 200);
+            dgvBuscarOrden.Size = new Size(592, 267);
             dgvBuscarOrden.TabIndex = 4;
             // 
             // lblResulConsulta
             // 
             lblResulConsulta.AutoSize = true;
-            lblResulConsulta.Location = new Point(322, 19);
+            lblResulConsulta.Location = new Point(368, 25);
             lblResulConsulta.Name = "lblResulConsulta";
-            lblResulConsulta.Size = new Size(0, 15);
+            lblResulConsulta.Size = new Size(0, 20);
             lblResulConsulta.TabIndex = 3;
             // 
             // btnBuscarOrden
             // 
             btnBuscarOrden.ForeColor = Color.Black;
-            btnBuscarOrden.Location = new Point(191, 14);
-            btnBuscarOrden.Margin = new Padding(3, 2, 3, 2);
+            btnBuscarOrden.Location = new Point(218, 19);
             btnBuscarOrden.Name = "btnBuscarOrden";
-            btnBuscarOrden.Size = new Size(118, 22);
+            btnBuscarOrden.Size = new Size(135, 29);
             btnBuscarOrden.TabIndex = 2;
             btnBuscarOrden.Text = "Buscar";
             btnBuscarOrden.UseVisualStyleBackColor = true;
@@ -697,9 +675,9 @@
             // 
             label14.AutoSize = true;
             label14.ForeColor = Color.White;
-            label14.Location = new Point(10, 14);
+            label14.Location = new Point(11, 19);
             label14.Name = "label14";
-            label14.Size = new Size(54, 15);
+            label14.Size = new Size(69, 20);
             label14.TabIndex = 0;
             label14.Text = "Order ID:";
             // 
@@ -713,11 +691,10 @@
             tabPage4.Controls.Add(txtCateNam);
             tabPage4.Controls.Add(label20);
             tabPage4.Controls.Add(dgvCategorias);
-            tabPage4.Location = new Point(4, 24);
-            tabPage4.Margin = new Padding(3, 2, 3, 2);
+            tabPage4.Location = new Point(4, 29);
             tabPage4.Name = "tabPage4";
-            tabPage4.Padding = new Padding(3, 2, 3, 2);
-            tabPage4.Size = new Size(920, 418);
+            tabPage4.Padding = new Padding(3);
+            tabPage4.Size = new Size(1053, 562);
             tabPage4.TabIndex = 3;
             tabPage4.Text = "Categorias";
             tabPage4.UseVisualStyleBackColor = true;
@@ -725,9 +702,10 @@
             // 
             // btnCateEditar
             // 
-            btnCateEditar.Location = new Point(499, 350);
+            btnCateEditar.Location = new Point(570, 467);
+            btnCateEditar.Margin = new Padding(3, 4, 3, 4);
             btnCateEditar.Name = "btnCateEditar";
-            btnCateEditar.Size = new Size(150, 22);
+            btnCateEditar.Size = new Size(171, 29);
             btnCateEditar.TabIndex = 7;
             btnCateEditar.Text = "Editar Categoria";
             btnCateEditar.UseVisualStyleBackColor = true;
@@ -735,9 +713,10 @@
             // 
             // btnCateBorrar
             // 
-            btnCateBorrar.Location = new Point(499, 307);
+            btnCateBorrar.Location = new Point(570, 409);
+            btnCateBorrar.Margin = new Padding(3, 4, 3, 4);
             btnCateBorrar.Name = "btnCateBorrar";
-            btnCateBorrar.Size = new Size(150, 22);
+            btnCateBorrar.Size = new Size(171, 29);
             btnCateBorrar.TabIndex = 6;
             btnCateBorrar.Text = "Borrar Categoria";
             btnCateBorrar.UseVisualStyleBackColor = true;
@@ -745,9 +724,10 @@
             // 
             // btnAgregarCate
             // 
-            btnAgregarCate.Location = new Point(499, 267);
+            btnAgregarCate.Location = new Point(570, 356);
+            btnAgregarCate.Margin = new Padding(3, 4, 3, 4);
             btnAgregarCate.Name = "btnAgregarCate";
-            btnAgregarCate.Size = new Size(150, 23);
+            btnAgregarCate.Size = new Size(171, 31);
             btnAgregarCate.TabIndex = 5;
             btnAgregarCate.Text = "Agregar Categoria";
             btnAgregarCate.UseVisualStyleBackColor = true;
@@ -755,58 +735,58 @@
             // 
             // txtCateDes
             // 
-            txtCateDes.Location = new Point(173, 322);
+            txtCateDes.Location = new Point(198, 429);
+            txtCateDes.Margin = new Padding(3, 4, 3, 4);
             txtCateDes.Name = "txtCateDes";
-            txtCateDes.Size = new Size(100, 23);
+            txtCateDes.Size = new Size(114, 27);
             txtCateDes.TabIndex = 4;
             // 
             // label21
             // 
             label21.AutoSize = true;
-            label21.Location = new Point(27, 330);
+            label21.Location = new Point(31, 440);
             label21.Name = "label21";
-            label21.Size = new Size(70, 15);
+            label21.Size = new Size(88, 20);
             label21.TabIndex = 3;
             label21.Text = "Description:";
             // 
             // txtCateNam
             // 
-            txtCateNam.Location = new Point(173, 267);
+            txtCateNam.Location = new Point(198, 356);
+            txtCateNam.Margin = new Padding(3, 4, 3, 4);
             txtCateNam.Name = "txtCateNam";
-            txtCateNam.Size = new Size(100, 23);
+            txtCateNam.Size = new Size(114, 27);
             txtCateNam.TabIndex = 2;
             // 
             // label20
             // 
             label20.AutoSize = true;
-            label20.Location = new Point(27, 270);
+            label20.Location = new Point(31, 360);
             label20.Name = "label20";
-            label20.Size = new Size(90, 15);
+            label20.Size = new Size(112, 20);
             label20.TabIndex = 1;
             label20.Text = "CategoryName:";
             // 
             // dgvCategorias
             // 
             dgvCategorias.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvCategorias.Location = new Point(5, 15);
-            dgvCategorias.Margin = new Padding(3, 2, 3, 2);
+            dgvCategorias.Location = new Point(6, 20);
             dgvCategorias.Name = "dgvCategorias";
             dgvCategorias.ReadOnly = true;
             dgvCategorias.RowHeadersWidth = 51;
             dgvCategorias.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvCategorias.Size = new Size(544, 212);
+            dgvCategorias.Size = new Size(622, 283);
             dgvCategorias.TabIndex = 0;
             dgvCategorias.CellContentClick += dgvCategorias_CellContentClick;
             // 
             // EPyV
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Red;
-            ClientSize = new Size(947, 437);
+            ClientSize = new Size(1082, 583);
             Controls.Add(tbcntrl);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Margin = new Padding(3, 2, 3, 2);
             Name = "EPyV";
             Text = "Productos y ventas";
             Load += EPyV_Load;
@@ -891,5 +871,6 @@
         private TextBox txtCateDes;
         private Label label21;
         private TextBox txtCateNam;
+        private Label lblproducto;
     }
 }

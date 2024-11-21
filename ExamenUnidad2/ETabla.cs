@@ -90,7 +90,12 @@ namespace ExamenUnidad2
         {
             if (global.EmployeeID == 0)
             {
-                CargarDatosGrid("SELECT * FROM Employees");
+                CargarDatosGrid("SELECT e.EmployeeID, e.LastName, e.FirstName, e.Title, e.TitleOfCourtesy, e.BirthDate, e.HireDate, e.Address, e.City, e.Region, " +
+                    "e.PostalCode, e.Country, e.HomePhone, e.Extension, e.Photo, e.Notes, " +
+                    "s.FirstName + ' ' + s.LastName AS ReportsTo, " +
+                    "e.PhotoPath " +
+                    "FROM Employees e " +
+                    "LEFT JOIN Employees s ON e.ReportsTo = s.EmployeeID;");
                 this.Text = "Vista Admin - Empleados";
                 if (dgvEmpleados.Columns.Contains("Editar"))
                 {
@@ -99,7 +104,11 @@ namespace ExamenUnidad2
             }
             else
             {
-                CargarDatosGrid("SELECT * FROM Employees WHERE EmployeeID = " + global.EmployeeID);
+                CargarDatosGrid("SELECT e.EmployeeID, e.LastName, e.FirstName, e.Title, e.TitleOfCourtesy, e.BirthDate, e.HireDate, e.Address, e.City, e.Region, " +
+                    "e.PostalCode, e.Country, e.HomePhone, e.Extension, e.Photo, e.Notes, " +
+                    "s.FirstName + ' ' + s.LastName AS ReportsTo, e.PhotoPath FROM Employees e " +
+                    "LEFT JOIN Employees s ON e.ReportsTo = s.EmployeeID WHERE e.EmployeeID = " + global.EmployeeID);
+
                 this.Text = "Vista Empleado - Tus datos";
                 if (dgvEmpleados.Columns.Contains("Editar"))
                 {

@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics.Metrics;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -46,45 +48,37 @@ namespace ExamenUnidad2
 
                     connect conexion = new connect();
 
-                    string consultaID = "SELECT MAX(EmployeeID) FROM Employees";
-                    int nuevoEmployeeID = 1; 
-                    using (SqlDataReader reader = conexion.EjecutarDataReader(consultaID))
-                    {
-                        if (reader != null && reader.Read())
-                        {
-                            nuevoEmployeeID =  reader.GetInt32(0) + 1;
-                        }
-                    }
-                nuevoEmployeeID = int.Parse(textBox1.Text);
-                    string query = "INSERT INTO Employees " +
-                                   "(EmployeeID, FirstName, LastName, Title, TitleOfCourtesy, BirthDate, HireDate, Address, City, Region, PostalCode, Country, HomePhone, Extension, Photo, Notes, ReportsTo, PhotoPath) " +
-                                   "VALUES (@EmployeeID, @FirstName, @LastName, @Title, @TitleOfCourtesy, @BirthDate, @HireDate, @Address, @City, @Region, @PostalCode, @Country, @HomePhone, @Extension, @Photo, @Notes, @ReportsTo, @PhotoPath)";
+                    string query = "INSERT INTO Employees ([LastName], [FirstName], [Title], [TitleOfCourtesy],[BirthDate], " +
+                    "[HireDate], [Address], [City], [Region],[PostalCode], [Country], [HomePhone]," +
+                    "[Extension],[Photo], [Notes], [ReportsTo], [PhotoPath]) +" +
+                    /////////////////////
+                    "VALUES (@LastName, @FirstName, @Title, @TitleOfCourtesy, @BirthDate," +
+                    "@HireDate, @Address, @City, @Region, @PostalCode, @Country, @HomePhone," +
+                    "@Extension, @Photo, @Notes, @ReportsTo, @PhotoPath)";
 
                     
                     using (SqlCommand cmd = new SqlCommand(query))
                     {
-                        
-                        cmd.Parameters.AddWithValue("@EmployeeID", nuevoEmployeeID);
-                        cmd.Parameters.AddWithValue("@FirstName", txtFN.Text.Trim());
-                        cmd.Parameters.AddWithValue("@LastName", txtLN.Text.Trim());
-                    cmd.Parameters.AddWithValue("@Title", cmbTitle.SelectedItem != null ? cmbTitle.SelectedItem.ToString() : (object)DBNull.Value);
-                    cmd.Parameters.AddWithValue("@TitleOfCourtesy", (rbtn1.Checked ? "Dr." : rbtn2.Checked ? "Mr." : rbtn3.Checked ? "Mrs." : DBNull.Value));
-                        cmd.Parameters.AddWithValue("@BirthDate", dtpBD.Value.Date);
-                        cmd.Parameters.AddWithValue("@HireDate", dtpHD.Value.Date);
-                        cmd.Parameters.AddWithValue("@Address", string.IsNullOrEmpty(txtAddress.Text) ? DBNull.Value : (object)txtAddress.Text.Trim());
-                        cmd.Parameters.AddWithValue("@City", string.IsNullOrEmpty(txtCity.Text) ? DBNull.Value : (object)txtCity.Text.Trim());
-                        cmd.Parameters.AddWithValue("@Region", string.IsNullOrEmpty(txtRegion.Text) ? DBNull.Value : (object)txtRegion.Text.Trim());
-                        cmd.Parameters.AddWithValue("@PostalCode", string.IsNullOrEmpty(txtCP.Text) ? DBNull.Value : (object)txtCP.Text.Trim());
-                        cmd.Parameters.AddWithValue("@Country", string.IsNullOrEmpty(txtCountry.Text) ? DBNull.Value : (object)txtCountry.Text.Trim());
-                        cmd.Parameters.AddWithValue("@HomePhone", string.IsNullOrEmpty(txtHomePhone.Text) ? DBNull.Value : (object)txtHomePhone.Text.Trim());
-                        cmd.Parameters.AddWithValue("@Extension", string.IsNullOrEmpty(txtExtension.Text) ? DBNull.Value : (object)txtExtension.Text.Trim());
+                    cmd.Parameters.AddWithValue("@LastName", "One");
+                    cmd.Parameters.AddWithValue("@FirstName", "Charlie");
+                    cmd.Parameters.AddWithValue("@Title", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@TitleOfCourtesy", (DBNull.Value));
+                        cmd.Parameters.AddWithValue("@BirthDate", DBNull.Value);
+                        cmd.Parameters.AddWithValue("@HireDate", DBNull.Value);
+                        cmd.Parameters.AddWithValue("@Address", DBNull.Value);
+                        cmd.Parameters.AddWithValue("@City", DBNull.Value);
+                        cmd.Parameters.AddWithValue("@Region", DBNull.Value);
+                        cmd.Parameters.AddWithValue("@PostalCode", DBNull.Value);
+                        cmd.Parameters.AddWithValue("@Country", DBNull.Value);
+                        cmd.Parameters.AddWithValue("@HomePhone", DBNull.Value);
+                        cmd.Parameters.AddWithValue("@Extension", DBNull.Value);
                         cmd.Parameters.AddWithValue("@Photo", DBNull.Value); 
-                    cmd.Parameters.AddWithValue("@Notes", string.IsNullOrEmpty(txtNotes.Text) ? DBNull.Value : (object)txtNotes.Text.Trim());
-                    cmd.Parameters.AddWithValue("@ReportsTo", string.IsNullOrEmpty(cmbRT.SelectedItem?.ToString()) ? (object)DBNull.Value : (int?)Convert.ToInt32(cmbRT.SelectedItem.ToString())); // Cambiado a int?
+                    cmd.Parameters.AddWithValue("@Notes", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@ReportsTo", DBNull.Value);
                     cmd.Parameters.AddWithValue("@PhotoPath", DBNull.Value); 
                         
 
-                        bool resultado = conexion.EjecutarComando(cmd);
+                        bool resultado = conexion.EjecutarComando   (cmd);
 
                         if (resultado)
                         {

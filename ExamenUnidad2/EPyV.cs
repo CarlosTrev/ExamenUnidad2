@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace ExamenUnidad2
 {
@@ -35,7 +36,12 @@ namespace ExamenUnidad2
                 connect conexion = new connect();
 
 
-                string query = "SELECT * FROM Orders";
+                string query = @"SELECT o.OrderID, c.ContactName AS CustomerName, e.FirstName + ' ' + e.LastName AS EmployeeName, s.CompanyName AS ShipperName, " +
+                "o.OrderDate, o.RequiredDate, o.ShippedDate, o.Freight, o.ShipName, o.ShipAddress, o.ShipCity, o.ShipRegion, o.ShipPostalCode, " +
+                "o.ShipCountry FROM Orders o " +
+                "LEFT JOIN Customers c ON o.CustomerID = c.CustomerID " +
+                "LEFT JOIN Employees e ON o.EmployeeID = e.EmployeeID " +
+                "LEFT JOIN Shippers s ON o.ShipVia = s.ShipperID";
 
 
                 DataSet ds = conexion.Ejecutar(query);
@@ -227,7 +233,11 @@ namespace ExamenUnidad2
 
         private void txtbxPyV_TextChanged(object sender, EventArgs e)
         {
-            CargarDatosGrid("SELECT * FROM Orders WHERE " + cmbbxPyV.Text.Trim().Replace(" ", "") + " LIKE '%" + txtbxPyV.Text.Trim() + "%'");
+            CargarDatosGrid("SELECT o.OrderID, c.ContactName AS CustomerName, e.FirstName + ' ' + e.LastName AS EmployeeName, s.CompanyName AS ShipperName, " +
+                "o.OrderDate, o.RequiredDate, o.ShippedDate, o.Freight, o.ShipName, o.ShipAddress, o.ShipCity, o.ShipRegion, o.ShipPostalCode, " +
+                "o.ShipCountry FROM Orders o LEFT JOIN Customers c ON o.CustomerID = c.CustomerID " +
+                "LEFT JOIN Employees e ON o.EmployeeID = e.EmployeeID " +
+                "LEFT JOIN Shippers s ON o.ShipVia = s.ShipperID WHERE " + cmbbxPyV.Text.Trim().Replace(" ", "") + " LIKE '%" + txtbxPyV.Text.Trim() + "%'");
 
         }
 
@@ -364,7 +374,10 @@ namespace ExamenUnidad2
         }
         private void BuscarOrderDetailsPorID(int orderId)
         {
-            string query = "SELECT * FROM [Order Details] WHERE OrderID = @OrderID";
+            string query = "SELECT od.OrderID, p.ProductName, od.UnitPrice, od.Quantity, od.Discount " +
+                "FROM [Order Details] od " +
+                "INNER JOIN Products p ON od.ProductID = p.ProductID " +
+                "WHERE od.OrderID = @OrderID";
 
             connect conexion = new connect();
 
@@ -477,7 +490,8 @@ namespace ExamenUnidad2
                     connect conexion = new connect();
                     int productId = int.Parse(txtProductID.Text);
 
-                    string query = "SELECT UnitPrice FROM Products WHERE ProductID = @ProductID";
+                    string query = "SELECT ProductName, od.UnitPrice FROM[Order Details] od LEFT JOIN Products p ON od.ProductID = p.ProductID WHERE od.ProductID = @ProductID";
+
 
                     using (SqlCommand cmd = new SqlCommand(query))
                     {
@@ -488,7 +502,9 @@ namespace ExamenUnidad2
                             // Verificar si se obtuvo el resultado
                             if (reader != null && reader.Read())
                             {
+                                string productName = reader.GetString(reader.GetOrdinal("ProductName"));
                                 decimal unitPrice = reader.GetDecimal(reader.GetOrdinal("UnitPrice"));
+                                lblproducto.Text = $"{productName}";
                                 txtUnitPrice.Text = unitPrice.ToString("C");
                             }
                             else

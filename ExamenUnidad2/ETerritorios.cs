@@ -25,7 +25,9 @@ namespace ExamenUnidad2
         private void CargarTerritorioempleados()
         {
             connect conexion = new connect();
-            string consulta = "SELECT * FROM EmployeeTerritories";
+            string consulta = "SELECT Employees.FirstName + ' ' + Employees.LastName AS EmployeeName,Territories.TerritoryDescription FROM EmployeeTerritories " +
+                "JOIN Employees ON EmployeeTerritories.EmployeeID = Employees.EmployeeID " +
+                "JOIN Territories ON EmployeeTerritories.TerritoryID = Territories.TerritoryID";
             DataSet ds = conexion.Ejecutar(consulta);
 
             if (ds != null)
@@ -36,7 +38,12 @@ namespace ExamenUnidad2
         public void CargarTerritorios()
         {
             connect conexion = new connect();
-            string consulta = "SELECT * FROM Territories";
+            string consulta = "SELECT " +
+                "Territories.TerritoryID," +
+                "Territories.TerritoryDescription," +
+                "Region.RegionDescription " +
+                "FROM Territories " +
+                "JOIN Region ON Territories.RegionID = Region.RegionID;";
             DataSet ds = conexion.Ejecutar(consulta);
 
             if (ds != null)

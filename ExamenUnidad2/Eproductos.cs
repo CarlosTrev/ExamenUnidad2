@@ -5,9 +5,11 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.ComponentModel.Design.ObjectSelectorEditor;
 
 namespace ExamenUnidad2
 {
@@ -35,7 +37,13 @@ namespace ExamenUnidad2
                 connect conexion = new connect();
 
 
-                string query = "SELECT * FROM Products";
+                string query = "SELECT p.ProductID, p.ProductName, " +
+                    "s.CompanyName AS SupplierName, " +
+                    "c.CategoryName AS CategoryName, " +
+                    "p.QuantityPerUnit, p.UnitPrice, p.UnitsInStock, p.UnitsOnOrder, p.ReorderLevel, p.Discontinued " +
+                    "FROM Products p " +
+                    "INNER JOIN Suppliers s ON p.SupplierID = s.SupplierID " +
+                    "INNER JOIN Categories c ON p.CategoryID = c.CategoryID";
 
 
                 DataSet ds = conexion.Ejecutar(query);
@@ -94,7 +102,13 @@ namespace ExamenUnidad2
 
         private void txtBoxPr_TextChanged(object sender, EventArgs e)
         {
-            CargarDatosGrid("SELECT * FROM Products WHERE " + cboxPr.Text.Trim().Replace(" ", "") + " LIKE '%" + txtBoxPr.Text.Trim() + "%'");
+            CargarDatosGrid("SELECT p.ProductID, p.ProductName, " +
+                "s.CompanyName AS SupplierName, " +
+                "c.CategoryName AS CategoryName, " +
+                "p.QuantityPerUnit, p.UnitPrice, p.UnitsInStock, p.UnitsOnOrder, p.ReorderLevel, p.Discontinued " +
+                "FROM Products p " +
+                "INNER JOIN Suppliers s ON p.SupplierID = s.SupplierID " +
+                "INNER JOIN Categories c ON p.CategoryID = c.CategoryID WHERE " + cboxPr.Text.Trim().Replace(" ", "") + " LIKE '%" + txtBoxPr.Text.Trim() + "%'");
         }
 
         private void butAgregar_Click(object sender, EventArgs e)
