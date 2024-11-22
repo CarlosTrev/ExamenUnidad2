@@ -42,6 +42,7 @@
             dgvTerritorios = new DataGridView();
             tabPage3 = new TabPage();
             dgvRegion = new DataGridView();
+            button1 = new Button();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvETerritorios).BeginInit();
@@ -56,10 +57,11 @@
             tabControl1.Controls.Add(tabPage1);
             tabControl1.Controls.Add(tabPage2);
             tabControl1.Controls.Add(tabPage3);
-            tabControl1.Location = new Point(12, 12);
+            tabControl1.Location = new Point(10, 9);
+            tabControl1.Margin = new Padding(3, 2, 3, 2);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(903, 519);
+            tabControl1.Size = new Size(790, 389);
             tabControl1.TabIndex = 0;
             tabControl1.SelectedIndexChanged += tabControl1_SelectedIndexChanged;
             // 
@@ -72,10 +74,11 @@
             tabPage1.Controls.Add(btnETE);
             tabPage1.Controls.Add(btnATE);
             tabPage1.Controls.Add(dgvETerritorios);
-            tabPage1.Location = new Point(4, 29);
+            tabPage1.Location = new Point(4, 24);
+            tabPage1.Margin = new Padding(3, 2, 3, 2);
             tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(895, 486);
+            tabPage1.Padding = new Padding(3, 2, 3, 2);
+            tabPage1.Size = new Size(782, 361);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Territorios de empleado";
             tabPage1.UseVisualStyleBackColor = true;
@@ -83,24 +86,26 @@
             // 
             // txtidterritorio
             // 
-            txtidterritorio.Location = new Point(148, 421);
+            txtidterritorio.Location = new Point(130, 316);
+            txtidterritorio.Margin = new Padding(3, 2, 3, 2);
             txtidterritorio.Name = "txtidterritorio";
-            txtidterritorio.Size = new Size(125, 27);
+            txtidterritorio.Size = new Size(110, 23);
             txtidterritorio.TabIndex = 6;
             // 
             // txtidempleado
             // 
-            txtidempleado.Location = new Point(148, 375);
+            txtidempleado.Location = new Point(130, 281);
+            txtidempleado.Margin = new Padding(3, 2, 3, 2);
             txtidempleado.Name = "txtidempleado";
-            txtidempleado.Size = new Size(125, 27);
+            txtidempleado.Size = new Size(110, 23);
             txtidempleado.TabIndex = 5;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(14, 424);
+            label2.Location = new Point(12, 318);
             label2.Name = "label2";
-            label2.Size = new Size(90, 20);
+            label2.Size = new Size(70, 15);
             label2.TabIndex = 4;
             label2.Text = "ID territorio:";
             label2.Click += label2_Click;
@@ -108,17 +113,18 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(6, 378);
+            label1.Location = new Point(5, 284);
             label1.Name = "label1";
-            label1.Size = new Size(103, 20);
+            label1.Size = new Size(80, 15);
             label1.TabIndex = 3;
             label1.Text = "ID empleado: ";
             // 
             // btnETE
             // 
-            btnETE.Location = new Point(537, 392);
+            btnETE.Location = new Point(470, 294);
+            btnETE.Margin = new Padding(3, 2, 3, 2);
             btnETE.Name = "btnETE";
-            btnETE.Size = new Size(94, 29);
+            btnETE.Size = new Size(82, 22);
             btnETE.TabIndex = 2;
             btnETE.Text = "Eliminar";
             btnETE.UseVisualStyleBackColor = true;
@@ -126,9 +132,10 @@
             // 
             // btnATE
             // 
-            btnATE.Location = new Point(85, 454);
+            btnATE.Location = new Point(470, 335);
+            btnATE.Margin = new Padding(3, 2, 3, 2);
             btnATE.Name = "btnATE";
-            btnATE.Size = new Size(274, 29);
+            btnATE.Size = new Size(240, 22);
             btnATE.TabIndex = 1;
             btnATE.Text = "Añadir territorio a empleado";
             btnATE.UseVisualStyleBackColor = true;
@@ -137,29 +144,32 @@
             // dgvETerritorios
             // 
             dgvETerritorios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvETerritorios.Location = new Point(6, 17);
+            dgvETerritorios.Location = new Point(5, 13);
+            dgvETerritorios.Margin = new Padding(3, 2, 3, 2);
             dgvETerritorios.Name = "dgvETerritorios";
             dgvETerritorios.RowHeadersWidth = 51;
-            dgvETerritorios.Size = new Size(536, 352);
+            dgvETerritorios.Size = new Size(469, 264);
             dgvETerritorios.TabIndex = 0;
             // 
             // tabPage2
             // 
             tabPage2.Controls.Add(btnAT);
             tabPage2.Controls.Add(dgvTerritorios);
-            tabPage2.Location = new Point(4, 29);
+            tabPage2.Location = new Point(4, 24);
+            tabPage2.Margin = new Padding(3, 2, 3, 2);
             tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(895, 486);
+            tabPage2.Padding = new Padding(3, 2, 3, 2);
+            tabPage2.Size = new Size(782, 361);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Territorios";
             tabPage2.UseVisualStyleBackColor = true;
             // 
             // btnAT
             // 
-            btnAT.Location = new Point(676, 203);
+            btnAT.Location = new Point(592, 152);
+            btnAT.Margin = new Padding(3, 2, 3, 2);
             btnAT.Name = "btnAT";
-            btnAT.Size = new Size(152, 29);
+            btnAT.Size = new Size(133, 22);
             btnAT.TabIndex = 1;
             btnAT.Text = "Añadir territorio";
             btnAT.UseVisualStyleBackColor = true;
@@ -168,19 +178,22 @@
             // dgvTerritorios
             // 
             dgvTerritorios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvTerritorios.Location = new Point(18, 27);
+            dgvTerritorios.Location = new Point(16, 20);
+            dgvTerritorios.Margin = new Padding(3, 2, 3, 2);
             dgvTerritorios.Name = "dgvTerritorios";
             dgvTerritorios.RowHeadersWidth = 51;
-            dgvTerritorios.Size = new Size(572, 347);
+            dgvTerritorios.Size = new Size(500, 260);
             dgvTerritorios.TabIndex = 0;
             // 
             // tabPage3
             // 
+            tabPage3.Controls.Add(button1);
             tabPage3.Controls.Add(dgvRegion);
-            tabPage3.Location = new Point(4, 29);
+            tabPage3.Location = new Point(4, 24);
+            tabPage3.Margin = new Padding(3, 2, 3, 2);
             tabPage3.Name = "tabPage3";
-            tabPage3.Padding = new Padding(3);
-            tabPage3.Size = new Size(895, 486);
+            tabPage3.Padding = new Padding(3, 2, 3, 2);
+            tabPage3.Size = new Size(782, 361);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Region";
             tabPage3.UseVisualStyleBackColor = true;
@@ -188,18 +201,30 @@
             // dgvRegion
             // 
             dgvRegion.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvRegion.Location = new Point(17, 20);
+            dgvRegion.Location = new Point(15, 15);
+            dgvRegion.Margin = new Padding(3, 2, 3, 2);
             dgvRegion.Name = "dgvRegion";
             dgvRegion.RowHeadersWidth = 51;
-            dgvRegion.Size = new Size(382, 267);
+            dgvRegion.Size = new Size(749, 271);
             dgvRegion.TabIndex = 0;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(309, 323);
+            button1.Name = "button1";
+            button1.Size = new Size(150, 23);
+            button1.TabIndex = 1;
+            button1.Text = "Exportar tabla";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // ETerritorios
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(938, 543);
+            ClientSize = new Size(821, 407);
             Controls.Add(tabControl1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "ETerritorios";
             Text = "ETerritorios";
             Load += ETerritorios_Load;
@@ -230,5 +255,6 @@
         private Label label1;
         private TextBox txtidterritorio;
         private TextBox txtidempleado;
+        private Button button1;
     }
 }

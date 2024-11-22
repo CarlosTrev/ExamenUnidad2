@@ -37,6 +37,7 @@
             btnEliminarOrden = new Button();
             tbcntrl = new TabControl();
             tabPage1 = new TabPage();
+            button1 = new Button();
             tabPage2 = new TabPage();
             txtFreight2 = new TextBox();
             dtpSD = new DateTimePicker();
@@ -96,6 +97,7 @@
             dgvCategorias = new DataGridView();
             tabPage5 = new TabPage();
             plotView1 = new OxyPlot.WindowsForms.PlotView();
+            button2 = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvPyV).BeginInit();
             tbcntrl.SuspendLayout();
             tabPage1.SuspendLayout();
@@ -193,6 +195,7 @@
             // tabPage1
             // 
             tabPage1.BackColor = Color.Black;
+            tabPage1.Controls.Add(button1);
             tabPage1.Controls.Add(label1);
             tabPage1.Controls.Add(btnEliminarOrden);
             tabPage1.Controls.Add(dgvPyV);
@@ -205,6 +208,19 @@
             tabPage1.Size = new Size(920, 418);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Consultar orden";
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.Black;
+            button1.ForeColor = Color.White;
+            button1.Location = new Point(731, 378);
+            button1.Margin = new Padding(3, 2, 3, 2);
+            button1.Name = "button1";
+            button1.Size = new Size(177, 25);
+            button1.TabIndex = 5;
+            button1.Text = "Exportar tabla";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click_1;
             // 
             // tabPage2
             // 
@@ -722,6 +738,7 @@
             // tabPage4
             // 
             tabPage4.BackColor = Color.Black;
+            tabPage4.Controls.Add(button2);
             tabPage4.Controls.Add(btnCateEditar);
             tabPage4.Controls.Add(btnCateBorrar);
             tabPage4.Controls.Add(btnAgregarCate);
@@ -838,6 +855,16 @@
             plotView1.ZoomRectangleCursor = Cursors.SizeNWSE;
             plotView1.ZoomVerticalCursor = Cursors.SizeNS;
             // 
+            // button2
+            // 
+            button2.Location = new Point(687, 306);
+            button2.Name = "button2";
+            button2.Size = new Size(150, 23);
+            button2.TabIndex = 8;
+            button2.Text = "Exportar tabla";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
             // EPyV
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -935,5 +962,7 @@
         private Label lblproducto;
         private TabPage tabPage5;
         private OxyPlot.WindowsForms.PlotView plotView1;
+        private Button button1;
+        private Button button2;
     }
 }

@@ -37,6 +37,7 @@
             btnEliminar = new Button();
             btnAgregar = new Button();
             button1 = new Button();
+            button2 = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvEclientes).BeginInit();
             SuspendLayout();
             // 
@@ -129,7 +130,7 @@
             // 
             button1.BackColor = Color.Black;
             button1.ForeColor = Color.White;
-            button1.Location = new Point(304, 363);
+            button1.Location = new Point(294, 364);
             button1.Margin = new Padding(3, 2, 3, 2);
             button1.Name = "button1";
             button1.Size = new Size(166, 22);
@@ -138,6 +139,19 @@
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click_1;
             // 
+            // button2
+            // 
+            button2.BackColor = Color.Black;
+            button2.ForeColor = Color.White;
+            button2.Location = new Point(556, 24);
+            button2.Margin = new Padding(3, 2, 3, 2);
+            button2.Name = "button2";
+            button2.Size = new Size(166, 22);
+            button2.TabIndex = 7;
+            button2.Text = "Exportar tabla";
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
+            // 
             // Eclientes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -145,6 +159,7 @@
             BackgroundImage = Properties.Resources.MAy198i;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(753, 394);
+            Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(btnAgregar);
             Controls.Add(btnEliminar);
@@ -172,5 +187,6 @@
         private Button btnEliminar;
         private Button btnAgregar;
         private Button button1;
+        private Button button2;
     }
 }

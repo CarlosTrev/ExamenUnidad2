@@ -63,6 +63,7 @@
             label3 = new Label();
             tabPage3 = new TabPage();
             plotView1 = new OxyPlot.WindowsForms.PlotView();
+            button1 = new Button();
             tbControlProvee.SuspendLayout();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgCProvee).BeginInit();
@@ -85,6 +86,7 @@
             // tabPage1
             // 
             tabPage1.BackColor = Color.Black;
+            tabPage1.Controls.Add(button1);
             tabPage1.Controls.Add(btnEditar);
             tabPage1.Controls.Add(btnBorrar);
             tabPage1.Controls.Add(txtBoxProvee);
@@ -114,7 +116,7 @@
             // 
             btnBorrar.BackColor = Color.Red;
             btnBorrar.ForeColor = Color.Black;
-            btnBorrar.Location = new Point(518, 332);
+            btnBorrar.Location = new Point(518, 329);
             btnBorrar.Name = "btnBorrar";
             btnBorrar.Size = new Size(230, 23);
             btnBorrar.TabIndex = 4;
@@ -404,6 +406,18 @@
             plotView1.ZoomRectangleCursor = Cursors.SizeNWSE;
             plotView1.ZoomVerticalCursor = Cursors.SizeNS;
             // 
+            // button1
+            // 
+            button1.BackColor = Color.Black;
+            button1.ForeColor = Color.White;
+            button1.Location = new Point(262, 329);
+            button1.Name = "button1";
+            button1.Size = new Size(191, 23);
+            button1.TabIndex = 6;
+            button1.Text = "Exportar tabla";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
             // Eproveedores
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -470,5 +484,6 @@
         private Label label13;
         private TabPage tabPage3;
         private OxyPlot.WindowsForms.PlotView plotView1;
+        private Button button1;
     }
 }

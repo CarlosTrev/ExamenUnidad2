@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClosedXML.Excel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -207,6 +208,70 @@ namespace ExamenUnidad2
         private void btnAR_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void ExportarTablaAExcel(string query, string nombreHoja, string nombreArchivo, string[] encabezados)
+        {
+            connect conexion = new connect();
+            DataSet ds = conexion.Ejecutar(query);
+
+            if (ds != null && ds.Tables[0].Rows.Count > 0)
+            {
+                using (var saveFileDialog = new SaveFileDialog())
+                {
+                    saveFileDialog.Filter = "Archivos de Excel (*.xlsx)|*.xlsx";
+                    saveFileDialog.Title = "Guardar archivo de Excel";
+                    saveFileDialog.FileName = nombreArchivo;
+
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        try
+                        {
+                            using (var workbook = new XLWorkbook())
+                            {
+                                var worksheet = workbook.Worksheets.Add(nombreHoja);
+
+                                // Agregar encabezados
+                                for (int i = 0; i < encabezados.Length; i++)
+                                {
+                                    worksheet.Cell(1, i + 1).Value = encabezados[i];
+                                }
+
+                                // Agregar datos
+                                int fila = 2;
+                                foreach (DataRow row in ds.Tables[0].Rows)
+                                {
+                                    for (int i = 0; i < encabezados.Length; i++)
+                                    {
+                                        // Si el índice está fuera del rango, coloca vacío
+                                        var valor = i < row.ItemArray.Length ? row[i] : DBNull.Value;
+                                        worksheet.Cell(fila, i + 1).Value = valor == DBNull.Value ? "0" : valor.ToString();
+                                    }
+                                    fila++;
+                                }
+
+                                workbook.SaveAs(saveFileDialog.FileName);
+                                MessageBox.Show("Archivo exportado exitosamente a: " + saveFileDialog.FileName);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Error al guardar el archivo: " + ex.Message);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("No hay datos para exportar.");
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string query = "SELECT RegionID, RegionDescription FROM Region";
+            string[] encabezados = { "RegionID", "RegionDescription" };
+            ExportarTablaAExcel(query, "Regiones", "Regiones.xlsx", encabezados);
         }
     }
 }

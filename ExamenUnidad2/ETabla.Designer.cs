@@ -35,6 +35,7 @@
             btnTerritorios = new Button();
             btnEliminarEmpleado = new Button();
             btnAgregarEmpleado = new Button();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvEmpleados).BeginInit();
             SuspendLayout();
             // 
@@ -43,11 +44,10 @@
             dgvEmpleados.BackgroundColor = SystemColors.ActiveCaptionText;
             dgvEmpleados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvEmpleados.Columns.AddRange(new DataGridViewColumn[] { Editar });
-            dgvEmpleados.Location = new Point(14, 36);
-            dgvEmpleados.Margin = new Padding(3, 4, 3, 4);
+            dgvEmpleados.Location = new Point(12, 27);
             dgvEmpleados.Name = "dgvEmpleados";
             dgvEmpleados.RowHeadersWidth = 51;
-            dgvEmpleados.Size = new Size(762, 321);
+            dgvEmpleados.Size = new Size(667, 241);
             dgvEmpleados.TabIndex = 0;
             dgvEmpleados.CellContentClick += dataGridView1_CellContentClick;
             // 
@@ -62,16 +62,17 @@
             // lbleditar
             // 
             lbleditar.AutoSize = true;
-            lbleditar.Location = new Point(14, 12);
+            lbleditar.Location = new Point(12, 9);
             lbleditar.Name = "lbleditar";
-            lbleditar.Size = new Size(0, 20);
+            lbleditar.Size = new Size(0, 15);
             lbleditar.TabIndex = 1;
             // 
             // btnTerritorios
             // 
-            btnTerritorios.Location = new Point(330, 364);
+            btnTerritorios.Location = new Point(243, 273);
+            btnTerritorios.Margin = new Padding(3, 2, 3, 2);
             btnTerritorios.Name = "btnTerritorios";
-            btnTerritorios.Size = new Size(94, 29);
+            btnTerritorios.Size = new Size(82, 22);
             btnTerritorios.TabIndex = 2;
             btnTerritorios.Text = "Territorios";
             btnTerritorios.UseVisualStyleBackColor = true;
@@ -79,9 +80,10 @@
             // 
             // btnEliminarEmpleado
             // 
-            btnEliminarEmpleado.Location = new Point(31, 364);
+            btnEliminarEmpleado.Location = new Point(27, 273);
+            btnEliminarEmpleado.Margin = new Padding(3, 2, 3, 2);
             btnEliminarEmpleado.Name = "btnEliminarEmpleado";
-            btnEliminarEmpleado.Size = new Size(191, 29);
+            btnEliminarEmpleado.Size = new Size(167, 22);
             btnEliminarEmpleado.TabIndex = 3;
             btnEliminarEmpleado.Text = "Eliminar empleado";
             btnEliminarEmpleado.UseVisualStyleBackColor = true;
@@ -89,20 +91,33 @@
             // 
             // btnAgregarEmpleado
             // 
-            btnAgregarEmpleado.Location = new Point(615, 364);
+            btnAgregarEmpleado.Location = new Point(538, 273);
+            btnAgregarEmpleado.Margin = new Padding(3, 2, 3, 2);
             btnAgregarEmpleado.Name = "btnAgregarEmpleado";
-            btnAgregarEmpleado.Size = new Size(161, 29);
+            btnAgregarEmpleado.Size = new Size(141, 22);
             btnAgregarEmpleado.TabIndex = 4;
             btnAgregarEmpleado.Text = "Agregar empleado";
             btnAgregarEmpleado.UseVisualStyleBackColor = true;
             btnAgregarEmpleado.Click += btnAgregarEmpleado_Click;
             // 
+            // button1
+            // 
+            button1.Location = new Point(390, 273);
+            button1.Margin = new Padding(3, 2, 3, 2);
+            button1.Name = "button1";
+            button1.Size = new Size(116, 22);
+            button1.TabIndex = 5;
+            button1.Text = "Exportar tabla";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // ETabla
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Red;
-            ClientSize = new Size(790, 422);
+            ClientSize = new Size(691, 316);
+            Controls.Add(button1);
             Controls.Add(btnAgregarEmpleado);
             Controls.Add(btnEliminarEmpleado);
             Controls.Add(btnTerritorios);
@@ -110,6 +125,7 @@
             Controls.Add(dgvEmpleados);
             ForeColor = SystemColors.ActiveCaptionText;
             Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(3, 2, 3, 2);
             Name = "ETabla";
             Text = "Empleadotabla";
             Load += Empleadotabla_Load;
@@ -126,5 +142,6 @@
         private Button btnTerritorios;
         private Button btnEliminarEmpleado;
         private Button btnAgregarEmpleado;
+        private Button button1;
     }
 }

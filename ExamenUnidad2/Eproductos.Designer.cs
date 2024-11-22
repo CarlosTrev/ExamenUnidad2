@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Eproductos));
             tbControlP = new TabControl();
             tabPage1 = new TabPage();
+            button1 = new Button();
             btnEditar = new Button();
             btnBorrar = new Button();
             txtBoxPr = new TextBox();
@@ -81,6 +82,7 @@
             // tabPage1
             // 
             tabPage1.BackColor = Color.Black;
+            tabPage1.Controls.Add(button1);
             tabPage1.Controls.Add(btnEditar);
             tabPage1.Controls.Add(btnBorrar);
             tabPage1.Controls.Add(txtBoxPr);
@@ -94,6 +96,18 @@
             tabPage1.Size = new Size(754, 530);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Consultar producto";
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.Black;
+            button1.ForeColor = Color.White;
+            button1.Location = new Point(263, 501);
+            button1.Name = "button1";
+            button1.Size = new Size(191, 23);
+            button1.TabIndex = 6;
+            button1.Text = "Exportar tabla";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // btnEditar
             // 
@@ -425,5 +439,6 @@
         private Button btnEditar;
         private TabPage tabPage3;
         private OxyPlot.WindowsForms.PlotView plotView1;
+        private Button button1;
     }
 }
