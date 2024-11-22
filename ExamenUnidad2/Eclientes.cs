@@ -59,7 +59,7 @@ namespace ExamenUnidad2
                 }
             }
         }
-        
+
 
         private void txtbxEclientes_TextChanged(object sender, EventArgs e)
         {
@@ -239,6 +239,12 @@ namespace ExamenUnidad2
         private void cmbEclientes_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtbxEclientes.Enabled = true;
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            GraficaClientes graficaClientes = new GraficaClientes();
+            graficaClientes.ShowDialog();
         }
     }
 }

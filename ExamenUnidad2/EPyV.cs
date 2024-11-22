@@ -1,4 +1,6 @@
-﻿using System;
+﻿using OxyPlot.Series;
+using OxyPlot;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using OxyPlot.Axes;
 
 namespace ExamenUnidad2
 {
@@ -246,6 +249,63 @@ namespace ExamenUnidad2
             ActualizarDatosPyV();
             cmbbxPyV.SelectedItem = 0;
             txtbxPyV.Clear();
+
+            connect conexion = new connect();
+            string query = @"
+        SELECT YEAR(OrderDate) AS OrderYear, COUNT(OrderID) AS OrderCount
+        FROM Orders
+        GROUP BY YEAR(OrderDate)
+        ORDER BY OrderYear";
+
+            DataSet ds = conexion.Ejecutar(query);
+
+            if (ds != null && ds.Tables[0].Rows.Count > 0)
+            {
+                var plotModel = new PlotModel { Title = "Órdenes por Año" };
+
+                // Crear una serie de barras para el gráfico
+                var series = new BarSeries
+                {
+                    ItemsSource = ds.Tables[0].Rows.Cast<DataRow>()
+                                    .Select(r => new BarItem
+                                    {
+                                        Value = Convert.ToDouble(r["OrderCount"]) // El valor de las órdenes por año
+                                    }).ToList(),
+                    LabelPlacement = LabelPlacement.Outside,
+                    LabelFormatString = "{0}"
+                };
+
+                plotModel.Series.Add(series);
+
+                // Crear el eje X con los años (como categorías)
+                var yearAxis = new CategoryAxis
+                {
+                    Position = AxisPosition.Bottom,
+                    Key = "CountAxis",
+                    ItemsSource = ds.Tables[0].Rows.Cast<DataRow>()
+                        .Select(r => r["OrderCount"].ToString()).ToList() // Los valores de los años
+                };
+
+                plotModel.Axes.Add(yearAxis);
+
+                // Crear el eje Y con categorías de valores (números de órdenes)
+                var countAxis = new CategoryAxis
+                {
+                    Position = AxisPosition.Left,
+                    Key = "YearAxis",
+                    ItemsSource = ds.Tables[0].Rows.Cast<DataRow>()
+                        .Select(r => r["OrderYear"].ToString()).ToList() // Las cantidades de órdenes como categorías
+                };
+
+                plotModel.Axes.Add(countAxis);
+
+                // Establecer el modelo de la gráfica en el control PlotView
+                plotView1.Model = plotModel; // plotView1 es el nombre de tu control PlotView.
+            }
+            else
+            {
+                MessageBox.Show("No se encontraron órdenes en la base de datos.");
+            }
         }
 
         private void tbcntrl_TabIndexChanged(object sender, EventArgs e)

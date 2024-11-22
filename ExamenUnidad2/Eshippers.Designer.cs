@@ -36,6 +36,7 @@
             button1 = new Button();
             button2 = new Button();
             btnEditar = new Button();
+            button3 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -111,11 +112,22 @@
             btnEditar.UseVisualStyleBackColor = true;
             btnEditar.Click += btnEditar_Click;
             // 
+            // button3
+            // 
+            button3.Location = new Point(627, 296);
+            button3.Name = "button3";
+            button3.Size = new Size(131, 23);
+            button3.TabIndex = 8;
+            button3.Text = "Grafica";
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
+            // 
             // Eshippers
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 379);
+            Controls.Add(button3);
             Controls.Add(btnEditar);
             Controls.Add(button2);
             Controls.Add(button1);
@@ -142,5 +154,6 @@
         private Button button1;
         private Button button2;
         private Button btnEditar;
+        private Button button3;
     }
 }

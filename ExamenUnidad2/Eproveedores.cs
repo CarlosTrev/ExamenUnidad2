@@ -1,4 +1,6 @@
-﻿using System;
+﻿using OxyPlot.Series;
+using OxyPlot;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using OxyPlot.Axes;
 
 namespace ExamenUnidad2
 {
@@ -229,6 +232,32 @@ namespace ExamenUnidad2
             else
             {
                 MessageBox.Show("Por favor, selecciona un proveedor para editar.");
+            }
+        }
+
+        private void tbControlProvee_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            connect conexion = new connect();
+            string query = @"
+        SELECT Suppliers.CompanyName, COUNT(Products.ProductID) AS ProductCount
+        FROM Suppliers
+        LEFT JOIN Products ON Suppliers.SupplierID = Products.SupplierID
+        GROUP BY Suppliers.CompanyName";
+
+            DataSet ds = conexion.Ejecutar(query);
+
+            if (ds != null && ds.Tables[0].Rows.Count > 0)
+            {
+                var plotModel = new PlotModel { Title = "Productos por Proveedor" };
+                var series = new BarSeries();
+
+                foreach (DataRow row in ds.Tables[0].Rows)
+                {
+                    series.Items.Add(new BarItem { Value = Convert.ToDouble(row["ProductCount"]) });
+                }
+
+                plotModel.Series.Add(series);
+                plotView1.Model = plotModel;
             }
         }
     }

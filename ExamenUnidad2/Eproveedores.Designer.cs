@@ -61,21 +61,26 @@
             label5 = new Label();
             label4 = new Label();
             label3 = new Label();
+            tabPage3 = new TabPage();
+            plotView1 = new OxyPlot.WindowsForms.PlotView();
             tbControlProvee.SuspendLayout();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgCProvee).BeginInit();
             tabPage2.SuspendLayout();
+            tabPage3.SuspendLayout();
             SuspendLayout();
             // 
             // tbControlProvee
             // 
             tbControlProvee.Controls.Add(tabPage1);
             tbControlProvee.Controls.Add(tabPage2);
+            tbControlProvee.Controls.Add(tabPage3);
             tbControlProvee.Location = new Point(12, 12);
             tbControlProvee.Name = "tbControlProvee";
             tbControlProvee.SelectedIndex = 0;
             tbControlProvee.Size = new Size(762, 386);
             tbControlProvee.TabIndex = 1;
+            tbControlProvee.SelectedIndexChanged += tbControlProvee_SelectedIndexChanged;
             // 
             // tabPage1
             // 
@@ -377,6 +382,28 @@
             label3.TabIndex = 1;
             label3.Text = "CompanyName:";
             // 
+            // tabPage3
+            // 
+            tabPage3.Controls.Add(plotView1);
+            tabPage3.Location = new Point(4, 24);
+            tabPage3.Name = "tabPage3";
+            tabPage3.Size = new Size(754, 358);
+            tabPage3.TabIndex = 2;
+            tabPage3.Text = "Grafica";
+            tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // plotView1
+            // 
+            plotView1.Location = new Point(3, 3);
+            plotView1.Name = "plotView1";
+            plotView1.PanCursor = Cursors.Hand;
+            plotView1.Size = new Size(748, 352);
+            plotView1.TabIndex = 0;
+            plotView1.Text = "plotView1";
+            plotView1.ZoomHorizontalCursor = Cursors.SizeWE;
+            plotView1.ZoomRectangleCursor = Cursors.SizeNWSE;
+            plotView1.ZoomVerticalCursor = Cursors.SizeNS;
+            // 
             // Eproveedores
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -395,6 +422,7 @@
             ((System.ComponentModel.ISupportInitialize)dgCProvee).EndInit();
             tabPage2.ResumeLayout(false);
             tabPage2.PerformLayout();
+            tabPage3.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -440,5 +468,7 @@
         private TextBox txtBoxCFa;
         private Label label12;
         private Label label13;
+        private TabPage tabPage3;
+        private OxyPlot.WindowsForms.PlotView plotView1;
     }
 }

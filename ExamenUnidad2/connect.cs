@@ -97,6 +97,32 @@ namespace ExamenUnidad2
             }
         }
 
+        public List<KeyValuePair<string, int>> ObtenerDatosGrafico(string query)
+        {
+            List<KeyValuePair<string, int>> datos = new List<KeyValuePair<string, int>>();
+            try
+            {
+                using (SqlDataReader reader = EjecutarDataReader(query))
+                {
+                    if (reader != null)
+                    {
+                        while (reader.Read())
+                        {
+                            string key = reader.GetString(0); // Primera columna (clave)
+                            int value = reader.GetInt32(1);   // Segunda columna (valor)
+                            datos.Add(new KeyValuePair<string, int>(key, value));
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return datos;
+        }
+
+
 
     }
 }

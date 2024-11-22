@@ -36,6 +36,7 @@
             txtbxEclientes = new TextBox();
             btnEliminar = new Button();
             btnAgregar = new Button();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvEclientes).BeginInit();
             SuspendLayout();
             // 
@@ -124,6 +125,19 @@
             btnAgregar.UseVisualStyleBackColor = false;
             btnAgregar.Click += button1_Click;
             // 
+            // button1
+            // 
+            button1.BackColor = Color.Black;
+            button1.ForeColor = Color.White;
+            button1.Location = new Point(304, 363);
+            button1.Margin = new Padding(3, 2, 3, 2);
+            button1.Name = "button1";
+            button1.Size = new Size(166, 22);
+            button1.TabIndex = 6;
+            button1.Text = "Grafica";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click_1;
+            // 
             // Eclientes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -131,6 +145,7 @@
             BackgroundImage = Properties.Resources.MAy198i;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(753, 394);
+            Controls.Add(button1);
             Controls.Add(btnAgregar);
             Controls.Add(btnEliminar);
             Controls.Add(txtbxEclientes);
@@ -156,5 +171,6 @@
         private DataGridViewImageColumn Editar;
         private Button btnEliminar;
         private Button btnAgregar;
+        private Button button1;
     }
 }

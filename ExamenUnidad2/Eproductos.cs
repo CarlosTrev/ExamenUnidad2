@@ -1,4 +1,7 @@
-﻿using System;
+﻿using OxyPlot.Axes;
+using OxyPlot.Series;
+using OxyPlot;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -253,6 +256,55 @@ namespace ExamenUnidad2
             else
             {
                 MessageBox.Show("Por favor, selecciona un producto para editar.");
+            }
+        }
+
+        private void tbControlP_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            connect conexion = new connect();
+            string query = @"
+        SELECT ProductName, ISNULL(UnitsInStock, 0) AS UnitsInStock
+        FROM Products";
+
+            DataSet ds = conexion.Ejecutar(query);
+
+            if (ds != null && ds.Tables[0].Rows.Count > 0)
+            {
+                var plotModel = new PlotModel { Title = "Stock por Producto" };
+                var series = new BarSeries();
+
+                // Agregar solo los productos con stock mayor a 0
+                foreach (DataRow row in ds.Tables[0].Rows)
+                {
+                    double stock = Convert.ToDouble(row["UnitsInStock"]);
+                    if (stock > 0) // Solo productos con stock mayor a 0
+                    {
+                        series.Items.Add(new BarItem { Value = stock });
+                    }
+                }
+
+                // Si no se encuentra ningún producto con stock, mostrar mensaje de advertencia
+                if (series.Items.Count == 0)
+                {
+                    MessageBox.Show("No hay productos con stock disponible.");
+                    return;
+                }
+
+                plotModel.Series.Add(series);
+                plotModel.Axes.Add(new CategoryAxis
+                {
+                    Position = AxisPosition.Left,
+                    Key = "ProductAxis",
+                    ItemsSource = ds.Tables[0].Rows.Cast<DataRow>().Where(r => Convert.ToDouble(r["UnitsInStock"]) > 0)
+                        .Select(r => r["ProductName"].ToString()).ToList()
+                });
+
+                plotModel.Axes.Add(new LinearAxis { Position = AxisPosition.Bottom });
+                plotView1.Model = plotModel; // plotView1 es el nombre de tu control PlotView.
+            }
+            else
+            {
+                MessageBox.Show("No se encontraron productos en la base de datos.");
             }
         }
     }

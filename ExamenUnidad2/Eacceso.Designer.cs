@@ -37,6 +37,7 @@
             pictureBox1 = new PictureBox();
             button3 = new Button();
             button7 = new Button();
+            button6 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -121,7 +122,7 @@
             // 
             button3.BackColor = SystemColors.ActiveCaptionText;
             button3.ForeColor = Color.Red;
-            button3.Location = new Point(643, 441);
+            button3.Location = new Point(643, 398);
             button3.Name = "button3";
             button3.Size = new Size(88, 27);
             button3.TabIndex = 6;
@@ -133,14 +134,21 @@
             // 
             button7.BackColor = Color.Transparent;
             button7.FlatStyle = FlatStyle.Popup;
-            button7.Location = new Point(12, 363);
+            button7.Image = Properties.Resources.Captura_de_pantalla_2024_11_21_225617;
+            button7.Location = new Point(216, 343);
             button7.Margin = new Padding(3, 2, 3, 2);
             button7.Name = "button7";
-            button7.Size = new Size(297, 63);
+            button7.Size = new Size(297, 51);
             button7.TabIndex = 8;
-            button7.Text = "Shippers";
             button7.UseVisualStyleBackColor = false;
             button7.Click += button7_Click;
+            // 
+            // button6
+            // 
+            button6.Location = new Point(0, 0);
+            button6.Name = "button6";
+            button6.Size = new Size(75, 23);
+            button6.TabIndex = 0;
             // 
             // Eacceso
             // 
@@ -148,7 +156,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.Captura_de_pantalla_2024_11_17_225931;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(743, 473);
+            ClientSize = new Size(743, 437);
             Controls.Add(button7);
             Controls.Add(button3);
             Controls.Add(pictureBox1);
@@ -176,5 +184,6 @@
         private PictureBox pictureBox1;
         private Button button3;
         private Button button7;
+        private Button button6;
     }
 }
