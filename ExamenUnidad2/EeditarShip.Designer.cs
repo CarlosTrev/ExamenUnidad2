@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EeditarShip));
             dataGridView1 = new DataGridView();
             button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -43,23 +44,27 @@
             // 
             // button1
             // 
+            button1.BackColor = Color.Black;
+            button1.ForeColor = Color.White;
             button1.Location = new Point(336, 196);
             button1.Name = "button1";
             button1.Size = new Size(125, 22);
             button1.TabIndex = 1;
             button1.Text = "Aplicar cambios";
-            button1.UseVisualStyleBackColor = true;
+            button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
             // EeditarShip
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.Red;
             ClientSize = new Size(800, 244);
             Controls.Add(button1);
             Controls.Add(dataGridView1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "EeditarShip";
-            Text = "EeditarShip";
+            Text = "EditarShip";
             Load += EeditarShip_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);

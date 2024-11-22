@@ -41,6 +41,19 @@ namespace ExamenUnidad2
             {
                 dataGridView1.DataSource = ds.Tables[0];
             }
+
+            if (global.EmployeeID != 0)
+            {
+                // Configuración para empleados
+                button1.Visible = false;
+                button2.Visible = false;
+                btnEditar.Visible = false;
+                this.Text = "Vista Empleado - Shipper";
+            }
+            else
+            {
+                this.Text = "Vista Admin - Shipper";
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)

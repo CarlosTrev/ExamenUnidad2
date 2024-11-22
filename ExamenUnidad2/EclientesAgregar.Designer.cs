@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EclientesAgregar));
             txtbNC = new TextBox();
             label2 = new Label();
             txtbNCon = new TextBox();
@@ -55,7 +55,6 @@
             txtbxCP = new MaskedTextBox();
             SuspendLayout();
             // 
-        
             // txtbNC
             // 
             txtbNC.Location = new Point(215, 30);
@@ -234,7 +233,6 @@
             label11.TabIndex = 20;
             label11.Text = "Fax";
             // 
-
             // cmbbxTitulo
             // 
             cmbbxTitulo.FormattingEnabled = true;
@@ -335,6 +333,7 @@
             Controls.Add(label3);
             Controls.Add(txtbNC);
             Controls.Add(label2);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "EclientesAgregar";
             Text = "EclientesAgregar";
             Load += EclientesAgregar_Load;

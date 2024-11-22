@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Eproveedores));
             tbControlProvee = new TabControl();
             tabPage1 = new TabPage();
+            button1 = new Button();
             btnEditar = new Button();
             btnBorrar = new Button();
             txtBoxProvee = new TextBox();
@@ -63,7 +64,6 @@
             label3 = new Label();
             tabPage3 = new TabPage();
             plotView1 = new OxyPlot.WindowsForms.PlotView();
-            button1 = new Button();
             tbControlProvee.SuspendLayout();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgCProvee).BeginInit();
@@ -100,6 +100,18 @@
             tabPage1.Size = new Size(754, 358);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Consultar proveedor";
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.Black;
+            button1.ForeColor = Color.White;
+            button1.Location = new Point(262, 329);
+            button1.Name = "button1";
+            button1.Size = new Size(191, 23);
+            button1.TabIndex = 6;
+            button1.Text = "Exportar tabla";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // btnEditar
             // 
@@ -238,13 +250,14 @@
             // 
             // butAgregar
             // 
-            butAgregar.ForeColor = Color.Black;
+            butAgregar.BackColor = Color.Black;
+            butAgregar.ForeColor = Color.White;
             butAgregar.Location = new Point(278, 300);
             butAgregar.Name = "butAgregar";
             butAgregar.Size = new Size(177, 23);
             butAgregar.TabIndex = 20;
             butAgregar.Text = "Agregar Proveedor";
-            butAgregar.UseVisualStyleBackColor = true;
+            butAgregar.UseVisualStyleBackColor = false;
             butAgregar.Click += butAgregar_Click;
             // 
             // txtBoxCco
@@ -405,18 +418,6 @@
             plotView1.ZoomHorizontalCursor = Cursors.SizeWE;
             plotView1.ZoomRectangleCursor = Cursors.SizeNWSE;
             plotView1.ZoomVerticalCursor = Cursors.SizeNS;
-            // 
-            // button1
-            // 
-            button1.BackColor = Color.Black;
-            button1.ForeColor = Color.White;
-            button1.Location = new Point(262, 329);
-            button1.Name = "button1";
-            button1.Size = new Size(191, 23);
-            button1.TabIndex = 6;
-            button1.Text = "Exportar tabla";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
             // 
             // Eproveedores
             // 

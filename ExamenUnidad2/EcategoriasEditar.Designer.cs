@@ -43,18 +43,21 @@
             // 
             // btnCateEditar
             // 
+            btnCateEditar.BackColor = SystemColors.ActiveCaptionText;
+            btnCateEditar.ForeColor = Color.White;
             btnCateEditar.Location = new Point(347, 158);
             btnCateEditar.Name = "btnCateEditar";
             btnCateEditar.Size = new Size(114, 22);
             btnCateEditar.TabIndex = 1;
             btnCateEditar.Text = "Aplicar cambios";
-            btnCateEditar.UseVisualStyleBackColor = true;
+            btnCateEditar.UseVisualStyleBackColor = false;
             btnCateEditar.Click += btnCateEditar_Click;
             // 
             // EcategoriasEditar
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.Red;
             ClientSize = new Size(800, 208);
             Controls.Add(btnCateEditar);
             Controls.Add(dataGridView1);

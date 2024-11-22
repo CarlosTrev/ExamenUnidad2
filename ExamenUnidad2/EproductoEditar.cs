@@ -13,7 +13,7 @@ namespace ExamenUnidad2
 {
     public partial class EproductoEditar : Form
     {
-        public EproductoEditar(int productId, string productName, int supplierId, int categoryId,
+        public EproductoEditar(int productId, string productName, string supplierName, string categoryName,
                           string quantityPerUnit, decimal unitPrice, short unitsInStock,
                           short unitsOnOrder, short reorderLevel, bool discontinued)
         {
@@ -21,8 +21,8 @@ namespace ExamenUnidad2
             // Rellena los campos con los datos recibidos
             txtPrID.Text = productId.ToString();
             txtBoxPN.Text = productName;
-            txtBoxPSu.Text = supplierId.ToString();
-            txtBoxPCa.Text = categoryId.ToString();
+            txtBoxPSu.Text = supplierName.ToString();
+            txtBoxPCa.Text = categoryName.ToString();
             txtBoxPQu.Text = quantityPerUnit;
             txtBoxPUn.Text = unitPrice.ToString("F2");
             txtBoxPSt.Text = unitsInStock.ToString();
@@ -48,46 +48,87 @@ namespace ExamenUnidad2
                 // Obtener los datos del formulario
                 int productId = Convert.ToInt32(txtPrID.Text);
                 string productName = txtBoxPN.Text;
-                int supplierId = Convert.ToInt32(txtBoxPSu.Text);
-                int categoryId = Convert.ToInt32(txtBoxPCa.Text);
+                string supplierName = txtBoxPSu.Text; // Nombre del proveedor
+                string categoryName = txtBoxPCa.Text; // Nombre de la categoría
                 string quantityPerUnit = txtBoxPQu.Text;
-                decimal unitPrice = Convert.ToDecimal(txtBoxPUn.Text);
-                short unitsInStock = Convert.ToInt16(txtBoxPSt.Text);
-                short unitsOnOrder = Convert.ToInt16(txtBoxPOr.Text);
-                short reorderLevel = Convert.ToInt16(txtBoxPReo.Text);
-                int discontinued = cBoxDis.SelectedItem.ToString() == "1" ? 1 : 0;
+                decimal unitPrice = decimal.Parse(txtBoxPUn.Text);
+                short unitsInStock = short.Parse(txtBoxPSt.Text);
+                short unitsOnOrder = string.IsNullOrWhiteSpace(txtBoxPOr.Text) ? (short)0 : short.Parse(txtBoxPOr.Text);
+                short reorderLevel = string.IsNullOrWhiteSpace(txtBoxPReo.Text) ? (short)0 : short.Parse(txtBoxPReo.Text);
+                bool discontinued = cBoxDis.SelectedItem.ToString() == "1";
 
                 connect conexion = new connect();
 
+                // Obtener SupplierID y CategoryID según los nombres
+                string supplierQuery = "SELECT SupplierID FROM Suppliers WHERE CompanyName = @SupplierName";
+                string categoryQuery = "SELECT CategoryID FROM Categories WHERE CategoryName = @CategoryName";
+
+                int supplierId;
+                int categoryId;
+
+                using (SqlCommand supplierCmd = new SqlCommand(supplierQuery))
+                {
+                    supplierCmd.Parameters.AddWithValue("@SupplierName", supplierName);
+                    using (SqlDataReader reader = conexion.EjecutarConsulta(supplierCmd))
+                    {
+                        if (reader != null && reader.Read())
+                        {
+                            supplierId = reader.GetInt32(0);
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se encontró el proveedor especificado.");
+                            return;
+                        }
+                    }
+                }
+
+                using (SqlCommand categoryCmd = new SqlCommand(categoryQuery))
+                {
+                    categoryCmd.Parameters.AddWithValue("@CategoryName", categoryName);
+                    using (SqlDataReader reader = conexion.EjecutarConsulta(categoryCmd))
+                    {
+                        if (reader != null && reader.Read())
+                        {
+                            categoryId = reader.GetInt32(0);
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se encontró la categoría especificada.");
+                            return;
+                        }
+                    }
+                }
 
                 // Construcción de la consulta SQL de actualización
                 string query = @"
-            UPDATE Products
-            SET ProductName = @ProductName,
-                SupplierID = @SupplierID,
-                CategoryID = @CategoryID,
-                QuantityPerUnit = @QuantityPerUnit,
-                UnitPrice = @UnitPrice,
-                UnitsInStock = @UnitsInStock,
-                UnitsOnOrder = @UnitsOnOrder,
-                ReorderLevel = @ReorderLevel,
-                Discontinued = @Discontinued
-            WHERE ProductID = @ProductID";
+        UPDATE Products
+        SET ProductName = @ProductName,
+            SupplierID = @SupplierID,
+            CategoryID = @CategoryID,
+            QuantityPerUnit = @QuantityPerUnit,
+            UnitPrice = @UnitPrice,
+            UnitsInStock = @UnitsInStock,
+            UnitsOnOrder = @UnitsOnOrder,
+            ReorderLevel = @ReorderLevel,
+            Discontinued = @Discontinued
+        WHERE ProductID = @ProductID";
 
                 using (SqlCommand cmd = new SqlCommand(query))
                 {
                     // Asignación de parámetros
-                    cmd.Parameters.AddWithValue("@ProductID", int.Parse(txtPrID.Text)); // Campo para el ID del producto
-                    cmd.Parameters.AddWithValue("@ProductName", txtBoxPN.Text);
-                    cmd.Parameters.AddWithValue("@SupplierID", int.Parse(txtBoxPSu.Text));
-                    cmd.Parameters.AddWithValue("@CategoryID", int.Parse(txtBoxPCa.Text));
-                    cmd.Parameters.AddWithValue("@QuantityPerUnit", txtBoxPQu.Text);
-                    cmd.Parameters.AddWithValue("@UnitPrice", decimal.Parse(txtBoxPUn.Text));
-                    cmd.Parameters.AddWithValue("@UnitsInStock", int.Parse(txtBoxPSt.Text));
-                    cmd.Parameters.AddWithValue("@UnitsOnOrder", string.IsNullOrWhiteSpace(txtBoxPOr.Text) ? (object)DBNull.Value : int.Parse(txtBoxPOr.Text));
-                    cmd.Parameters.AddWithValue("@ReorderLevel", string.IsNullOrWhiteSpace(txtBoxPReo.Text) ? (object)DBNull.Value : int.Parse(txtBoxPReo.Text));
+                    cmd.Parameters.AddWithValue("@ProductID", productId);
+                    cmd.Parameters.AddWithValue("@ProductName", productName);
+                    cmd.Parameters.AddWithValue("@SupplierID", supplierId); // ID obtenido del nombre
+                    cmd.Parameters.AddWithValue("@CategoryID", categoryId); // ID obtenido del nombre
+                    cmd.Parameters.AddWithValue("@QuantityPerUnit", quantityPerUnit);
+                    cmd.Parameters.AddWithValue("@UnitPrice", unitPrice);
+                    cmd.Parameters.AddWithValue("@UnitsInStock", unitsInStock);
+                    cmd.Parameters.AddWithValue("@UnitsOnOrder", unitsOnOrder == 0 ? (object)DBNull.Value : unitsOnOrder);
+                    cmd.Parameters.AddWithValue("@ReorderLevel", reorderLevel == 0 ? (object)DBNull.Value : reorderLevel);
                     cmd.Parameters.AddWithValue("@Discontinued", discontinued);
 
+                    // Ejecutar el comando
                     if (conexion.EjecutarComando(cmd))
                     {
                         MessageBox.Show("Producto actualizado exitosamente.");

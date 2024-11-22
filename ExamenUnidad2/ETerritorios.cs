@@ -69,6 +69,19 @@ namespace ExamenUnidad2
             CargarRegion();
             CargarTerritorioempleados();
             CargarTerritorios();
+
+            if (global.EmployeeID != 0)
+            {
+                // Configuración para empleados
+                btnATE.Visible = false;
+                btnETE.Visible = false;
+                btnAT.Visible = false;
+                this.Text = "Vista Empleado - Territorios";
+            }
+            else
+            {
+                this.Text = "Vista Admin - Territorios";
+            }
         }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)

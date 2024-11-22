@@ -45,8 +45,8 @@
             // btnGuardar
             // 
             btnGuardar.BackColor = Color.Black;
-            btnGuardar.ForeColor = Color.Red;
-            btnGuardar.Location = new Point(358, 188);
+            btnGuardar.ForeColor = Color.White;
+            btnGuardar.Location = new Point(329, 188);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(123, 23);
             btnGuardar.TabIndex = 1;

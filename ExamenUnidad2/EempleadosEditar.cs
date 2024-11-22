@@ -24,7 +24,7 @@ namespace ExamenUnidad2
         // Guardar cambios realizados en el DataGridView
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         // Cancelar los cambios y cerrar la ventana

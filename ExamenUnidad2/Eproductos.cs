@@ -236,8 +236,8 @@ namespace ExamenUnidad2
                 // Obtén los datos de la fila seleccionada
                 int productId = Convert.ToInt32(dgCPr.SelectedRows[0].Cells["ProductID"].Value);
                 string productName = dgCPr.SelectedRows[0].Cells["ProductName"].Value.ToString();
-                int supplierId = Convert.ToInt32(dgCPr.SelectedRows[0].Cells["SupplierID"].Value);
-                int categoryId = Convert.ToInt32(dgCPr.SelectedRows[0].Cells["CategoryID"].Value);
+                string supplierName = dgCPr.SelectedRows[0].Cells["SupplierName"].Value.ToString();
+                string categoryName = dgCPr.SelectedRows[0].Cells["CategoryName"].Value.ToString();
                 string quantityPerUnit = dgCPr.SelectedRows[0].Cells["QuantityPerUnit"].Value.ToString();
                 decimal unitPrice = Convert.ToDecimal(dgCPr.SelectedRows[0].Cells["UnitPrice"].Value);
                 short unitsInStock = Convert.ToInt16(dgCPr.SelectedRows[0].Cells["UnitsInStock"].Value);
@@ -246,7 +246,7 @@ namespace ExamenUnidad2
                 bool discontinued = Convert.ToBoolean(dgCPr.SelectedRows[0].Cells["Discontinued"].Value);
 
                 // Abre la ventana de edición y pasa los datos
-                EproductoEditar editarForm = new EproductoEditar(productId, productName, supplierId, categoryId,
+                EproductoEditar editarForm = new EproductoEditar(productId, productName, supplierName, categoryName,
                                                                        quantityPerUnit, unitPrice, unitsInStock,
                                                                        unitsOnOrder, reorderLevel, discontinued);
                 editarForm.ShowDialog();
