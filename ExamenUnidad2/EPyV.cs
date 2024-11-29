@@ -80,12 +80,33 @@ namespace ExamenUnidad2
         private void EPyV_Load(object sender, EventArgs e)
         {
             ActualizarDatosPyV();
+            CargarClientes();
+            connect conexion = new connect();
+            string consultaProductos = "SELECT ProductID, ProductName, UnitPrice, UnitsInStock FROM Products";
+            DataSet dsProductos = conexion.Ejecutar(consultaProductos);
+            dvgCarrito.AllowUserToAddRows = false;
+
+            if (dsProductos != null)
+            {
+                dvgProductosDis.DataSource = dsProductos.Tables[0];
+            }
+
+            // Configurar DataGridView del carrito
+            dvgCarrito.Columns.Add("ProductID", "ProductID");
+            dvgCarrito.Columns.Add("ProductName", "Nombre del Producto");
+            dvgCarrito.Columns.Add("UnitPrice", "Precio Unitario");
+            dvgCarrito.Columns.Add("Quantity", "Cantidad");
+
+            dtpOrderDate.Value = DateTime.Now;
+            dtpRequiredDate.Value = DateTime.Now.AddDays(7); // Fecha requerida = 7 días después
+            dtpShippedDate.Value = DateTime.Now; // Opcional, puede dejarse vacío (NULL)
+
+
 
             if (global.EmployeeID != 0)
             {
                 // Configuración para empleados
                 btnEliminarOrden.Visible = false;
-                btnAgregarOrden.Visible = false;
                 btnAgregarProductos.Visible = false;
                 btnAgregarCate.Visible = false;
                 btnCateBorrar.Visible = false;
@@ -99,7 +120,7 @@ namespace ExamenUnidad2
                 this.Text = "Vista Admin - PyV";
             }
             //Categorias
-            connect conexion = new connect();
+
             string consulta = "SELECT * FROM Categories";
             DataSet ds = conexion.Ejecutar(consulta);
 
@@ -314,58 +335,17 @@ namespace ExamenUnidad2
 
         }
 
-        private void btnAgregarOrden_Click(object sender, EventArgs e)
+        private void CargarClientes()
         {
-            try
+            connect conexion = new connect();
+            string consultaClientes = "SELECT CustomerID, CompanyName FROM Customers";
+            DataSet dsClientes = conexion.Ejecutar(consultaClientes);
+
+            if (dsClientes != null)
             {
-                connect conexion = new connect();
-
-                string customerID = txtCustomerID.Text;
-                int employeeID = global.EmployeeID;
-                DateTime orderDate = dtpOrderDate.Value;
-                DateTime requiredDate = dtpRD.Value;
-                object shippedDate = chbxSD.Checked ? (object)DBNull.Value : dtpSD.Value;
-                int shipVia = (rbShipVia1.Checked) ? 1 : (rbShipVia2.Checked) ? 2 : 3;
-                decimal freight = decimal.Parse(txtFreight2.Text);
-
-                string query = "INSERT INTO Orders (CustomerID, EmployeeID, OrderDate, RequiredDate, ShippedDate, ShipVia, Freight, ShipName, ShipAddress, ShipCity, ShipRegion, ShipPostalCode, ShipCountry) " +
-                               "VALUES (@CustomerID, @EmployeeID, @OrderDate, @RequiredDate, @ShippedDate, @ShipVia, @Freight, @ShipName, @ShipAddress, @ShipCity, @ShipRegion, @ShipPostalCode, @ShipCountry)";
-
-                using (SqlCommand cmd = new SqlCommand(query))
-                {
-                    cmd.Parameters.AddWithValue("@CustomerID", customerID);
-                    cmd.Parameters.AddWithValue("@EmployeeID", employeeID);
-                    cmd.Parameters.AddWithValue("@OrderDate", orderDate);
-                    cmd.Parameters.AddWithValue("@RequiredDate", requiredDate);
-                    cmd.Parameters.AddWithValue("@ShippedDate", shippedDate);
-                    cmd.Parameters.AddWithValue("@ShipVia", shipVia);
-                    cmd.Parameters.AddWithValue("@Freight", freight);
-                    cmd.Parameters.AddWithValue("@ShipName", txtbxShipName.Text);
-                    cmd.Parameters.AddWithValue("@ShipAddress", txtbxShipAddress.Text);
-                    cmd.Parameters.AddWithValue("@ShipCity", txtbxShipCity.Text);
-                    cmd.Parameters.AddWithValue("@ShipRegion", chbxSR.Checked ? (object)DBNull.Value : txtbxShipRegion.Text);
-                    cmd.Parameters.AddWithValue("@ShipPostalCode", CHBXcp.Checked ? (object)DBNull.Value : txtboxShipCP.Text);
-                    cmd.Parameters.AddWithValue("@ShipCountry", txtbxShipCountry.Text);
-
-
-                    bool resultado = conexion.EjecutarComando(cmd);
-                    if (resultado)
-                    {
-                        MessageBox.Show("Orden agregada exitosamente.");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Error al agregar la orden.");
-                    }
-                }
-            }
-            catch (FormatException ex)
-            {
-                MessageBox.Show("Error: Por favor asegúrese de que todos los valores sean válidos. " + ex.Message, "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ocurrió un error al procesar la información: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cmbCustomerID.DataSource = dsClientes.Tables[0];
+                cmbCustomerID.DisplayMember = "ContactName"; // Texto visible (nombre del cliente)
+                cmbCustomerID.ValueMember = "CustomerID";
             }
         }
 
@@ -374,41 +354,8 @@ namespace ExamenUnidad2
 
 
 
-        private void checkBox3_CheckedChanged(object sender, EventArgs e)
-        {
-            if (CHBXcp.Checked)
-            {
-                txtboxShipCP.Enabled = false;
-            }
-            else
-            {
-                txtboxShipCP.Enabled = true;
-            }
-        }
 
-        private void chbxSD_CheckedChanged(object sender, EventArgs e)
-        {
-            if (chbxSD.Checked)
-            {
-                dtpSD.Enabled = false;
-            }
-            else
-            {
-                dtpSD.Enabled = true;
-            }
-        }
 
-        private void chbxSR_CheckedChanged(object sender, EventArgs e)
-        {
-            if (chbxSR.Checked)
-            {
-                txtbxShipRegion.Enabled = false;
-            }
-            else
-            {
-                txtbxShipRegion.Enabled = true;
-            }
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -820,6 +767,241 @@ namespace ExamenUnidad2
             string query = "SELECT CategoryID, CategoryName, Description FROM Categories";
             string[] encabezados = { "CategoryID", "CategoryName", "Description" };
             ExportarTablaAExcel(query, "Categorías", "Categorias.xlsx", encabezados);
+        }
+
+        private bool ValidarStock(int productId, int cantidadSolicitada)
+        {
+            // Obtener el stock disponible para el producto
+            string consultaStock = "SELECT UnitsInStock FROM Products WHERE ProductID = @ProductID";
+
+            using (SqlConnection conexion = new connect().Conexion())
+            {
+                if (conexion == null) return false;
+
+                SqlCommand cmd = new SqlCommand(consultaStock, conexion);
+                cmd.Parameters.AddWithValue("@ProductID", productId);
+
+                // Ejecutar la consulta y obtener el valor de UnitsInStock
+                object result = cmd.ExecuteScalar();
+
+                if (result != null)
+                {
+                    int stockDisponible = Convert.ToInt32(result);
+                    // Si la cantidad solicitada es mayor que el stock, no se permite agregar el producto
+                    if (cantidadSolicitada > stockDisponible)
+                    {
+                        MessageBox.Show("La cantidad solicitada excede el stock disponible.");
+                        return false;
+                    }
+                }
+            }
+
+            return true; // Si todo está bien, el producto se puede agregar
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (dvgProductosDis.SelectedRows.Count > 0 && int.TryParse(textBox1.Text, out int cantidad))
+            {
+                DataGridViewRow filaSeleccionada = dvgProductosDis.SelectedRows[0];
+                int productId = Convert.ToInt32(filaSeleccionada.Cells["ProductID"].Value);
+                string productName = filaSeleccionada.Cells["ProductName"].Value.ToString();
+                decimal unitPrice = Convert.ToDecimal(filaSeleccionada.Cells["UnitPrice"].Value);
+
+                // Validar que la cantidad no supere el stock disponible
+                if (ValidarCantidadEnCarrito(productId, cantidad))
+                {
+                    // Si la validación pasa, agregamos el producto al carrito
+                    dvgCarrito.Rows.Add(
+                        productId,
+                        productName,
+                        unitPrice,
+                        cantidad
+                    );
+                }
+            }
+            else
+            {
+                MessageBox.Show("Selecciona un producto y especifica una cantidad válida.");
+            }
+        }
+
+        private bool ValidarCantidadEnCarrito(int productId, int cantidadSolicitada)
+        {
+            // Primero, obtenemos el stock disponible para este producto
+            string consultaStock = "SELECT UnitsInStock FROM Products WHERE ProductID = @ProductID";
+
+            int stockDisponible = 0;
+            using (SqlConnection conexion = new connect().Conexion())
+            {
+                if (conexion == null) return false;
+
+                SqlCommand cmd = new SqlCommand(consultaStock, conexion);
+                cmd.Parameters.AddWithValue("@ProductID", productId);
+
+                object result = cmd.ExecuteScalar();
+
+                if (result != null)
+                {
+                    stockDisponible = Convert.ToInt32(result);
+                }
+            }
+
+            // Ahora, debemos sumar las cantidades de este producto en el carrito
+            int cantidadEnCarrito = 0;
+            foreach (DataGridViewRow row in dvgCarrito.Rows)
+            {
+                if (Convert.ToInt32(row.Cells["ProductID"].Value) == productId)
+                {
+                    cantidadEnCarrito += Convert.ToInt32(row.Cells["Quantity"].Value);
+                }
+            }
+
+            // Verificamos si la cantidad solicitada, sumada con la cantidad en el carrito, excede el stock disponible
+            if (cantidadEnCarrito + cantidadSolicitada > stockDisponible)
+            {
+                MessageBox.Show($"No puedes agregar más unidades de este producto. El stock disponible es {stockDisponible}.");
+                return false; // No se puede agregar más
+            }
+
+            return true; // Se puede agregar
+        }
+
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (dvgCarrito.Rows.Count == 0)
+            {
+                MessageBox.Show("El carrito está vacío.");
+                return;
+            }
+
+            connect conexion = new connect();
+            using (SqlConnection connection = conexion.Conexion())
+            {
+                if (connection == null) return;
+                decimal freight = CalcularFreight(txtShipCountry.Text, rb1.Checked ? 1 : rb2.Checked ? 2 : 3);
+
+                SqlTransaction transaction = connection.BeginTransaction();
+                try
+                {
+                    // Insertar orden
+                    string queryOrden = "INSERT INTO Orders (CustomerID, OrderDate, RequiredDate, ShippedDate, ShipVia, Freight, ShipName, ShipAddress, ShipCity, ShipRegion, ShipPostalCode, ShipCountry) " +
+                                        "VALUES (@CustomerID, @OrderDate, @RequiredDate, @ShippedDate, @ShipVia, @Freight, @ShipName, @ShipAddress, @ShipCity, @ShipRegion, @ShipPostalCode, @ShipCountry); " +
+                                        "SELECT SCOPE_IDENTITY();";
+
+                    SqlCommand cmdOrden = new SqlCommand(queryOrden, connection, transaction);
+                    cmdOrden.Parameters.AddWithValue("@CustomerID", cmbCustomerID.SelectedValue);
+                    cmdOrden.Parameters.AddWithValue("@OrderDate", dtpOrderDate.Value);
+                    cmdOrden.Parameters.AddWithValue("@RequiredDate", dtpRequiredDate.Value);
+                    cmdOrden.Parameters.AddWithValue("@ShippedDate", dtpShippedDate.Value);
+                    cmdOrden.Parameters.AddWithValue("@ShipVia", rb1.Checked ? 1 : rb2.Checked ? 2 : 3);
+                    cmdOrden.Parameters.AddWithValue("@Freight", freight);
+                    cmdOrden.Parameters.AddWithValue("@ShipName", string.IsNullOrEmpty(txtShipName.Text) ? cmbCustomerID.Text : txtShipName.Text);
+                    cmdOrden.Parameters.AddWithValue("@ShipAddress", txtShipAddress.Text);
+                    cmdOrden.Parameters.AddWithValue("@ShipCity", txtShipCity.Text);
+                    cmdOrden.Parameters.AddWithValue("@ShipRegion", txtShipRegion.Text);
+                    cmdOrden.Parameters.AddWithValue("@ShipPostalCode", txtShipPostalCode.Text);
+                    cmdOrden.Parameters.AddWithValue("@ShipCountry", txtShipCountry.Text);
+
+                    int orderId = Convert.ToInt32(cmdOrden.ExecuteScalar());
+
+                    // Insertar detalles de orden
+                    foreach (DataGridViewRow row in dvgCarrito.Rows)
+                    {
+                        if (row.Cells["ProductID"].Value != null) // Asegúrate de que ProductID tiene un valor
+                        {
+                            string queryDetalle = "INSERT INTO [Order Details] (OrderID, ProductID, UnitPrice, Quantity) " +
+                                                  "VALUES (@OrderID, @ProductID, @UnitPrice, @Quantity)";
+                            SqlCommand cmdDetalle = new SqlCommand(queryDetalle, connection, transaction);
+                            cmdDetalle.Parameters.AddWithValue("@OrderID", orderId);
+                            cmdDetalle.Parameters.AddWithValue("@ProductID", row.Cells["ProductID"].Value);  // Verifica que ProductID esté en la celda correcta
+                            cmdDetalle.Parameters.AddWithValue("@UnitPrice", row.Cells["UnitPrice"].Value);
+                            cmdDetalle.Parameters.AddWithValue("@Quantity", row.Cells["Quantity"].Value);
+
+                            cmdDetalle.ExecuteNonQuery();
+                        }
+                    }
+
+                    transaction.Commit();
+                    MessageBox.Show("Orden registrada con éxito.");
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    MessageBox.Show($"Error al registrar la orden: {ex.Message}");
+                }
+            }
+        }
+
+        private decimal CalcularFreight(string shipCountry, int shipVia)
+        {
+            decimal freight = 0;
+
+            // Ejemplo de tarifas según país y transportista
+            if (shipCountry == "USA")
+            {
+                freight = shipVia == 1 ? 25 : shipVia == 2 ? 20 : 30;
+            }
+            else if (shipCountry == "Canada")
+            {
+                freight = shipVia == 1 ? 30 : shipVia == 2 ? 25 : 35;
+            }
+            else
+            {
+                freight = shipVia == 1 ? 40 : shipVia == 2 ? 35 : 50;
+            }
+
+            return freight;
+        }
+
+        private void cmbCustomerID_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string customerId = cmbCustomerID.SelectedValue.ToString();
+            connect conexion = new connect();
+            string consultaDireccion = $"SELECT Address, City, Region, PostalCode, Country FROM Customers WHERE CustomerID = '{customerId}'";
+            DataSet dsDireccion = conexion.Ejecutar(consultaDireccion);
+
+            if (dsDireccion != null && dsDireccion.Tables[0].Rows.Count > 0)
+            {
+                DataRow row = dsDireccion.Tables[0].Rows[0];
+                txtShipAddress.Text = row["Address"].ToString();
+                txtShipCity.Text = row["City"].ToString();
+                txtShipRegion.Text = row["Region"].ToString();
+                txtShipPostalCode.Text = row["PostalCode"].ToString();
+                txtShipCountry.Text = row["Country"].ToString();
+            }
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            dvgCarrito.Rows.Clear(); // Elimina todas las filas del carrito (DataGridView)
+        }
+
+        private void dvgProductosDis_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            // Verificar si la celda editada es la de la cantidad
+            if (e.ColumnIndex == dvgCarrito.Columns["Quantity"].Index)
+            {
+                int cantidadNueva = Convert.ToInt32(dvgCarrito.Rows[e.RowIndex].Cells["Quantity"].Value);
+                int productId = Convert.ToInt32(dvgCarrito.Rows[e.RowIndex].Cells["ProductID"].Value);
+                decimal unitPrice = Convert.ToDecimal(dvgCarrito.Rows[e.RowIndex].Cells["UnitPrice"].Value);
+
+                // Verificar si la nueva cantidad supera el stock
+                if (!ValidarCantidadEnCarrito(productId, cantidadNueva))
+                {
+                    MessageBox.Show("La cantidad solicitada excede el stock disponible.");
+                    return; // No actualizamos el valor si la cantidad es inválida
+                }
+
+                // Actualizar el precio total en el carrito
+                dvgCarrito.Rows[e.RowIndex].Cells["TotalPrice"].Value = cantidadNueva * unitPrice;
+            }
         }
     }
 }

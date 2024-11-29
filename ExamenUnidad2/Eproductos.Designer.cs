@@ -75,7 +75,7 @@
             tbControlP.Location = new Point(12, 12);
             tbControlP.Name = "tbControlP";
             tbControlP.SelectedIndex = 0;
-            tbControlP.Size = new Size(762, 558);
+            tbControlP.Size = new Size(762, 631);
             tbControlP.TabIndex = 0;
             tbControlP.SelectedIndexChanged += tbControlP_SelectedIndexChanged;
             // 
@@ -93,7 +93,7 @@
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(754, 530);
+            tabPage1.Size = new Size(754, 603);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Consultar producto";
             // 
@@ -101,7 +101,7 @@
             // 
             button1.BackColor = Color.Black;
             button1.ForeColor = Color.White;
-            button1.Location = new Point(263, 501);
+            button1.Location = new Point(262, 574);
             button1.Name = "button1";
             button1.Size = new Size(191, 23);
             button1.TabIndex = 6;
@@ -112,7 +112,7 @@
             // btnEditar
             // 
             btnEditar.ForeColor = Color.Black;
-            btnEditar.Location = new Point(6, 501);
+            btnEditar.Location = new Point(6, 574);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(191, 23);
             btnEditar.TabIndex = 5;
@@ -124,7 +124,7 @@
             // 
             btnBorrar.BackColor = Color.Red;
             btnBorrar.ForeColor = Color.Black;
-            btnBorrar.Location = new Point(518, 501);
+            btnBorrar.Location = new Point(518, 574);
             btnBorrar.Name = "btnBorrar";
             btnBorrar.Size = new Size(230, 23);
             btnBorrar.TabIndex = 4;
@@ -171,7 +171,7 @@
             dgCPr.ReadOnly = true;
             dgCPr.RowHeadersWidth = 51;
             dgCPr.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgCPr.Size = new Size(742, 456);
+            dgCPr.Size = new Size(742, 520);
             dgCPr.TabIndex = 0;
             // 
             // tabPage2
@@ -200,7 +200,7 @@
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(754, 530);
+            tabPage2.Size = new Size(754, 603);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Agregar producto";
             // 
@@ -368,7 +368,7 @@
             tabPage3.Controls.Add(plotView1);
             tabPage3.Location = new Point(4, 24);
             tabPage3.Name = "tabPage3";
-            tabPage3.Size = new Size(754, 530);
+            tabPage3.Size = new Size(754, 603);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Grafica";
             tabPage3.UseVisualStyleBackColor = true;
@@ -378,7 +378,7 @@
             plotView1.Location = new Point(15, 13);
             plotView1.Name = "plotView1";
             plotView1.PanCursor = Cursors.Hand;
-            plotView1.Size = new Size(721, 504);
+            plotView1.Size = new Size(721, 587);
             plotView1.TabIndex = 0;
             plotView1.Text = "plotView1";
             plotView1.ZoomHorizontalCursor = Cursors.SizeWE;
@@ -391,7 +391,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Red;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(786, 582);
+            ClientSize = new Size(786, 655);
             Controls.Add(tbControlP);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Eproductos";

@@ -199,7 +199,7 @@
             tabPage3.BackColor = Color.Black;
             tabPage3.Controls.Add(button1);
             tabPage3.Controls.Add(dgvRegion);
-            tabPage3.ForeColor = Color.White;
+            tabPage3.ForeColor = Color.Black;
             tabPage3.Location = new Point(4, 24);
             tabPage3.Margin = new Padding(3, 2, 3, 2);
             tabPage3.Name = "tabPage3";
@@ -211,6 +211,7 @@
             // button1
             // 
             button1.BackColor = Color.Black;
+            button1.ForeColor = Color.Red;
             button1.Location = new Point(309, 323);
             button1.Name = "button1";
             button1.Size = new Size(150, 23);

@@ -120,7 +120,7 @@
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(191, 23);
             btnEditar.TabIndex = 5;
-            btnEditar.Text = "Editar producto";
+            btnEditar.Text = "Editar proveedor";
             btnEditar.UseVisualStyleBackColor = true;
             btnEditar.Click += btnEditar_Click;
             // 
@@ -132,7 +132,7 @@
             btnBorrar.Name = "btnBorrar";
             btnBorrar.Size = new Size(230, 23);
             btnBorrar.TabIndex = 4;
-            btnBorrar.Text = "Borrar producto";
+            btnBorrar.Text = "Borrar proveedor";
             btnBorrar.UseVisualStyleBackColor = false;
             btnBorrar.Click += btnBorrar_Click;
             // 
